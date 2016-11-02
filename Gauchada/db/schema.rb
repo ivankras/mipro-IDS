@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101190401) do
+ActiveRecord::Schema.define(version: 20161102002728) do
 
   create_table "administradors", force: :cascade do |t|
     t.string   "nombre"
@@ -28,12 +28,29 @@ ActiveRecord::Schema.define(version: 20161101190401) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "favors", force: :cascade do |t|
+    t.string   "titulo"
+    t.string   "foto_url"
+    t.string   "descripcion"
+    t.string   "ciudad"
+    t.integer  "id_ofrecimiento_electo"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "logros", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "puntaje_min"
     t.integer  "puntaje_max"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "ofrecimientos", force: :cascade do |t|
+    t.string   "descripcion"
+    t.date     "fecha_limite"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "punto_compras", force: :cascade do |t|
@@ -55,6 +72,18 @@ ActiveRecord::Schema.define(version: 20161101190401) do
     t.string   "descripcion"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.date     "fecha_nacimiento"
+    t.string   "email"
+    t.integer  "telefono"
+    t.integer  "puntos"
+    t.string   "contrasena"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end
