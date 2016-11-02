@@ -68,13 +68,6 @@ ActiveRecord::Schema.define(version: 20161102020859) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "resenia", force: :cascade do |t|
-    t.boolean  "cumplido"
-    t.string   "descripcion"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "usuarios", force: :cascade do |t|
     t.string   "nombre"
     t.string   "apellido"
