@@ -1,19 +1,19 @@
 class LogrosController < ApplicationController
-	def new
-	end
-	def edit
-		
-	end
-	def create
-	end
-	def update
-	end
-	def destroy
-	end
+
 	def index
-		
+		@logros = Logros.all
 	end
+
 	def show
-		
-	end
+
+	def new
+
+	def edit
+
+	def create
+
+	def update
+
+	def destroy
+
 end

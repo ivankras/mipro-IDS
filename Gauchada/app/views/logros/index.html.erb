@@ -8,9 +8,13 @@
 
 		<th> Puntaje Máximo </th>
 
+		<th> Editar </th>
+
+		<th> Eliminar </th>
+
 	</tr>
 
-	<% Logro.all.each do |logro| %>
+	<% @logros.each do |logro| %>
 
 		<tr>
 
@@ -20,6 +24,9 @@
 
 			<td> <%= logro.puntaje_max %> </td>
 
+			<td> <button type="button" class="btn btn-primary" onclick="google.com.ar">Editar</button> </td>
+
+			<td> <button type="button" class="btn btn-danger" onclick="google.com.ar">Eliminar</button> </td>
 		</tr>
 
 	<% end %>
