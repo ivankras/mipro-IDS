@@ -1,4 +1,5 @@
 class Usuario < ActiveRecord::Base
+<<<<<<< HEAD
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
