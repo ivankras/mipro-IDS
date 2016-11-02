@@ -1,0 +1,27 @@
+<table>
+
+	<tr>
+
+		<th> Logro </th>
+
+		<th> Puntaje Mínimo </th>
+
+		<th> Puntaje Máximo </th>
+
+	</tr>
+
+	<% Logro.all.each do |logro| %>
+
+		<tr>
+
+			<td> <%= logro.nombre %> </td>
+
+			<td> <%= logro.puntaje_min %> </td>
+
+			<td> <%= logro.puntaje_max %> </td>
+
+		</tr>
+
+	<% end %>
+
+</table>
