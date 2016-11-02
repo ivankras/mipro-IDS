@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :administradors
   devise_for :usuarios
   resources :logros
   # The priority is based upon order of creation: first created -> highest priority.
