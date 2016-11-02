@@ -4,4 +4,5 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          #:confirmable
+	belongs_to :logro
 end
