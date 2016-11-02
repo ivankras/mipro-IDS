@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102020859) do
+ActiveRecord::Schema.define(version: 20161102174426) do
 
   create_table "administradors", force: :cascade do |t|
     t.string   "nombre"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20161102020859) do
     t.string   "contrasena"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "logro_id"
   end
 
 end
