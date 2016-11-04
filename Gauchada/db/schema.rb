@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102184935) do
+ActiveRecord::Schema.define(version: 20161104123617) do
 
   create_table "comentarios", force: :cascade do |t|
     t.string   "descripcion"
@@ -59,24 +59,15 @@ ActiveRecord::Schema.define(version: 20161102184935) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "resenia", force: :cascade do |t|
-    t.boolean  "cumplido"
-    t.string   "descripcion"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "usuarios", force: :cascade do |t|
     t.string   "nombre"
     t.string   "apellido"
     t.date     "fecha_nacimiento"
     t.string   "email"
     t.integer  "telefono"
-    t.integer  "puntos"
-    t.string   "contrasena"
+    t.integer  "puntos",                 default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.integer  "logro_id"
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -86,6 +77,7 @@ ActiveRecord::Schema.define(version: 20161102184935) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "logro_id"
     t.boolean  "admin",                  default: false
   end
 
