@@ -56,8 +56,10 @@
     </div><!--/.fluid-container-->
 <!--###HASTA ACÁ, TODO COPIADO DE http://getbootstrap.com/2.3.2/examples/fluid.html#contact-->
 
-	<p class="notice"><%= notice %></p>
-   	<p class="alert"><%= alert %></p>
+	<% if flash[:notice] %>
+    <div class="alert alert-info"> <%= flash[:notice] %> </div>
+  <% end %>
+
 
 	<%= yield %>
 

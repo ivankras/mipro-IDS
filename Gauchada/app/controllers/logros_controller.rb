@@ -1,11 +1,20 @@
 class LogrosController < ApplicationController
+
+	def index
+		@logros = Logro.all
+	end
+
+	def show
+	end
+
 	def new
 		@logro=Logro.new()
 	end
+
 	def edit
 		@logro=Logro.find(params[:id]) #¿De dónde sacaría el id?
-		
 	end
+
 	def create
 		a=true
 		b=params[:logro][:puntaje_min]
@@ -25,14 +34,11 @@ class LogrosController < ApplicationController
 		# Iría un redirect_to, no sé a dónde
 		# redirect_to logros_path, :notice => “Un nuevo logro ha sido insertado”;
 	end
+
 	def update
 	end
+
 	def destroy
 	end
-	def index
-		
-	end
-	def show
-		
-	end
+
 end
