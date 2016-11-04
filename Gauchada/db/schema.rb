@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161104131452) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comentarios", force: :cascade do |t|
     t.string   "descripcion"
     t.string   "respuesta"
@@ -59,7 +62,29 @@ ActiveRecord::Schema.define(version: 20161104131452) do
     t.datetime "updated_at",  null: false
   end
 
-# Could not dump table "usuarios" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "email"
+    t.date     "fecha_nacimiento"
+    t.integer  "telefono",               limit: 8
+    t.integer  "puntos",                           default: 0
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "encrypted_password",               default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                    default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "logro_id"
+    t.boolean  "admin",                            default: false
+  end
+
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
 end
