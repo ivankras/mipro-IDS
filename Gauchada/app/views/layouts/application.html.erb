@@ -7,9 +7,17 @@
   <%= #csrf_meta_tags %>
 </head>
 <body>
-	<header> <!-- encabezado con logo --> </header>
-	<p class="notice"><%= notice %></p>
-   	<p class="alert"><%= alert %></p>
+
+
+<%= render 'layouts/header' %>
+
+<% if flash[:notice] %>
+    <div class="alert alert-info"> <%= flash[:notice] %> </div>
+  <% end %>
+<% if flash[:alert] %>
+    <div class="alert alert-info"> <%= flash[:alert] %> </div>
+  <% end %>
+
 
 	<%= yield %>
 

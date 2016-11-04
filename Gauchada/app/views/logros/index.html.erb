@@ -8,9 +8,13 @@
 
 		<th> Puntaje Máximo </th>
 
+		<th> Editar </th>
+
+		<th> Eliminar </th>
+
 	</tr>
 
-	<% Logro.all.each do |logro| %>
+	<% @logros.each do |logro| %>
 
 		<tr>
 
@@ -20,6 +24,9 @@
 
 			<td> <%= logro.puntaje_max %> </td>
 
+			<td> <%= link_to "Editar", edit_logro, method: :delete, class: "btn btn-primary" %> </td>
+
+			<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
 		</tr>
 
 	<% end %>
