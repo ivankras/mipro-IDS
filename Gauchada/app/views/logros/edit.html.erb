@@ -1,3 +1,6 @@
-<h3>Logro <%= @logro.nombre %></h3>
-
-<%= render 'form' %>
+<div class="container">
+	<h3 class="titulo_form_l">Logro "<%= @logro.nombre %>" - Editar</h3>
+	<table class="table table-hover">
+		<%= render 'form' %>
+	</table>
+</div>
