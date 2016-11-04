@@ -1,7 +1,7 @@
 class LogrosController < ApplicationController
 	
 	def index
-		@logros = Logros.all
+		@logros = Logro.all
 	end
 
 	def show
