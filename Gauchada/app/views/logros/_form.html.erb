@@ -1,0 +1,10 @@
+<%= form_for @logro do |l| %>
+	<%= l.label :nombre %>
+	<%= l.text_field :nombre, required: true, placeholder: 'Ingrese el nombre del logro' %>
+	<%= l.label "Puntaje mínimo" %>
+	<%= l.number_field :puntaje_min, required: true %>
+	<%= l.label "Puntaje máximo" %>
+	<%= l.number_field :puntaje_max, required: true %>
+	<%= l.submit 'Guardar' %>
+<% end %>
+<%= link_to "Cancelar", logros_path %>
