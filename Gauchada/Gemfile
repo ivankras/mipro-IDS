@@ -50,3 +50,6 @@ gem 'devise'
 
 #Gema para Bootstrap.
 gem 'bootstrap-sass', '~> 3.3.6'
+
+#Gema para vista de tablas
+gem 'hirb'
