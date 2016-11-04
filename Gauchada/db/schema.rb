@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104123617) do
+ActiveRecord::Schema.define(version: 20161104131452) do
 
   create_table "comentarios", force: :cascade do |t|
     t.string   "descripcion"
@@ -59,13 +59,6 @@ ActiveRecord::Schema.define(version: 20161104123617) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "resenia", force: :cascade do |t|
-    t.boolean  "cumplido"
-    t.string   "descripcion"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "usuarios", force: :cascade do |t|
     t.string   "nombre"
     t.string   "apellido"
@@ -90,5 +83,6 @@ ActiveRecord::Schema.define(version: 20161104123617) do
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+
 
 end
