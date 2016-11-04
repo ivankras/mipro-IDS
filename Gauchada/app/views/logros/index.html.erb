@@ -1,18 +1,19 @@
-<table>
+<table class="table table-hover">
+	<thead>
+		<tr>
 
-	<tr>
+			<th> Logro </th>
 
-		<th> Logro </th>
+			<th> Puntaje Mínimo </th>
 
-		<th> Puntaje Mínimo </th>
+			<th> Puntaje Máximo </th>
 
-		<th> Puntaje Máximo </th>
+			<th> Editar </th>
 
-		<th> Editar </th>
+			<th> Eliminar </th>
 
-		<th> Eliminar </th>
-
-	</tr>
+		</tr>
+	</thead>
 
 	<% @logros.each do |logro| %>
 
@@ -24,7 +25,7 @@
 
 			<td> <%= logro.puntaje_max %> </td>
 
-			<td> <button type="button" class="btn btn-primary" onclick="">Editar</button> </td>
+			<td> <%= link_to "Editar", edit_logro, method: :delete, class: "btn btn-primary" %> </td>
 
 			<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
 		</tr>
