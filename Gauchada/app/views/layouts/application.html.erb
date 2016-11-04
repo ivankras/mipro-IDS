@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gauchada</title>
-   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <title>Gauchada</title>  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header> <!-- encabezado con logo --> </header>
+	<p class="notice"><%= notice %></p>
+   	<p class="alert"><%= alert %></p>
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>
