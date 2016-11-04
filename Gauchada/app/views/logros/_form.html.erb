@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%= form_for @logro do |l| %>
 	<%= l.label :nombre %>
 	<%= l.text_field :nombre, required: true, placeholder: 'Ingrese el nombre del logro' %>
@@ -8,14 +7,4 @@
 	<%= l.number_field :puntaje_max, required: true %>
 	<%= l.submit 'Guardar' %>
 <% end %>
-=======
-<%= form_for @logro do |l| %>
-	<%= l.label :nombre %>
-	<%= l.text_field :nombre, required: true, placeholder: 'Ingrese el nombre del nuevo logro' %>
-	<%= l.label "Puntaje mínimo" %>
-	<%= l.number_field :puntaje_min %>
-	<%= l.number_field :puntaje_max %>
-	<%= l.submit 'Guardar' %>
-<% end %>
->>>>>>> abf6f736f377fdfb96f68d605019d3c45d07056b
 <%= link_to "Cancelar", logros_path %>

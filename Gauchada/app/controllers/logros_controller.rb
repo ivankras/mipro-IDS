@@ -3,6 +3,7 @@ class LogrosController < ApplicationController
 		@logro=Logro.new()
 	end
 	def edit
+		@logro=Logro.find(params[:id]) #¿De dónde sacaría el id?
 		
 	end
 	def create
@@ -18,9 +19,9 @@ class LogrosController < ApplicationController
 		end
 		if (!a)
 			#No me cierra ni un poquito. La idea es que si no está validado vuelva a pedir los datos
-			redirect_to @logro.create, :notice => “Un nuevo logro ha sido insertado”;
+			redirect_to (@logro.create, notice: “Un nuevo logro ha sido insertado”)
 		else
-			redirect_to logros_path, :notice => “Un nuevo logro ha sido insertado”;
+			redirect_to (logros_path, notice: “Un nuevo logro ha sido insertado”)
 		end
 		# Falta enviar mensaje de confirmación
 		# Iría un redirect_to, no sé a dónde
