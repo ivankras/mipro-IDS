@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<h1 class="text-left"> <%= @favor.titulo %> </h1>
+			</div>
+			<div class="col-md-2"><%= link_to "Volver", favors_path, class: "btn btn-default" %></p></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5">
+			<img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" alt="" height="400" width="400">
+		</div>
+		<div class="col-md-4"><p><%=@favor.descripcion%></p>
+			<div class="caption">
+				<p class="text-right"><small>Escrito por AGREGAR USUARIO</small></p>
+				<p class="text-right"><small><%= localize(@favor.created_at, :format => :long) %></small></p>
+			</div>
+		</div>
+	</div>
+</div>

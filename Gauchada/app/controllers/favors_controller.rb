@@ -5,6 +5,7 @@ class FavorsController < ApplicationController
 	end
 
 	def show
+		@favor = Favor.find(params[:id])
 	end
 
 	def new
