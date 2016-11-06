@@ -12,23 +12,18 @@ class LogrosController < ApplicationController
 	end
 
 	def edit
-		@logro=Logro.find(params[:id]) #¿De dónde sacaría el id?
+		@logro=Logro.find(params[:id])
 	end
 
 	def create
-		a=true
 		b=params[:logro][:puntaje_min]
 		c=params[:logro][:puntaje_max]
-		Logro.each do |l|
-			a &&= l.out_range(b,c)
-			break unless a
-		end
-		unless a
-			@logro=Logro.create(params.require(:logro).permit(:nombre, :puntaje_min, :puntaje_max))
+		unless Logro.verificar_rangos(b,c)
 			#La idea es que si no está validado vuelva a pedir los datos
-			redirect_to(new_logro_path, notice: "Un nuevo logro ha sido insertado")
+			redirect_to(new_logro_path, alert: "Error en el rango elegido. Redefina los limites.")
 		else
-			redirect_to(logros_path, notice: "Un nuevo logro ha sido insertado")
+			@logro=Logro.create(params.require(:logro).permit(:nombre, :puntaje_min, :puntaje_max))
+			redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
 		end
 		# Falta enviar mensaje de confirmación
 		# Iría un redirect_to, no sé a dónde
@@ -36,9 +31,21 @@ class LogrosController < ApplicationController
 	end
 
 	def update
+		a=params[:logro][:nombre]
+		b=params[:logro][:puntaje_min]
+		c=params[:logro][:puntaje_max]
+		unless Logro.verificar_rangos(b,c)
+			redirect_to(edit_logro_path(@logro.id), alert: "Error en el rango elegido. Redefina los limites.")
+		else
+			@logro=Logro.modificar_datos(a,b,c)
+			redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
+		end
 	end
 
 	def destroy
+		@logro=Logro.find(params[:id])
+		#Acá se borra lógicamente el logro
+		redirect_to(logros_path, notice: "El logro #{@logro[:nombre]} ha sido borrado")
 	end
 
 end

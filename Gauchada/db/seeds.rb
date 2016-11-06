@@ -11,3 +11,10 @@ Usuario.create(nombre: "Ulises", apellido: "Sunetri", email: "ulises@gauchada.co
 Usuario.create(nombre: "Iván", apellido: "Krasowski Bissio", email: "ivankras@hotmail.com", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, password: "Abracadabra")
 Usuario.create(nombre: "Rocío", apellido: "Madou", email: "rocio.madou@hotmail.com", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, password: "Abracadabra")
 Usuario.create(nombre: "Gonzalo Julián", apellido: "Poch", email: "gonzalopoch@hotmail.com", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, password: "Abracadabra")
+
+puts "Creo algunos logros"
+Logro.create(nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
+Logro.create(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
+Logro.create(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 30)
+Logro.create(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
+Logro.create(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
