@@ -30,3 +30,21 @@
           padding-right: 5px;
         }
       }*/
+
+body {
+  padding-top: 180px;
+  padding-bottom: 40px;
+}
+
+header .navbar-inverse .navbar-brand {
+    color: white;
+    font-size: 2em;
+    font-family: 'Gill Sans', sans-serif, 'Gibson', sans-serif, Arial, sans-serif;
+    font-weight: bold;
+    font-variant: normal;
+    height: 150px;
+  }
+header .navbar-brand>img {
+    display: inline-block
+  }
+}
