@@ -12,7 +12,7 @@ class LogrosController < ApplicationController
 	end
 
 	def edit
-		@logro=Logro.find(params[:id]) #¿De dónde sacaría el id?
+		@logro=Logro.find(params[:id])
 	end
 
 	def create
@@ -43,6 +43,9 @@ class LogrosController < ApplicationController
 	end
 
 	def destroy
+		@logro=Logro.find(params[:id])
+		#Acá se borra lógicamente el logro
+		redirect_to(logros_path, notice: "El logro #{@logro[:nombre]} ha sido borrado")
 	end
 
 end
