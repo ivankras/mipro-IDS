@@ -2,17 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  padding-top: 120px;
-}
-
-header {
-  .navbar-inverse .navbar-brand {
-    color: white;
-    font-size: 2em;
-    height: 100px;
-  }
-  .navbar-brand>img {
-    display: inline-block
-  }
+div{
+	.container{
+		.table table-hover{
+			.titulo_form_l{
+				text-align: center;
+			}
+		}
+	}
 }
