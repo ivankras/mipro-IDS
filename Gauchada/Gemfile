@@ -54,3 +54,5 @@ gem 'devise'
 #Gema para vista de tablas
 gem 'hirb'
 
+#Gema para Heroku
+gem 'rails_12factor', group: :production
