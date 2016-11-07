@@ -1,0 +1,28 @@
+<div class="col-md-8">
+	<div class="container">
+		<table class="table table-condensed">
+			<thead><h1>Favores</h1></thead>
+
+			<% @favors.each do |favor| %>
+				<tr>
+					<td>
+						<div class="container">
+							<div class="row">
+							  <div class="col-md-8">
+							    <div class="thumbnail">
+							    <h3 class="text-center"> <%= favor.titulo %> </h3>
+							      <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" alt="" height="200" width="200">
+							      <div class="caption">
+							        <p><%=favor.descripcion%></p>
+							        <p><%= link_to "Comentarios", favor_path(favor.id), class: "btn btn-primary" %> <%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %></p>
+							        <p class="text-right"><small><%= localize(favor.created_at, :format => :long) %></small></p>
+							      </div>
+							    </div>
+							  </div>
+						</div>
+					</td>
+				</tr>	
+			<% end %>
+		</table>
+	</div>
+</div>
