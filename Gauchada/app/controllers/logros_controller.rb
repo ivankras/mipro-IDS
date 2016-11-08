@@ -12,13 +12,19 @@ class LogrosController < ApplicationController
 	end
 
 	def edit
-		@logro=Logro.find(params[:id]) #¿De dónde sacaría el id?
+		@logro=Logro.find(params[:id])
 	end
 
 	def create
 		b=params[:logro][:puntaje_min]
 		c=params[:logro][:puntaje_max]
-		unless Logro.verificar_rangos(b,c)
+		d=true
+		e=Logro.all
+		e.each do |l|
+			d &&= out_range?(l,b,c)
+			break unless d
+		end
+		unless d
 			#La idea es que si no está validado vuelva a pedir los datos
 			redirect_to(new_logro_path, alert: "Error en el rango elegido. Redefina los limites.")
 		else
@@ -34,15 +40,31 @@ class LogrosController < ApplicationController
 		a=params[:logro][:nombre]
 		b=params[:logro][:puntaje_min]
 		c=params[:logro][:puntaje_max]
-		unless Logro.verificar_rangos(b,c)
-			redirect_to(edit_logro_path(@logro.id), alert: "Error en el rango elegido. Redefina los limites.")
+		d=true
+		e=Logro.all
+		e.each do |l|
+			d &&= out_range?(l,b,c)
+			break unless d
+		end
+		unless d
+			redirect_to(edit_logro_path(params[:id]), alert: "Error en el rango elegido. Redefina los limites.")
 		else
-			@logro=Logro.modificar_datos(a,b,c)
+			@logro=Logro.find(params[:id])
+			@logro.nombre=a
+			@logro.puntaje_min=b
+			@logro.puntaje_max=c
 			redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
 		end
 	end
 
 	def destroy
+		@logro=Logro.find(params[:id])
+		#Acá se borra lógicamente el logro
+		redirect_to(logro_path, method: :delete)
+		redirect_to(logros_path, notice: "El logro #{@logro[:nombre]} ha sido borrado")
 	end
 
+	def out_range? (l,min, max)
+		((min.to_i<l.puntaje_min)&&(max.to_i<l.puntaje_min))||(min.to_i>l.puntaje_max)&&(max.to_i>l.puntaje_max)
+	end
 end
