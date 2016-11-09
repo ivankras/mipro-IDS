@@ -1,6 +1,7 @@
 class Logro < ActiveRecord::Base
 	has_many :usuarios
-	validates :nombre, :format => {:with => /\A[a-zA-Z]+\z/, :message => "Sólo letras permitidas"}
+	validates :nombre, format: {:with => /\A[a-zA-Z]+\z/, :message => "Sólo letras permitidas"}
+  validates :nombre, length: {minimum: 1, maximum: 20}
 	default_scope -> { order ("puntaje_max desc")}
 	validate :rango, :minimoMenorQueMaximo
 
