@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				<h1 class="text-left"> <%= @favor.titulo %> </h1>
+				<h1 class="text-center"> <%= @favor.titulo %> </h1>
 			</div>
 			<div class="col-md-2"><%= link_to "Volver", favors_path, class: "btn btn-default" %></p></div>
 		</div>
@@ -17,17 +17,13 @@
 		</div>
 		<div class="col-md-4"><p><%=@favor.descripcion%></p>
 			<div class="caption">
+				<% if @favor.usuario == nil %>
 					<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
+				<% else %>
+					<p class="text-right"><small>Escrito por @favor.usuario.nombre </small></p>
+				<% end %>
 				<p class="text-right"><small><%= localize(@favor.created_at, :format => :long) %></small></p>
 			</div>
 		</div>
 	</div>
 </div>
-<!--
-Añadir Rails tags
-				 if @favor.usuario.nombre == nil 
-					<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
-				 else 
-					<p class="text-right"><small>Escrito por @favor.usuario.nombre </small></p>
-				 end 
-				-->
