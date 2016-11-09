@@ -65,7 +65,7 @@ class LogrosController < ApplicationController
 	    if @logro.update(nombre: nom, puntaje_min: min, puntaje_max: max)
 	      redirect_to(logros_path, success: "El logro #{nom} ha sido editado correctamente")
 	    else
-	      redirect_to(edit_logro_path(logro), alert: "Error en el rango elegido. Redefina los limites.")
+	      redirect_to(edit_logro_path(@logro), alert: "Error en el rango elegido. Redefina los limites.")
 	    end
 
 
@@ -93,10 +93,11 @@ class LogrosController < ApplicationController
 	def destroy
 		logro = Logro.find(params[:id])
 		#Acá se borra lógicamente el logro
-		logro.activo = false;
+		logro.activo = false
+		logro.save
 		#Acá se borra físicamente el logro
 		#Logro.destroy(params[:id])
-		redirect_to(logros_path, notice: "El logro ha sido borrado")
+		redirect_to(logros_path, success: "El logro ha sido borrado")
 		# Falta enviar mensaje de confirmación
 	end
 end
