@@ -2,15 +2,15 @@
 	<thead>
 		<tr>
 			<th><%= l.label :nombre %></th>
-			<th><%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro' %></th>
+			<th><%= l.text_field :nombre, required: true, class: "form-control", placeholder: 'Nombre del logro' %></th>
 		</tr>
 		<tr>
 			<th><%= l.label "Puntaje mínimo" %></th>
-			<th><%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo'  %></th>
+			<th><%= l.number_field :puntaje_min, required: true, class: "form-control", placeholder: 'Puntaje mínimo'  %></th>
 		</tr>
 		<tr>
 			<th><%= l.label "Puntaje máximo" %></th>
-			<th><%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo'  %></th>
+			<th><%= l.number_field :puntaje_max, required: true, class: "form-control", placeholder: 'Puntaje máximo'  %></th>
 		</tr>
 	</thead>
 	<tr>

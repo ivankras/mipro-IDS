@@ -18,20 +18,20 @@
 			</tr>
 		</thead>
 
-		<% @logros.where(activo: true).each do |logro| %>
+		<% @logros.each do |logro| %>
+			<% if logro.activo == true %>
+				<tr>
+					<td> <%= logro.nombre %> </td>
 
-			<tr>
-				<td> <%= logro.nombre %> </td>
+					<td> <%= logro.puntaje_min %> </td>
 
-				<td> <%= logro.puntaje_min %> </td>
+					<td> <%= logro.puntaje_max %> </td>
 
-				<td> <%= logro.puntaje_max %> </td>
+					<td> <%= link_to "Editar", edit_logro_path(logro.id), class: "btn btn-primary" %> </td> 
 
-				<td> <%= link_to "Editar", edit_logro_path(logro.id), class: "btn btn-primary" %> </td> 
-
-				<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
-			</tr>
-
+					<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
+				</tr>
+			<% end %>
 		<% end %>
 	</table>
 	<br>
