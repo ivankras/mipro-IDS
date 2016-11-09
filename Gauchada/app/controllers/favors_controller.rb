@@ -9,10 +9,10 @@ class FavorsController < ApplicationController
 	end
 
 	def new
-		if isAdmin?
+		if isLogued? and hasPoints?
 			@favor=Favor.new()
 		else
-			redirect_to(root_path, alert: "Sección inaccesible")
+			redirect_to(root_path, alert: "No tienes los suficientes puntos de logro para pedir un favor")
 		end
 	end
 
