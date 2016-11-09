@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     return current_usuario != nil && current_usuario.admin
   end
 
+  def isThisAdmin?(id)
+    usrp = Usuario.find(id)
+    return usrp != nil && usrp.admin
+  end
+
   # Determina si el usuario esta logueado en el sitio. Si se envia el id,
   # determina si el usuario se ha logueado con el id especificado.
   def isLogued?(id= current_usuario.id)

@@ -1,14 +1,17 @@
-<div class="well">
+<div class="well container-fluid text-center">
 <%= form_for @logro do |l| %>
-		<%= l.label :nombre %></th>
-		<%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro' %>
-		
-		<%= l.label "Puntaje mínimo" %>
-		<%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo'  %>
-		<%= l.label "Puntaje máximo" %>
-		<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo'  %>
-		<!--Ver por qué anda mal el botón -->
-		<%= l.submit 'Guardar', class: "btn btn-success actions" %>
+			<%= l.label :nombre, class: "form_lbl_nom" %>
+			<%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro',class: "submitter" %>
+			<br><br>
+			<%= l.label "Puntaje mínimo", class: "form_lbl_min" %>
+			<%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo', class: "submitter"  %>
+			<br><br>
+			<%= l.label "Puntaje máximo", class: "form_lbl_max" %>
+			<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo',class: "submitter"  %>
+			<!--Ver por qué anda mal el botón -->
+			<br><br>
+			<%= l.submit 'Guardar', class: "btn btn-success actions"%>
+			<%= link_to "Cancelar", logros_path, class: "btn btn-danger submitter" %>
 <% end %>
-		<%= link_to "Cancelar", logros_path, class: "btn btn-danger" %>
+		
 </div>
