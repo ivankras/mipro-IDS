@@ -9,13 +9,25 @@
 	</div>
 	<div class="row">
 		<div class="col-md-5">
-			<%= image_tag "logo.png", title: "Logo", size: "400x400" %>
+			<% if @favor.foto_url == nil %>
+				<%= image_tag "logo.png", title: "Logo", size: "400x400" %>
+			<% else %>
+				<%= image_tag @favor.foto_url, title: "Imagen Favor", size: "400x300" %>
+			<% end %>
 		</div>
 		<div class="col-md-4"><p><%=@favor.descripcion%></p>
 			<div class="caption">
-				<p class="text-right"><small>Escrito por AGREGAR USUARIO</small></p>
+					<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
 				<p class="text-right"><small><%= localize(@favor.created_at, :format => :long) %></small></p>
 			</div>
 		</div>
 	</div>
 </div>
+<!--
+Añadir Rails tags
+				 if @favor.usuario.nombre == nil 
+					<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
+				 else 
+					<p class="text-right"><small>Escrito por @favor.usuario.nombre </small></p>
+				 end 
+				-->
