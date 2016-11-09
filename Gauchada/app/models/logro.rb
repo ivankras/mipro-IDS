@@ -7,20 +7,20 @@ class Logro < ActiveRecord::Base
 	def rango
     	val = true
     	Logro.all.each do |logro|
-      		if val && :id != logro.id && ((:puntaje_max>=logro.puntaje_min && :puntaje_max<=logro.puntaje_max)||(:puntaje_min>=logro.puntaje_min && :puntaje_min<=logro.puntaje_max))
+      		if val && self.id != logro.id && ((self.puntaje_max>=logro.puntaje_min && self.puntaje_max<=logro.puntaje_max)||(self.puntaje_min>=logro.puntaje_min && self.puntaje_min<=logro.puntaje_max))
         		val = false
       		end
       		break unless val
     	end
-    	errors.add(:puntaje_min, "Rango incorrecto de valores para el logro.") unless val
+    	errors.add(self.puntaje_min, "Rango incorrecto de valores para el logro.") unless val
     	return val
   	end
 
   	def minimoMenorQueMaximo
-  		val= :puntaje_min < :puntaje_max
+  		val= self.puntaje_min < self.puntaje_max
 	    if val
 	      errors.add(:puntaje_min, "Mínimo del logro mayor o igual que máximo; debe ser menor.")
 	  	end
-	  	val
+	  	return val
     end
  end

@@ -91,13 +91,12 @@ class LogrosController < ApplicationController
 	end
 
 	def destroy
-		@logro = Logro.find(params[:id])
-		nom=params[:logro][:nombre]
+		logro = Logro.find(params[:id])
 		#Acá se borra lógicamente el logro
-		@logro.activo=false
+		logro.activo = :false;
 		#Acá se borra físicamente el logro
 		#Logro.destroy(params[:id])
-		redirect_to(logros_path, notice: "El logro #{nom} ha sido borrado")
+		redirect_to(logros_path, notice: "El logro ha sido borrado")
 		# Falta enviar mensaje de confirmación
 	end
 end
