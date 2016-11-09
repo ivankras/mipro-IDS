@@ -19,9 +19,7 @@
 		</thead>
 
 		<% @logros.each do |logro| %>
-			<% if logro.activo == false 
-					next
-			end%>
+			<% if logro.activo == true %>
 				<tr>
 					<td> <%= logro.nombre %> </td>
 
@@ -33,6 +31,7 @@
 
 					<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
 				</tr>
+			<%end%>
 		<% end %>
 	</table>
 	<br>

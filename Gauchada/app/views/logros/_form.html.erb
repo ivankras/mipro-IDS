@@ -1,21 +1,14 @@
+<div class="well">
 <%= form_for @logro do |l| %>
-	<thead>
-		<tr>
-			<th><%= l.label :nombre %></th>
-			<th><%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro' %></th>
-		</tr>
-		<tr>
-			<th><%= l.label "Puntaje mínimo" %></th>
-			<th><%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo'  %></th>
-		</tr>
-		<tr>
-			<th><%= l.label "Puntaje máximo" %></th>
-			<th><%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo'  %></th>
-		</tr>
-	</thead>
-	<tr>
+		<%= l.label :nombre %></th>
+		<%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro' %>
+		
+		<%= l.label "Puntaje mínimo" %>
+		<%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo'  %>
+		<%= l.label "Puntaje máximo" %>
+		<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo'  %>
 		<!--Ver por qué anda mal el botón -->
-		<td><%= l.submit 'Guardar', class: "btn btn-success actions" %></td>
+		<%= l.submit 'Guardar', class: "btn btn-success actions" %>
 <% end %>
-		<td><%= link_to "Cancelar", logros_path, class: "btn btn-danger" %></td>
-	</tr>
+		<%= link_to "Cancelar", logros_path, class: "btn btn-danger" %>
+</div>
