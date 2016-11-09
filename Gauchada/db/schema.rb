@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109010426) do
+
+ActiveRecord::Schema.define(version: 20161108024901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 20161109010426) do
     t.string   "last_sign_in_ip"
     t.integer  "logro_id"
     t.boolean  "admin",                            default: false
-    t.string   "sexo",                             default: "femenino"
+    t.boolean  "sexo",                             default: true
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
