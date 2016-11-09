@@ -1,21 +1,27 @@
 class Logro < ActiveRecord::Base
 	has_many :usuarios
-	validates :nombre, :format => {:with => /\A[a-zA-Z]+\z/, :message => "Sólo letras permitidas"}
-	default_scope -> { order ("puntaje_max desc")} 
-	def self.out_range (min, max)
-		((min<this.puntaje_min)&&(max<this.puntaje_max))||(min>this.puntaje_min)&&(max>this.puntaje_max)
-	end
-	def self.verificar_rangos(min, max)
-		a=true
-		Logro.each do |l|
-			a &&= l.out_range(min,max)
-			break unless a
-		end
-		a
-	end
-	def self.modificar_datos(nombre, min, max)
-		this.nombre=nombre
-		this.min=min
-		this.max=max
-	end
-end
+	validates :nombre, format: {:with => /\A[a-zA-Z]+\z/, :message => "Sólo letras permitidas"}
+  validates :nombre, length: {minimum: 1, maximum: 20}
+	default_scope -> { order ("puntaje_max desc")}
+	validate :rango, :minimoMenorQueMaximo
+
+	def rango
+    	val = true
+    	Logro.all.each do |logro|
+      		if val && self.id != logro.id && ((self.puntaje_max>=logro.puntaje_min && self.puntaje_max<=logro.puntaje_max)||(self.puntaje_min>=logro.puntaje_min && self.puntaje_min<=logro.puntaje_max))
+        		val = false
+      		end
+      		break unless val
+    	end
+    	errors.add(self.puntaje_min, "Rango incorrecto de valores para el logro.") unless val
+    	return val
+  	end
+
+  	def minimoMenorQueMaximo
+  		val= self.puntaje_min < self.puntaje_max
+	    if val
+	      errors.add(:puntaje_min, "Mínimo del logro mayor o igual que máximo; debe ser menor.")
+	  	end
+	  	return val
+    end
+ end

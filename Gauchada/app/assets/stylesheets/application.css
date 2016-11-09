@@ -48,8 +48,11 @@ header .navbar-brand>img {
     display: inline-block;
   }
 
-button .sesion-sign{
-    position: absolute;
-    top: 50px !important;
-    color: white;
-}
+.session-sign{
+    color: black;
+    margin-top: 50px;
+    margin-right: 10px;
+    background-color: #FF8119;
+    border-color: black;
+  }
+

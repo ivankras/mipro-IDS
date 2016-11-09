@@ -1,0 +1,13 @@
+<% if current_usuario %>
+	
+      	<%= link_to "Salir" , destroy_usuario_session_path , method: :delete , role: 'button', class: 'btn btn-lg btn-warning pull-right session-sign' %>
+        
+      
+ <% else %>
+ 		
+
+ 		<%= link_to "Ingresar" , new_usuario_session_path , role: 'button', class: 'btn btn-lg btn-warning pull-right session-sign' %>
+
+       	<%= link_to "Registrarse" , new_usuario_registration_path , role: 'button', class: 'btn btn-lg btn-warning pull-right session-sign' %>
+
+<% end %>
