@@ -19,7 +19,6 @@ Logro.find_or_create_by(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 3
 Logro.find_or_create_by(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
 Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
 
-Favor.destroy_all
 Favor.create!([{
 	titulo: "Donald Trump",
 	foto_URL: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
