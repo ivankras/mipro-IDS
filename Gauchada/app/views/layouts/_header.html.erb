@@ -2,9 +2,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         
-        <button type="button"  class="btn btn-lg btn-warning pull-right sesion_sign"  align="center">
-        <%= sign_in_out_button %>
-        </button>
+        <%= render 'layouts/sessionbutton' %>
         
         <div class="navbar-header">         
           <%= link_to root_path, class: 'navbar-brand' do %>
