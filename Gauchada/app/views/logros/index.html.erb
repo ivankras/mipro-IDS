@@ -1,5 +1,7 @@
 <div class="container">
 	<table class="table table-hover">
+
+		<br>
 		<thead>
 			<tr>
 
@@ -19,7 +21,6 @@
 		<% @logros.each do |logro| %>
 
 			<tr>
-
 				<td> <%= logro.nombre %> </td>
 
 				<td> <%= logro.puntaje_min %> </td>
@@ -32,6 +33,11 @@
 			</tr>
 
 		<% end %>
-
+	</table>
+	<br>
+	<table class="table table-hover">
+		<tr>
+			<%= link_to "Nuevo logro", new_logro_path, class: "btn btn-success pull-right" %>
+		</tr>
 	</table>
 </div>
