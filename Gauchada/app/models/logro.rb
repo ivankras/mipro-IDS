@@ -8,7 +8,8 @@ class Logro < ActiveRecord::Base
 	def rango
     	val = true
     	Logro.all.each do |logro|
-      		if val && self.id != logro.id && ((self.puntaje_max>=logro.puntaje_min && self.puntaje_max<=logro.puntaje_max)||(self.puntaje_min>=logro.puntaje_min && self.puntaje_min<=logro.puntaje_max))
+          if val && self.id != logro.id && (self.puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||(self.puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
+      		#if val && self.id != logro.id && ((self.puntaje_max>=logro.puntaje_min && self.puntaje_max<=logro.puntaje_max)||(self.puntaje_min>=logro.puntaje_min && self.puntaje_min<=logro.puntaje_max))
         		val = false
       		end
       		break unless val

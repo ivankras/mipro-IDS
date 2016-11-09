@@ -9,7 +9,11 @@ class FavorsController < ApplicationController
 	end
 
 	def new
-		@favor=Favor.new()
+		if isAdmin?
+			@favor=Favor.new()
+		else
+			redirect_to(root_path, alert: "Sección inaccesible")
+		end
 	end
 
 	def edit
