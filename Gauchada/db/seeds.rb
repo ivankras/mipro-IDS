@@ -14,6 +14,8 @@ Logro.find_or_create_by(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 3
 Logro.find_or_create_by(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
 Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
 
+f = Favor.count
+
 Favor.create!([{
 	titulo: "Donald Trump",
 	foto_url: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
@@ -36,4 +38,26 @@ Favor.create!([{
 	ciudad: "Tokio",
 }])
 
-puts "Creo #{Favor.count} favores."
+puts "Creo #{Favor.count - f} favores. Hay #{Favor.count} favores en total."
+
+
+
+c = Comentario.count
+
+
+Comentario.create!([{
+	descripcion: "Qué tal?",
+	respuesta: "Todo bien",
+	favor_id: Favor.first.id,
+	},
+	{
+	descripcion: "Cómo te llamas?",
+	respuesta: "Carlitos",
+	favor_id: Favor.first.id,
+	},
+	{
+	descripcion: "No tengo respuesta.",
+	favor_id: Favor.first.id,
+}])
+
+puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentarios en total."
