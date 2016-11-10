@@ -10,34 +10,33 @@
   </div>
 
   <div class="field">
-    <%= f.label :apellido %><br />
+    </br><%= f.label :apellido %><br />
     <%= f.text_field :apellido %>
   </div>
 
   <div class="field">
-    <%= f.label :sexo %><br />
-    <%= f.radio_button :sexo, 'masculino' %>
-    <%= f.radio_button :sexo, 'femenino' %>
-    <%= f.radio_button :sexo, 'indefinido', checked: true %>
+    </br><%= f.label :sexo %><br />
+    <%= f.radio_button :sexo, 'masculino' %><%= f.label :sexo, "Masculino" %></br>
+    <%= f.radio_button :sexo, 'femenino', checked: true %><%= f.label :sexo, "Femenino" %></br>
   </div>
 
   <div class="field"> 
-    <%= f.label :fecha_nacimiento %><br />
+    </br><%= f.label :fecha_nacimiento %><br />
     <%= f.date_field :fecha_nacimiento %>
   </div>
 
   <div class="field"> 
-    <%= f.label :telefono %><br />
+    </br><%= f.label :telefono %><br />
     <%= f.telephone_field :fecha_nacimiento %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    </br><%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    </br><%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -45,7 +44,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    </br><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -54,5 +53,4 @@
   </div>
 <% end %>
 
-<%= render "usuarios/shared/links" %>
 </div>

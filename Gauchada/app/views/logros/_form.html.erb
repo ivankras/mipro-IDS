@@ -8,10 +8,9 @@
 			<br><br>
 			<%= l.label "Puntaje máximo", class: "form_lbl_max" %>
 			<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo',class: "submitter"  %>
-			<!--Ver por qué anda mal el botón -->
 			<br><br>
-			<%= l.submit 'Guardar', class: "btn btn-success actions"%>
-			<%= link_to "Cancelar", logros_path, class: "btn btn-danger submitter" %>
+			<%= l.submit 'Guardar', class: "btn btn-success actions confirmation-btn"%>
+			<%= link_to "Cancelar", logros_path, class: "btn btn-danger confirmation-btn" %>
 <% end %>
 		
 </div>

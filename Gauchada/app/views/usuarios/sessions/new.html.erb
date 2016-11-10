@@ -1,27 +1,25 @@
-<div class="container">
-  <h2>Log in</h2>
-
+<div class="container-fluid">
+  <h3 class="titulo_form_l text-center">Ingresar</h3>
+</div>
+  <div class="well container-fluid text-center">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
+      <%= f.label :email, class: "for_lbl_email" %>
+      <%= f.email_field :email, autofocus: true, class: "submitter" %>
+    <br><br>
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off", class: "submitter" %>
+    <br><br>
     <% if devise_mapping.rememberable? -%>
-      <div class="field">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
+        <%= f.label :remember_me, "Recuérdame" %>
     <% end -%>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
+    <br><br>
+    <%= f.submit "Iniciar sesión" , class: "btn btn-success actions confirmation-btn"%>
+    <%= link_to "Cancelar", root_path, class: "btn btn-danger confirmation-btn" %>
   <% end %>
-<%= render "usuarios/shared/links" %>
+
+    <br>
+    <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name) , {:style=>'color:red', :class=>'css_class'}%>
+    
+
 </div>
