@@ -29,7 +29,23 @@
 
 					<td> <%= link_to "Editar", edit_logro_path(logro.id), class: "btn btn-primary" %> </td> 
 
-					<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %> </td>
+					<td> <%# link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content msg">
+							      <div class="modal-body">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el logro?</h4>
+							      </div>
+							      <div class="modal-footer">
+							        <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					</td>
 				</tr>
 			<%end%>
 		<% end %>
