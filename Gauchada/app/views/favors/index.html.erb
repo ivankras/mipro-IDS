@@ -13,16 +13,16 @@
 							      	<% if favor.foto_url == nil %>
 										<%= image_tag "logo.png", title: "Logo" %>
 									<% else %>
-										<%= image_tag favor.foto_url, title: "Imagen Favor" %>
+										<%= image_tag favor.foto_url, title: "Imagen Favor", :width => 350, :crop => :fit %>
 									<% end %>
 							      <div class="caption">
 							      	<% s = favor.descripcion[0..140] %>
 							      	<% if s.length == 141 %>
 							      		<% s[141..143] = "..." %>
 							      	<% end %>
-							        <p><%= s %></p>
-							        <p><%= link_to "Comentarios", favor_path(favor.id), class: "btn btn-primary" %> <%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %></p>
-							        <p class="text-right"><small><%= localize(favor.created_at, :format => :long) %></small></p>
+							      	<p><%= s %></p>
+							        <p><%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %> <%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %></p>
+							        <p class="text-right"><small><%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 							      </div>
 							    </div>
 							  </div>
