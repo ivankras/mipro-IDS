@@ -16,7 +16,7 @@ Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 
 
 Favor.create!([{
 	titulo: "Donald Trump",
-	foto_URL: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
+	foto_url: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
 	descripcion: "Donald John Trump was elected the 45th president of the United States on Tuesday in a stunning culmination of an explosive, populist and polarizing campaign that took relentless aim at the institutions and long-held ideals of American democracy.
 
 	The surprise outcome, defying late polls that showed Hillary Clinton with a modest but persistent edge, threatened convulsions throughout the country and the world, where skeptics had watched with alarm as Mr. Trump’s unvarnished overtures to disillusioned voters took hold.
@@ -31,7 +31,7 @@ Favor.create!([{
 	},
 	{
 	titulo: "Favor Prueba",
-	foto_URL: "https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png",
+	foto_url: "https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png",
 	descripcion: "Esto es una prueba.",
 	ciudad: "Tokio",
 }])

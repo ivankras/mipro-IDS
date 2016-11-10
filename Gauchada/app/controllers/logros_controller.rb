@@ -13,7 +13,7 @@ class LogrosController < ApplicationController
 
 	def new
 		if isAdmin?
-			@logro=Logro.new()
+			@logro = Logro.new()
 		else
 			redirect_to(root_path, alert: "Sección inaccesible")
 		end
@@ -21,7 +21,7 @@ class LogrosController < ApplicationController
 
 	def edit
 		if isAdmin?
-			@logro=Logro.find(params[:id])
+			@logro = Logro.find(params[:id])
 		else
 			redirect_to(root_path, alert: "Sección inaccesible")
 		end
@@ -30,9 +30,10 @@ class LogrosController < ApplicationController
 	def create
 		@logro = Logro.new(params.require(:logro).permit(:nombre, :puntaje_min, :puntaje_max))
 	    if @logro.save
-	      redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
+	    	flash[:success] = "Un nuevo logro ha sido insertado"
+	      	redirect_to(logros_path)
 	    else
-	      redirect_to(new_logro_path, alert: "Error en el rango elegido. Redefina los limites.")
+	      	redirect_to(new_logro_path, alert: "Error en el nombre (sólo letras) o en el rango elegido.")
 	    end
 
 
@@ -58,14 +59,15 @@ class LogrosController < ApplicationController
 
 	def update
 		id = params[:id]
-	    nom=params[:logro][:nombre]
-		min=params[:logro][:puntaje_min].to_i
-		max=params[:logro][:puntaje_max].to_i
+	    nom = params[:logro][:nombre]
+		min = params[:logro][:puntaje_min].to_i
+		max = params[:logro][:puntaje_max].to_i
 	    @logro = Logro.find(id)
 	    if @logro.update(nombre: nom, puntaje_min: min, puntaje_max: max)
-	      redirect_to(logros_path, success: "El logro #{nom} ha sido editado correctamente")
+	    	flash[:success] = "El logro #{nom} ha sido editado correctamente"
+	      	redirect_to(logros_path)
 	    else
-	      redirect_to(edit_logro_path(@logro), alert: "Error en el rango elegido. Redefina los limites.")
+	     	redirect_to(edit_logro_path(@logro), alert: "Error en el nombre (sólo letras) o en el rango elegido.")
 	    end
 
 
@@ -97,7 +99,8 @@ class LogrosController < ApplicationController
 		logro.save
 		#Acá se borra físicamente el logro
 		#Logro.destroy(params[:id])
-		redirect_to(logros_path, success: "El logro ha sido borrado")
+		flash[:success] = "El logro ha sido borrado"
+		redirect_to(logros_path)
 		# Falta enviar mensaje de confirmación
 	end
 end

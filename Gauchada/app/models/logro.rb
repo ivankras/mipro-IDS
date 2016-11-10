@@ -1,6 +1,6 @@
 class Logro < ActiveRecord::Base
 	has_many :usuarios
-	validates :nombre, format: {:with => /\A[a-zA-Z]+\z/, :message => "Sólo letras permitidas"}
+	validates :nombre, format: {:with => /\A[a-zA-Z][a-zA-Z0-9 \-'\Z]+/, :message => "Sólo letras permitidas"}
   validates :nombre, length: {minimum: 1, maximum: 20}
 	default_scope -> { order ("puntaje_max desc")}
 	validate :rango, :minimoMenorQueMaximo
@@ -8,11 +8,15 @@ class Logro < ActiveRecord::Base
 	def rango
     	val = true
     	Logro.all.each do |logro|
-        if logro.activo
+        if logro.activo == true
           #pert = (id != logro.id) && (puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
       		#pert = ((puntaje_max>=logro.puntaje_min && puntaje_max<=logro.puntaje_max)||(puntaje_min>=logro.puntaje_min && puntaje_min<=logro.puntaje_max))
           if (id != logro.id)
-            pert = (entre(puntaje_min,logro.puntaje_min,logro.puntaje_max)||entre(puntaje_max,logro.puntaje_min,logro.puntaje_max));
+            min = puntaje_min
+            max = puntaje_max
+            lmin = logro.puntaje_min
+            lmax = logro.puntaje_max
+            pert = (min >= lmin && min <= lmax) || (max >= lmin && max <= lmax)
           	val = !pert
       		end
         end
@@ -30,9 +34,4 @@ class Logro < ActiveRecord::Base
 	  	return val
     end
 
-    private
-
-    def entre(o,min,max)
-      return (o>=min) && (o<=max)
-    end
  end
