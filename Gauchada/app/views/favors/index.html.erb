@@ -21,7 +21,7 @@
 							      		<% s[141..143] = "..." %>
 							      	<% end %>
 							        <p><%= s %></p>
-							        <p><%= link_to "Comentarios", favor_path(favor.id), class: "btn btn-primary" %> <%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %></p>
+							        <p><%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %> <%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %></p>
 							        <p class="text-right"><small><%= localize(favor.created_at, :format => :long) %></small></p>
 							      </div>
 							    </div>

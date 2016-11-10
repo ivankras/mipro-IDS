@@ -1,29 +1,58 @@
-<div class="container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10">
-				<h1 class="text-center"> <%= @favor.titulo %> </h1>
+<table class="table table-striped">
+	<tr>
+	<td>
+		<div class="container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10">
+						<h1 class="text-left"> <%= @favor.titulo %> </h1>
+					</div>
+					<div class="col-md-2"><%= link_to "Volver", favors_path, class: "btn btn-default" %>
+					<%= link_to "Ofrecerme", favors_path, class: "btn btn-warning" %></p></div>
+				</div>
 			</div>
-			<div class="col-md-2"><%= link_to "Volver", favors_path, class: "btn btn-default" %></p></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-5">
-			<% if @favor.foto_url == nil %>
-				<%= image_tag "logo.png", title: "Logo", size: "400x400" %>
-			<% else %>
-				<%= image_tag @favor.foto_url, title: "Imagen Favor", size: "400x300" %>
-			<% end %>
-		</div>
-		<div class="col-md-4"><p><%=@favor.descripcion%></p>
-			<div class="caption">
-				<% if @favor.usuario == nil %>
-					<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
-				<% else %>
-					<p class="text-right"><small>Escrito por @favor.usuario.nombre </small></p>
-				<% end %>
-				<p class="text-right"><small><%= localize(@favor.created_at, :format => :long) %></small></p>
+			<div class="row">
+				<div class="col-md-5">
+					<% if @favor.foto_url == nil %>
+						<%= image_tag "logo.png", title: "Logo", size: "400x400" %>
+					<% else %>
+						<%= image_tag @favor.foto_url, title: "Imagen Favor", size: "400x300"%>
+					<% end %>
+				</div>
+				<div class="col-md-4"><p><%=@favor.descripcion%></p>
+					<div class="caption">
+						<% if @favor.usuario == nil %>
+							<p class="text-right"><small>Escrito por USUARIO PRUEBA </small></p>
+						<% else %>
+							<p class="text-right"><small>Escrito por <%= @favor.usuario.nombre %></small></p>
+						<% end %>
+						<p class="text-right"><small><%= localize(@favor.created_at, :format => :long) %></small></p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="container">
+				<h3> Comentarios </h3>
+				<table class="table table-condensed">
+					<% @favor.comentario.each do |c| %>
+						<tr>
+							<td>
+									<% if c.descripcion != nil %>
+										<p><%= c.descripcion %></p>
+										<% if c.respuesta != nil %>
+											<p>Respuesta: <%= c.respuesta %></p>
+										<% end %>
+									<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</td>
+	</tr>
+</table>
+
