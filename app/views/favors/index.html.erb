@@ -11,9 +11,9 @@
 							    <div class="thumbnail">
 							    <h3 class="text-center"> <%= favor.titulo %> </h3>
 							      	<% if favor.foto_url == nil %>
-										<%= image_tag "logo.png", title: "Logo" %>
+										<%= image_tag "logo.png"%>
 									<% else %>
-										<%= image_tag favor.foto_url, title: "Imagen Favor", :width => 350, :crop => :fit %>
+										<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
 									<% end %>
 							      <div class="caption">
 							      	<% s = favor.descripcion[0..140] %>
