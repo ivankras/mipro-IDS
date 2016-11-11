@@ -33,7 +33,7 @@ class LogrosController < ApplicationController
 	    	flash[:success] = "Un nuevo logro ha sido insertado"
 	      	redirect_to(logros_path)
 	    else
-	      	redirect_to(new_logro_path, alert: "Error en el nombre (sólo letras) o en el rango elegido.")
+	      	redirect_to(new_logro_path, alert: "Error en el nombre o en el rango elegido.")
 	    end
 
 
