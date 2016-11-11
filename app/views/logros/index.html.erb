@@ -29,8 +29,8 @@
 
 					<td> <%= link_to "Editar", edit_logro_path(logro.id), class: "btn btn-primary" %> </td> 
 
-					<td> <%# link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
+					<td> <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
+						<!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content msg">
@@ -44,7 +44,7 @@
 							      </div>
 							    </div>
 							  </div>
-							</div>
+							</div>-->
 					</td>
 				</tr>
 			<%end%>

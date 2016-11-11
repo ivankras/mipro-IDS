@@ -36,25 +36,6 @@ class LogrosController < ApplicationController
 	      	redirect_to(new_logro_path, alert: "Error en el nombre o en el rango elegido.")
 	    end
 
-
-		####INTENTO DE CODIFICACIÓN
-		#####VALIDACIÓN
-		#b=params[:logro][:puntaje_min]
-		#c=params[:logro][:puntaje_max]
-		#d=true
-		#e=Logro.all
-		#.each do |l|
-		#	d &&= out_range?(l,b,c)
-		#	break unless d
-		#end
-		#unless d
-			#La idea es que si no está validado vuelva a pedir los datos
-		#	redirect_to(new_logro_path, alert: "Error en el rango elegido. Redefina los limites.")
-		#else
-		#	@logro=Logro.create(params.require(:logro).permit(:nombre, :puntaje_min, :puntaje_max))
-		#	redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
-		#end
-		# Falta enviar mensaje de confirmación
 	end
 
 	def update
@@ -69,27 +50,6 @@ class LogrosController < ApplicationController
 	    else
 	     	redirect_to(edit_logro_path(@logro), alert: "Error en el nombre (sólo letras) o en el rango elegido.")
 	    end
-
-
-		####INTENTO DE CODIFICACIÓN
-		#####VALIDACIÓN
-		#a=params[:logro][:nombre]
-		#b=params[:logro][:puntaje_min]
-		#c=params[:logro][:puntaje_max]
-		#d=true
-		#e=Logro.all
-		#e.each do |l|
-		#	d &&= out_range?(l,b,c)
-		#	break unless d
-		#end
-		#unless d
-		#	redirect_to(edit_logro_path(params[:id]), alert: "Error en el rango elegido. Redefina los limites.")
-		#else
-		#	@logro=Logro.find(params[:id])
-		#	@logro.update(nombre: a, puntaje_min: b, puntaje_max: c)
-		#	redirect_to(logros_path, success: "Un nuevo logro ha sido insertado")
-			# Falta enviar mensaje de confirmación
-		#end
 	end
 
 	def destroy

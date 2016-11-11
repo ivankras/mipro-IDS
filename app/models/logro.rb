@@ -27,9 +27,9 @@ class Logro < ActiveRecord::Base
   	end
 
   	def minimoMenorQueMaximo
-  		val = puntaje_min < puntaje_max
+  		val = puntaje_min <= puntaje_max
 	    unless val
-	      errors.add(:puntaje_min, "Mínimo del logro mayor o igual que máximo; debe ser menor.")
+	      errors.add(:puntaje_min, "Mínimo del logro mayor que máximo; debe ser menor.")
 	  	end
 	  	return val
     end
