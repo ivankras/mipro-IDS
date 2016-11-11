@@ -5,12 +5,6 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validate :is_eighteen?
-
-	def is_eighteen?
-	   date = Time.parse ("#{ fecha_nacimiento_year + fecha_nacimiento_month + fecha_nacimiento_day } ")
-	   date > Time.now - 18.years ? true : false
-	end
 
   belongs_to :logro
 
