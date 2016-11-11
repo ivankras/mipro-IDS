@@ -63,10 +63,10 @@ Comentario.create!([{
 puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentarios en total."
 
 puts "Creación de usuarios"
-Usuario.find_or_create_by(nombre: "Nancy", apellido: "Netramonti", sexo: "femenino", fecha_nacimiento: Date.new(1967,6,16), telefono: 542262106509, email: "nancy@gauchada.com", password: "abracadabra", admin: true); 
-Usuario.find_or_create_by(nombre: "Ulises", apellido: "Sunetri", sexo: "masculino", fecha_nacimiento: Date.new(1963,3,15), telefono: 542211097607, email: "ulises@gauchada.com", password: "abracadabra", admin: true); 
-Usuario.find_or_create_by(nombre: "Rocío", apellido: "Madou", sexo: "femenino", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, email: "rocio.madou@hotmail.com", password: "Abracadabra", admin: true); 
-Usuario.find_or_create_by(nombre: "Iván", apellido: "Krasowski Bissio", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, email: "ivankras@hotmail.com", password: "Abracadabra", admin: true); 
-Usuario.find_or_create_by(nombre: "Gonzalo Julián", apellido: "Poch", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, email: "gonzalopoch@hotmail.com", password: "Abracadabra", admin: true); 
-Usuario.find_or_create_by(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "@hotmail.com", password: "Abracadabra");
-Usuario.find_or_create_by(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "@hotmail.com", password: "Abracadabra");
+Usuario.create(nombre: "Nancy", apellido: "Netramonti", sexo: "femenino", fecha_nacimiento: Date.new(1967,6,16), telefono: 542262106509, email: "nancy@gauchada.com", password: "abracadabra", admin: true); 
+Usuario.create(nombre: "Ulises", apellido: "Sunetri", sexo: "masculino", fecha_nacimiento: Date.new(1963,3,15), telefono: 542211097607, email: "ulises@gauchada.com", password: "abracadabra", admin: true); 
+Usuario.create(nombre: "Rocío", apellido: "Madou", sexo: "femenino", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, email: "rocio.madou@hotmail.com", password: "Abracadabra", admin: true); 
+Usuario.create(nombre: "Iván", apellido: "Krasowski Bissio", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, email: "ivankras@hotmail.com", password: "Abracadabra", admin: true); 
+Usuario.create(nombre: "Gonzalo Julián", apellido: "Poch", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, email: "gonzalopoch@hotmail.com", password: "Abracadabra", admin: true); 
+Usuario.create(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "@hotmail.com", password: "Abracadabra");
+Usuario.create(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "@hotmail.com", password: "Abracadabra");
