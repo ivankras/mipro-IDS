@@ -42,6 +42,10 @@ header .navbar-header>img {
   border-color: black;
 }
 
+.modal-backdrop{
+  z-index: 0;
+}
+
 .identification{
   color: #FF8119;
   margin-top: 135px;
