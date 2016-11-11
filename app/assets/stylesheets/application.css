@@ -15,8 +15,9 @@
  */
 
 body {
-  padding-top: 180px;
+  padding-top: 300px;
   padding-bottom: 40px;
+  background-color: rgba(255,129,25,0.5);
 }
 
 header .navbar-inverse .navbar-brand {
@@ -25,32 +26,43 @@ header .navbar-inverse .navbar-brand {
     font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
     font-weight: bold;
     font-variant: normal;
-    height: 150px;
+    height: 300px;
   }
 header .navbar-brand>img {
-    display: inline-block;
+    display: inline;
+    margin-left: 550px;
   }
 
+
+.form_lbl_email{
+  display: inline;
+  position: relative;
+  margin-right: 82px;
+}
+
+
+.form_lbl_pssw{
+  display: inline;
+  position: relative;
+  margin-right: 30px;
+}
+
 .session-sign{
-    color: black;
-    width: 130px;
-    text-align: center;
-    margin-top: 53px;
-    margin-right: 10px;
-    background-color: #FF8119;
-    border-color: black;
-  }
+  color: black;
+  width: 130px;
+  text-align: center;
+  margin-top: 223px;
+  margin-right: 40px;
+  background-color: #FF8119;
+  border-color: black;
+}
 
 .identification{
   color: #FF8119;
-  margin-top: 63px;
+  margin-top: 233px;
   margin-right: 10px;
   font-size: 20px;
   font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
-}
-
-.icono{
-  //pendiente
 }
 
 .confirmation-btn{
@@ -60,7 +72,17 @@ header .navbar-brand>img {
     margin-right: 15px; 
 }
 
-.margin-r{
-  margin-right: 100px;
+.icono{
+  //pendiente
 }
+
+.fondo-gauchada{
+  left: 0;
+  width: 100%;
+  height: 300px;
+  position:absolute;
+  z-index: -1;
+}
+
+
 
