@@ -90,4 +90,8 @@ Rails.application.configure do
       password: "Abracadabra" 
     }
 
+    # Configurar zona horaria
+    config.time_zone = "Buenos Aires"
+    config.active_record.default_timezone = :local
+
 end
