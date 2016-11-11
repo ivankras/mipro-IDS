@@ -15,9 +15,9 @@
  */
 
 body {
-  padding-top: 300px;
+  padding-top: 270px;
   padding-bottom: 40px;
-  background-color: rgba(255,129,25,0.5);
+  background-color: rgba(255,129,25,0.45);
 }
 
 header .navbar-inverse .navbar-brand {
@@ -26,32 +26,18 @@ header .navbar-inverse .navbar-brand {
     font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
     font-weight: bold;
     font-variant: normal;
-    height: 300px;
+    height: 200px;
   }
-header .navbar-brand>img {
-    display: inline;
-    margin-left: 550px;
+header .navbar-header>img {
+    display: inline-block;
+    margin-top: 30px;
   }
-
-
-.form_lbl_email{
-  display: inline;
-  position: relative;
-  margin-right: 82px;
-}
-
-
-.form_lbl_pssw{
-  display: inline;
-  position: relative;
-  margin-right: 30px;
-}
 
 .session-sign{
   color: black;
   width: 130px;
   text-align: center;
-  margin-top: 223px;
+  margin-top: 177px;
   margin-right: 40px;
   background-color: #FF8119;
   border-color: black;
@@ -59,9 +45,9 @@ header .navbar-brand>img {
 
 .identification{
   color: #FF8119;
-  margin-top: 233px;
+  margin-top: 185px;
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 24px;
   font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
 }
 
@@ -72,14 +58,15 @@ header .navbar-brand>img {
     margin-right: 15px; 
 }
 
-.icono{
-  //pendiente
+header .navbar-brand .format-gauchada{
+  margin-top: 80px;
+  font-size: 40px;
 }
 
 .fondo-gauchada{
   left: 0;
   width: 100%;
-  height: 300px;
+  height: 250px;
   position:absolute;
   z-index: -1;
 }

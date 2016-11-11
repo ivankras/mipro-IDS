@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <h3 class="titulo_form_l text-center">Ingresar</h3>
+  <h2 class="titulo_form_l text-center">Ingresar</h2>
 </div>
   <div class="well container-fluid text-center">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.label :email, class: "for_lbl_email" %>
+      <%= f.label :email, class: "form_lbl_email" %>
       <%= f.email_field :email, autofocus: true, class: "submitter" %>
     <br><br>
-      <%= f.label :password %>
+      <%= f.label :password, "Contraseña" %>
       <%= f.password_field :password, autocomplete: "off", class: "submitter" %>
     <br><br>
     <% if devise_mapping.rememberable? -%>

@@ -5,15 +5,16 @@
       <%= image_tag "gauchada.png", class: "fondo-gauchada" %>
         <%= render 'layouts/sessionbutton' %>
         
-        <div class="navbar-header ">
+        
 
           <%= link_to root_path, class: 'navbar-brand' do %>
-            
+            <div class="navbar-header ">
             <%= image_tag "logo.png", title: "Una Gauchada, el sitio en el que podés ser solidario", class: "logo" %> 
-            <label>Una Gauchada</label>
+             </div>
+            <label class="format-gauchada">Una Gauchada</label>
 
           <% end %> 
-        </div>
+       
 
         <div class="collapse navbar-collapse">
           
