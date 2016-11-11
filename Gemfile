@@ -58,5 +58,3 @@ gem 'hirb'
 
 #Gema para Heroku
 gem 'rails_12factor', group: :production
-
-gem 'puma'
