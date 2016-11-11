@@ -1,56 +1,40 @@
-<div class="container">
-<h2>Registrarse</h2>
+<div class="container-fluid">
+<h2 class="titulo_form_l text-center">Registrarse</h2>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="well container-fluid text-center">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
-  </div>
-
-  <div class="field">
-    </br><%= f.label :apellido %><br />
-    <%= f.text_field :apellido %>
-  </div>
-
-  <div class="field">
-    </br><%= f.label :sexo %><br />
-    <%= f.radio_button :sexo, 'masculino' %><%= f.label :sexo, "Masculino" %></br>
-    <%= f.radio_button :sexo, 'femenino', checked: true %><%= f.label :sexo, "Femenino" %></br>
-  </div>
-
-  <div class="field"> 
-    </br><%= f.label :fecha_nacimiento %><br />
-    <%= f.date_field :fecha_nacimiento %>
-  </div>
-
-  <div class="field"> 
-    </br><%= f.label :telefono %><br />
-    <%= f.telephone_field :fecha_nacimiento %>
-  </div>
-
-  <div class="field">
-    </br><%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    </br><%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    </br><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Registrarse" %>
-  </div>
-<% end %>
+      <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">    
+      <%= f.label :nombre, class: "form_lbl_nom"  %> </span>
+      <%= f.text_field :nombre , class: "submitter" %>
+    <br><br>
+      <%= f.label :apellido, class: "form_lbl_ap" %>
+      <%= f.text_field :apellido, class: "submitter" %>
+    <br><br>
+      <%= f.label :sexo , class: "form_lbl_sex"%><br>
+      <%= f.radio_button :sexo, 'masculino' , class: "submitter_3"%><%= f.label :sexo, "Masculino", class: "submitter_4" %><br>
+      <%= f.radio_button :sexo, 'femenino', checked: true , class: "submitter_3" %><%= f.label :sexo, "Femenino", class: "submitter_4"  %><br>
+    <br><br>
+      <%= f.label :fecha_nacimiento, class: "form_lbl_fn" %>
+      <%= f.date_field :fecha_nacimiento, class: "submitter_2"%>
+    <br><br>
+      <%= f.label :telefono, class: "form_lbl_tel" %>
+      <%= f.telephone_field :fecha_nacimiento , class: "submitter" %>
+    <br><br>
+      <%= f.label :email, class: "form_lbl_email_2" %>
+      <%= f.email_field :email, autofocus: true , class: "submitter"%>
+    <br><br>
+      <span data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %><%= @minimum_password_length %> characters mínimo<% end %>">
+      <%= f.label :password, class: "form_lbl_pssw" %></span>
+      <%= f.password_field :password, autocomplete: "off" , class: "submitter"%>
+    <br><br>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" , class: "submitter"%>
+    <br><br><br>
+      <%= f.submit "Crear usuario" , class: "btn btn-success actions confirmation-btn"%>
+      <%= link_to "Cancelar", root_path, class: "btn btn-danger confirmation-btn" %>
+  <% end %>
 
 </div>
