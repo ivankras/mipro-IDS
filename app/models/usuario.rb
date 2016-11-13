@@ -12,6 +12,10 @@ class Usuario < ActiveRecord::Base
 	#   date > Time.now - 18.years ? true : false
 	#end
 
+  #def is_eighteen?
+  #   fecha_nacimiento > Date.today - 18.years ? true : false
+  #end
+
   belongs_to :logro
 
 end
