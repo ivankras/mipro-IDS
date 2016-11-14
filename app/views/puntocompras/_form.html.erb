@@ -1,0 +1,13 @@
+<div class="well container-fluid text-center">
+<%= form_for @puntocompra do |pc| %>
+<% if isLogued? %>
+				<span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+				<%= pc.label :cantidad, required: true, class: "form_lbl_n" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="Ingrese la cantidad que desea adquirir.">
+				<br><br>
+				<br><br>
+				<%= link_to "Comprar", favors_path, class: "btn btn-success actions confirmation-btn"%>
+				<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
+<% end %>
+<% end %>		
+</div>

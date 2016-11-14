@@ -6,6 +6,8 @@
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :isAdmin?
+  helper_method :isLogued?
+  helper_method :howManyPoints?
 
   # Determina si el usuario actual es administrador del sitio.
   def isAdmin?
@@ -23,9 +25,17 @@
     return current_usuario != nil && current_usuario.id.to_i == id.to_i
   end
 
+  def isLogued?
+    return current_usuario != nil
+  end
+
   #Determina si el usuario tiene la cantidad de puntos necesaria para pedir un favor
   def hasPoints?(cant= 1)
     return current_usuario.puntos.to_i >= cant.to_i
+  end
+
+  def howManyPoints?
+    return current_usuario.puntos.to_i
   end
 
   def printErrors(object)
