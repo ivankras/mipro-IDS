@@ -5,6 +5,7 @@
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :isAdmin?
 
   # Determina si el usuario actual es administrador del sitio.
   def isAdmin?
