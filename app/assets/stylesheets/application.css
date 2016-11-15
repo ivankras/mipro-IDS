@@ -16,8 +16,15 @@
 
 body {
   padding-bottom: 40px;
-  background-color: rgba(255,129,25,0.45);
+  background-color: rgba(179,90,0, 0.5);
 }
+
+/*
+Color del fondo de la barra
+header .navbar-inverse{
+  background-color: rgba(255,167,77, 0.5) !important;
+}
+*/
 
 header .navbar-inverse .navbar-brand {
     color: white;

@@ -78,9 +78,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  #Email configuration
+  #Mailer configuration
   config.action_mailer.default_url_options = { :host => 'unagauchadaitw.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
   config.action_mailer.default_url_options = { 
       address: "smtp.gmail.com",
       port: 587,
@@ -90,8 +93,8 @@ Rails.application.configure do
       password: "Abracadabra" 
     }
 
-    # Configurar zona horaria
-    config.time_zone = "Buenos Aires"
-    config.active_record.default_timezone = :local
+  # Configurar zona horaria
+  config.time_zone = "Buenos Aires"
+  config.active_record.default_timezone = :local
 
 end
