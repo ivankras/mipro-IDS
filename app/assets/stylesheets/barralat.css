@@ -68,7 +68,7 @@ body,html{
     }
 
     nav.sidebar{
-      width: 300px;
+      width: 290px;
       height: 100%;
       margin-left: -160px;
       float: left;
@@ -115,4 +115,11 @@ body,html{
   }
   section{
     padding-left: 15px;
+  }
+  #bs-sidebar-navbar-collapse-1{
+    text-align: center !important;
+  }
+  .dropdown-menu{
+    text-align: center !important;
+    background-color: rgba(255,129,25,0.2) !important;
   }
