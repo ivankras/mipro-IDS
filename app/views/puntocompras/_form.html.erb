@@ -1,0 +1,30 @@
+<div class="well container-fluid text-center">
+	<%= form_for @puntocompra do |pc| %>
+		<% if isLogued? %>
+			<form>
+			<div class="form-group">
+				<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
+			<div class="input-group">
+				<div class="input-group-addon">$</div>
+			      <input type="text" class="form-control" id="exampleCantidad" placeholder="Cantidad en $AR">
+			      <div class="input-group-addon">.00</div>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="exampleInputPuntos">Cantidad (en Puntos)</label>
+			    <input type="puntos" class="form-control" id="exampleInputPuntos" placeholder="Cantidad (en Puntos)">
+			</div>
+			<div class="form-group">
+			    <label for="exampleInputPassword1">Número de Tarjeta</label>
+			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="N° de la Tarjeta">
+			</div>
+			</form>
+						<%= link_to "Comprar", favors_path, class: "btn btn-success actions confirmation-btn"%>
+						<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
+		<% end %>
+	<% end %>
+	<div>
+		<br>	
+		<p class="text-right"><small>El precio de cada Punto es de $5.</small></p>	
+	</div>
+</div>

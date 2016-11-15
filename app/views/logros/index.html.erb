@@ -30,9 +30,9 @@
 					<td> <%= link_to "Editar", edit_logro_path(logro.id), class: "btn btn-primary" %> </td> 
 
 					<td><!-- Me ganó el botón de confirmación--> 
-					<%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
-						<!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+					<%# link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_<%= logro.id %>">Eliminar</button>
+						<div class="modal fade" id="myModal_<%= logro.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content msg">
 							      <div class="modal-body">
@@ -40,12 +40,12 @@
 							        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el logro?</h4>
 							      </div>
 							      <div class="modal-footer">
-							        <%# link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
+							        <%= link_to "Eliminar", logro, method: :delete, class: "btn btn-danger" %>
 							        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 							      </div>
 							    </div>
 							  </div>
-							</div>-->
+							</div>
 					</td>
 				</tr>
 			<%end%>
