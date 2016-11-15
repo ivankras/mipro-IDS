@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-md-12">
 	<table class="table table-hover">
 
 		<br>
@@ -18,8 +18,7 @@
 			</tr>
 		</thead>
 
-		<% @logros.each do |logro| %>
-			<% if logro.activo == true %>
+		<% @logros.where(activo: true).each do |logro| %>
 				<tr>
 					<td> <%= logro.nombre %> </td>
 
@@ -48,7 +47,6 @@
 							</div>
 					</td>
 				</tr>
-			<%end%>
 		<% end %>
 	</table>
 	<br>
@@ -56,5 +54,37 @@
 		<tr>
 			<%= link_to "Nuevo logro", new_logro_path, class: "actions btn btn-success pull-right" %>
 		</tr>
+	</table>
+	<table class="table table-hover">
+		<br>
+		<hr>
+		<br>
+		<thead>
+		<tr><h4><i>Logros eliminados, con usuarios asociados</i></h4></tr>
+			<tr>
+
+				<th> Logro </th>
+
+				<th> Puntaje mínimo </th>
+
+				<th> Puntaje máximo </th>
+
+				<th> Número de usuarios asociados </th>
+
+			</tr>
+		</thead>
+		<% @logros.where(activo: false).each do |logro| %>
+			<%if !logro.usuarios.empty?%>
+				<tr>
+					<td> <%= logro.nombre %> </td>
+
+					<td> <%= logro.puntaje_min %> </td>
+
+					<td> <%= logro.puntaje_max %> </td>
+
+					<td> <%= logro.usuarios.count %> </td>
+				</tr>
+			<%end%>
+		<% end %>
 	</table>
 </div>
