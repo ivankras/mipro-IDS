@@ -1,22 +1,35 @@
 <div class="well container-fluid text-center">
 	<%= form_for @puntocompra do |pc| %>
 		<% if isLogued? %>
-			<form>
-			<div class="form-group">
-				<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
-			<div class="input-group">
+			<form class="horizontal">
+			<div class="form-group text-left">
+				<label>Cantidad (en Pesos Argentinos)</label>
+			<div class="input-group text-left">
 				<div class="input-group-addon">$</div>
-			      <input type="text" class="form-control" id="exampleCantidad" placeholder="Cantidad en $AR">
+			      <input type="text" class="form-control" id="exampleCantidad" placeholder="Cantidad de dinero que desea invertir en Puntos.">
 			      <div class="input-group-addon">.00</div>
 			    </div>
 			</div>
-			<div class="form-group">
-			    <label for="exampleInputPuntos">Cantidad (en Puntos)</label>
-			    <input type="puntos" class="form-control" id="exampleInputPuntos" placeholder="Cantidad (en Puntos)">
+			<div class="form-group text-left">
+			    <label>Cantidad (en Puntos)</label>
+			    <input type="puntos" class="form-control" id="exampleInputPuntos" placeholder="Cantidad de Puntos que desea adquirir.">
 			</div>
-			<div class="form-group">
-			    <label for="exampleInputPassword1">Número de Tarjeta</label>
+			<div class="form-group text-left">
+			    <label>Número de Tarjeta</label>
 			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="N° de la Tarjeta">
+			</div>
+			<div class="form-group text-left">
+			    <label>Código de Seguridad</label>
+			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="Ingrese el código que se encuentra detrás de su tarjeta.">
+			</div>
+			<div class="form-group text-left">
+			    <label>Nombre</label>
+			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="Ingrese el nombre como figura en su tarjeta.">
+			</div>
+			<div class="form-group text-left">
+				<label>Fecha de Expiración</label>
+				<br>
+				 <%= date_field :fecha_nacimiento, class: "submitter_2"%>
 			</div>
 			</form>
 						<%= link_to "Comprar", favors_path, class: "btn btn-success actions confirmation-btn"%>
