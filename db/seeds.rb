@@ -7,12 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-puts "Creo algunos logros"
-Logro.find_or_create_by(nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
-Logro.find_or_create_by(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
-Logro.find_or_create_by(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 30)
-Logro.find_or_create_by(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
-Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
+#puts "Creo algunos logros"
+#Logro.find_or_create_by(nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
+#Logro.find_or_create_by(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
+#Logro.find_or_create_by(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 30)
+#Logro.find_or_create_by(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
+#Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
 
 #f = Favor.count
 
@@ -42,31 +42,28 @@ Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 
 
 
 
-#c = Comentario.count
+c = Comentario.count
+Comentario.create!([{
+	descripcion: "Qué tal?",
+	respuesta: "Todo bien",
+	favor_id: Favor.first.id,
+	},
+	{
+	descripcion: "Cómo te llamas?",
+	respuesta: "Carlitos",
+	favor_id: Favor.first.id,
+	},
+	{
+	descripcion: "No tengo respuesta.",
+	favor_id: Favor.first.id,
+}])
+puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentarios en total."
 
-
-#Comentario.create!([{
-#	descripcion: "Qué tal?",
-#	respuesta: "Todo bien",
-#	favor_id: Favor.first.id,
-#	},
-#	{
-#	descripcion: "Cómo te llamas?",
-#	respuesta: "Carlitos",
-#	favor_id: Favor.first.id,
-#	},
-#	{
-#	descripcion: "No tengo respuesta.",
-#	favor_id: Favor.first.id,
-#}])
-
-#puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentarios en total."
-
-puts "Creación de usuarios"
+#puts "Creación de usuarios"
 #Usuario.create(nombre: "Nancy", apellido: "Netramonti", sexo: "femenino", fecha_nacimiento: Date.new(1967,6,16), telefono: 542262106509, email: "nancy@gauchada.com", password: "abracadabra", admin: true); 
 #Usuario.create(nombre: "Ulises", apellido: "Sunetri", sexo: "masculino", fecha_nacimiento: Date.new(1963,3,15), telefono: 542211097607, email: "ulises@gauchada.com", password: "abracadabra", admin: true); 
 #Usuario.create(nombre: "Rocío", apellido: "Madou", sexo: "femenino", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, email: "rocio.madou@hotmail.com", password: "Abracadabra", admin: true); 
 #Usuario.create(nombre: "Iván", apellido: "Krasowski Bissio", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, email: "ivankras@hotmail.com", password: "Abracadabra", admin: true); 
 #Usuario.create(nombre: "Gonzalo Julián", apellido: "Poch", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, email: "gonzalopoch@hotmail.com", password: "Abracadabra", admin: true); 
-Usuario.create(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "aa@hotmail.com", password: "Abracadabra");
-Usuario.create(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "bb@hotmail.com", password: "Abracadabra");
+#Usuario.create(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "aa@hotmail.com", password: "Abracadabra");
+#Usuario.create(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "bb@hotmail.com", password: "Abracadabra");

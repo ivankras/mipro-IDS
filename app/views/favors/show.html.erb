@@ -1,43 +1,37 @@
-<table class="table table-striped">
-	<tr>
-	<td>
-		<div class="container">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10">
-						<h1 class="text-left"> <%= @favor.titulo %> </h1>
-					</div>
-					<div class="col-md-2">
+<div class="container-fluid">
+	<div class="row favor_up">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="text-left"> <%= @favor.titulo %> </h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 favor_foto">
+				<% if @favor.foto_url == nil %>
+					<%= image_tag "logo.png", title: "Logo", size: "380x380" %>
+				<% else %>
+					<%= image_tag @favor.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
+				<% end %>
+				<br><br><br>
+				<div class="text-left">
 					<%= link_to "Ofrecerme", favors_path, class: "btn btn-warning" %>
-					<%= link_to "Volver", :back, class: "btn btn-default" %></p>
-					</div>
+					<%= link_to "Volver", :back, class: "btn btn-default favor_btn" %>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-5">
-					<% if @favor.foto_url == nil %>
-						<%= image_tag "logo.png", title: "Logo", size: "400x400" %>
+			<div class="col-md-6 favor_desc">
+				<p class= "text-justify"><%=@favor.descripcion%></p>
+				<div class="caption">
+					<% if @favor.usuario == nil %>
+						<p class="text-right"><small>Escrito por <b>USUARIO PRUEBA </b></small></p>
 					<% else %>
-						<%= image_tag @favor.foto_url, title: "Imagen Favor", :width => 450, :crop => :fit %>
+						<p class="text-right"><small>Escrito por <b><%= @favor.usuario.nombre %></b></small></p>
 					<% end %>
-				</div>
-				<div class="col-md-5"><p><%=@favor.descripcion%></p>
-					<div class="caption">
-						<% if @favor.usuario == nil %>
-							<p class="text-right"><small>Escrito por <b>USUARIO PRUEBA </b></small></p>
-						<% else %>
-							<p class="text-right"><small>Escrito por <b><%= @favor.usuario.nombre %></b></small></p>
-						<% end %>
-						<p class="text-right"><small><%= @favor.ciudad %> | <%= localize(@favor.created_at, :format => :long) %></small></p>
-					</div>
+					<p class="text-right"><small><%= @favor.ciudad %> | <%= localize(@favor.created_at, :format => :long) %></small></p>
 				</div>
 			</div>
 		</div>
-	</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="container">
+	</div>
+			<div class="col-md-12 container favor_com">
 				<h3> Comentarios </h3>
 				<table class="table table-condensed">
 					<% i = 1 %>
@@ -59,6 +53,4 @@
 					<% end %>
 				</table>
 			</div>
-		</td>
-	</tr>
-</table>
+</div>

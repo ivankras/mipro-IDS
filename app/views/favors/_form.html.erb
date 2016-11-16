@@ -21,8 +21,10 @@
 			
 			<br><br>
 
-			<p><b class= "form_lbl_fot">Pedir foto</b>
-			<%= f.text_field :ciudad, placeholder: 'Foto',class: "field_favor"  %></p>
+			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
+			<%= f.label "Foto", class: "form_lbl_fot" %></span>
+			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
+			<%= f.text_field :foto_url, placeholder: 'URL de la foto del favor',class: "field_favor"  %></span>
 			
 			<br><br>
 

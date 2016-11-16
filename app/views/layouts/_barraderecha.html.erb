@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class= "text-center"><%= link_to "Inicio", root_path%></li>
-        <%if current_usuario != nil %>  
+        <%if isLogged? %>  
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
             <ul class="dropdown-menu forAnimate" role="menu">
@@ -22,6 +22,8 @@
               <li><a href="#">Logro al que pertenece</a></li>
               <li class="divider"></li>
               <li><a href="#">Cantidad de puntos de logro</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Comprar puntos", new_punto_compra_path%></li>
             </ul>
           </li>
         <li class="dropdown">
@@ -50,33 +52,3 @@
     </div>
   </div>
 </nav>
-
-
-<!--<div class="btn-group-vertical" role="group" aria-label="...">
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Perfil
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Ver</a></li>
-          <li><a href="#">Modificar</a></li>
-        </ul>
-        
-        <%#if isAdmin?%>
-          <button type="button" class="btn btn-default"><%# link_to "Logros" , logros_path %></button>
-        <%#end%>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Favores
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Pedir</a></li>
-            <li><a href="#">Ver pedidos</a></li>
-            <li><a href="#">Ver postulantes</a></li>
-            <li><a href="#">Ver mis postulaciones</a></li>
-          </ul>
-    </div>
-</div>-->
