@@ -1,8 +1,8 @@
 <div class="well container-fluid text-center">
 <%= form_for @favor do |f| %>
-			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 20 caracteres">
+			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 50 caracteres">
 			<%= f.label :titulo, class: "form_lbl_ttl" %></span>
-			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 20 caracteres">
+			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 50 caracteres">
 			<%= f.text_field :titulo, required: true, placeholder: 'Título del favor',class: "field_favor" %></span>
 			
 			<br><br>
@@ -21,8 +21,10 @@
 			
 			<br><br>
 
-			<p><b class= "form_lbl_fot">Pedir foto</b>
-			<%= f.text_field :ciudad, placeholder: 'Foto',class: "field_favor"  %></p>
+			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
+			<%= f.label "Foto", class: "form_lbl_fot" %></span>
+			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
+			<%= f.text_field :foto_url, placeholder: 'URL de la foto del favor',class: "field_favor"  %></span>
 			
 			<br><br>
 

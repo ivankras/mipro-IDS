@@ -11,22 +11,49 @@
 .form_lbl_dsc{
 	display: inline;
 	position: relative;
-	margin-right: 14px;
+	margin-right: 40px;
 }
 .form_lbl_fot{
 	display: inline;
 	position: relative;
-	margin-right: 52px;
+	margin-right: 89px;
 }
 
 .areat{
-	width: 200px;
+	min-height: 100px;
 	resize: vertical;
 	max-height: 300px;
 }
 
 .field_favor{
+	width: 200px;
 	display:inline;
 	position: relative;
 	margin-left: 40px;
+}
+
+.favor_up{
+	background-color: #f5f5f5;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-bottom: 30px;
+}
+
+.favor_foto{
+	display: inline;
+	padding-top: 23px;
+}
+
+.favor_btn{
+	position: relative;
+	margin-left: 20px;
+}
+
+.favor_desc{
+	padding-top: 20px;
+	padding-left: 50px;
+}
+
+.favor_com{
+	color: black;
 }
