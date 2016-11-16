@@ -10,31 +10,37 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="{{URL::to('createusuario')}}">Ver</a></li>
-            <li><a href="#">Modificar</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Logro al que pertenece</a></li>
-            <li><a href="#">Cantidad de puntos de logro</a></li>
-          </ul>
-        </li>
+        <li><%= link_to "Inicio", root_path%></li>
+        <%if current_usuario != nil %>  
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+            <ul class="dropdown-menu forAnimate" role="menu">
+              <li><a href="{{URL::to('createusuario')}}">Ver</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Modificar</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Logro al que pertenece</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Cantidad de puntos de logro</a></li>
+            </ul>
+          </li>
+        <%end%>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Favores<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
             <li><a href="{{URL::to('createusuario')}}">Ver pedidos</a></li>
-            <li><a href="#">Ver postulantes</a></li>
-            <li><a href="#">Ver mis postulaciones</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Pedir un favor</a></li>
+            <%if current_usuario != nil %>
+              <li class="divider"></li>  
+              <li><a href="#">Ver mis postulaciones</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Pedir un favor", new_favor_path%></li>
+            <%end%>
           </ul>
         </li>
         <%if isAdmin?%>          
-          <li ><a href="#">Logros<span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a></li>
+          <li ><%= link_to "Logros", logros_path%></li>
         <%end%>        
-        <li ><a href="#">¿Filtros?<span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a></li>
+        <li ><a href="#">¿Filtros, órdenes?<span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a></li>
       </ul>
     </div>
   </div>

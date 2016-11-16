@@ -9,7 +9,7 @@ class FavorsController < ApplicationController
 	end
 
 	def new
-		if isLogued? and hasPoints?
+		if (current_usuario != nil) and hasPoints?
 			@favor=Favor.new()
 		else
 			redirect_to(root_path, alert: "No tienes los suficientes puntos de logro para pedir un favor")

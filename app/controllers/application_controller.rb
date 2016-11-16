@@ -19,17 +19,7 @@
     return usrp != nil && usrp.admin
   end
 
-  # Determina si el usuario esta logueado en el sitio. Si se envia el id,
-  # determina si el usuario se ha logueado con el id especificado.
-  def isLogued?(id= current_usuario.id)
-    return current_usuario != nil && current_usuario.id.to_i == id.to_i
-  end
-
-  def isLogued?
-    return current_usuario != nil
-  end
-
-  #Determina si el usuario tiene la cantidad de puntos necesaria para pedir un favor
+    #Determina si el usuario tiene la cantidad de puntos necesaria para pedir un favor
   def hasPoints?(cant= 1)
     return current_usuario.puntos.to_i >= cant.to_i
   end
