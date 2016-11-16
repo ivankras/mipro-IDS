@@ -11,7 +11,7 @@ class Usuario < ActiveRecord::Base
      fecha_nacimiento > Date.today - 18.years ? true : false
   end
 
-
+  has_many :favors
   belongs_to :logro
 
 end
