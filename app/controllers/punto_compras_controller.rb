@@ -1,5 +1,7 @@
 class PuntoComprasController < ApplicationController
 
+	skip_before_filter :verify_authenticity_token 
+
 	def index
 	end
 
@@ -22,6 +24,14 @@ class PuntoComprasController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def agregarpuntos
+		dinero =params[:Cantidad]
+		puntos =params[:InputPuntos]
+		res = (dinero/12) + puntos
+		current_usuario.puntos += res
+		current_usuario.save
 	end
 
 end

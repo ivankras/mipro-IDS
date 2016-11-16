@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resources :logros
   resources :favors
-  resources :punto_compras
+  resources :punto_compras 
+  post 'punto_compras/punto_compras_agregarpuntos' => 'punto_compras#agregarpuntos'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
