@@ -1,30 +1,31 @@
 <div class="well container-fluid text-center">
 	<%= form_for @puntocompra do |pc| %>
 		<% if isLogued? %>
-			<form class="horizontal">
+			<form class="horizontal" method="post">
 			<div class="form-group text-left">
 				<label>Cantidad (en Pesos Argentinos)</label>
 			<div class="input-group text-left">
 				<div class="input-group-addon">$</div>
-			      <input type="text" class="form-control" id="exampleCantidad" placeholder="Cantidad de dinero que desea invertir en Puntos.">
+			      <input type="number" min="0" step="12" class="form-control" id="Cantidad" placeholder="Cantidad de dinero que desea invertir en Puntos." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
 			      <div class="input-group-addon">.00</div>
 			    </div>
+			    	<p class="text-right"><small>El precio de cada Punto es de $12.</small></p>	
 			</div>
 			<div class="form-group text-left">
 			    <label>Cantidad (en Puntos)</label>
-			    <input type="puntos" class="form-control" id="exampleInputPuntos" placeholder="Cantidad de Puntos que desea adquirir.">
+			    <input type="number" min="0" class="form-control" id="InputPuntos" placeholder="Cantidad de Puntos que desea adquirir." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
 			</div>
 			<div class="form-group text-left">
 			    <label>Número de Tarjeta</label>
-			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="N° de la Tarjeta">
+			    <input type="number" maxlength="15" name= "tarjeta" class="form-control" id="InputTarjeta" placeholder="N° de la Tarjeta">
 			</div>
 			<div class="form-group text-left">
 			    <label>Código de Seguridad</label>
-			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="Ingrese el código que se encuentra detrás de su tarjeta.">
+			    <input type="number" maxlength="3" class="form-control" id="InputCod" placeholder="Ingrese el código que se encuentra detrás de su tarjeta.">
 			</div>
 			<div class="form-group text-left">
 			    <label>Nombre</label>
-			    <input type="tarjeta" class="form-control" id="exampleInputTarjeta" placeholder="Ingrese el nombre como figura en su tarjeta.">
+			    <input type="text" maxlength="25" class="form-control" id="nombre" placeholder="Ingrese el nombre como figura en su tarjeta.">
 			</div>
 			<div class="form-group text-left">
 				<label>Fecha de Expiración</label>
@@ -32,12 +33,45 @@
 				 <%= date_field :fecha_nacimiento, class: "submitter_2"%>
 			</div>
 			</form>
-						<%= link_to "Comprar", favors_path, class: "btn btn-success actions confirmation-btn"%>
-						<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
 		<% end %>
-	<% end %>
-	<div>
-		<br>	
-		<p class="text-right"><small>El precio de cada Punto es de $12.</small></p>	
+	<div class="text-left">
+		<p>
+			<button onclick="myFunction()">Ver Compra</button> 
+		</p>
+		<p>
+			<small id ="t1x"></small><small id="precioi"></small><small id="t3x"></small>
+		</p>
+		<p>
+			<small id ="t1y"></small><small id="puntosi"></small><small id="t3y"></small>
+		</p>
+		<p>
+			<small id="t2"></small><small id="precio"></small><small id="t4"></small><small id="puntot"></small><small id="."></small>
+		</p>
+		<script type="text/javascript">
+		function myFunction() {
+   			var x = document.getElementById("Cantidad").value;
+   			var y = document.getElementById("InputPuntos").value;
+	   		if ((x!=0) || (y!=0)){
+	   			if (x!=0){
+		   			document.getElementById("t1x").innerHTML = "El dinero ingresado corresponde a la compra de ";
+					document.getElementById("precioi").innerHTML = (x/12) - (x%12/12);
+					document.getElementById("t3x").innerHTML = " punto(s)."
+				}
+				if (y!=0) {
+					document.getElementById("t1y").innerHTML = "La cantidad seleccionada es de ";
+					document.getElementById("puntosi").innerHTML = y;
+					document.getElementById("t3y").innerHTML = " punto(s)."	
+				}
+				document.getElementById("t2").innerHTML = "El precio final será de $";
+				document.getElementById("precio").innerHTML = (y*12) + ((x/12) - (x%12/12))*12;
+				document.getElementById("t4").innerHTML = " correspondientes a la cantidad total de ";
+				document.getElementById("puntot").innerHTML = (x/12) - (x%12/12) + (y*1);
+				document.getElementById(".").innerHTML = " punto(s).";
+			}
+		}
+		</script>
 	</div>
+	<%= link_to "Comprar", favors_path, class: "btn btn-success confirmation-btn"%>
+	<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
+	<% end %>
 </div>
