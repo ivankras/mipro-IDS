@@ -2,25 +2,30 @@
 <%= form_for @favor do |f| %>
 			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 20 caracteres">
 			<%= f.label :titulo, class: "form_lbl_ttl" %></span>
-			<%= f.text_field :titulo, required: true, placeholder: 'Título del favor',class: "field_favor" %>
+			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 20 caracteres">
+			<%= f.text_field :titulo, required: true, placeholder: 'Título del favor',class: "field_favor" %></span>
 			
 			<br><br>
 
 			<span data-toggle="tooltip" data-placement="bottom" title="Características del favor. ¡No te limites!">
-			<%= f.label :descripcion, class: "form_lbl_ttl" %></span>
-			<%= f.text_area :descripcion, required: true, placeholder: 'Descripción del favor', class: "submitter areat field_favor"%>
+			<%= f.label "Descripción", class: "form_lbl_dsc" %></span>
+			<span data-toggle="tooltip" data-placement="bottom" title="La altura del campo se puede modificar desde la esquina inferior derecha">
+			<%= f.text_area :descripcion, required: true, placeholder: 'Descripción del favor', class: "submitter areat field_favor"%></span>
 			
 			<br><br>
 			
 			<span data-toggle="tooltip" data-placement="bottom" title="Ciudad origen del favor">
-			<%= f.label :ciudad, class: "form_lbl_max" %></span>
+			<%= f.label :ciudad, class: "form_lbl_ciu" %></span>
+			<span data-toggle="tooltip" data-placement="bottom" title="Ciudad origen del favor">
 			<%= f.text_field :ciudad, required: true, placeholder: 'Ciudad',class: "field_favor"  %></span>
 			
 			<br><br>
 
-			<h3>Pedir foto</h3>
-			<%= f.text_field :ciudad, required: true, placeholder: 'Foto',class: "field_favor"  %>
+			<p><b class= "form_lbl_fot">Pedir foto</b>
+			<%= f.text_field :ciudad, placeholder: 'Foto',class: "field_favor"  %></p>
 			
+			<br><br>
+
 			<%= f.submit 'Guardar', class: "btn btn-success actions confirmation-btn"%>
 			<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
 <% end %>
