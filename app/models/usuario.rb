@@ -5,6 +5,8 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validate :is_eighteen?
+
 
 
   def is_eighteen?
