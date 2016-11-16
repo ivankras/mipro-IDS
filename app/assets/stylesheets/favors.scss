@@ -11,7 +11,7 @@
 .form_lbl_dsc{
 	display: inline;
 	position: relative;
-	margin-right: 14px;
+	margin-right: 40px;
 }
 .form_lbl_fot{
 	display: inline;
@@ -20,12 +20,13 @@
 }
 
 .areat{
-	width: 200px;
+	min-height: 100px;
 	resize: vertical;
 	max-height: 300px;
 }
 
 .field_favor{
+	width: 200px;
 	display:inline;
 	position: relative;
 	margin-left: 40px;
