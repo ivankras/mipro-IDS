@@ -27,11 +27,18 @@ class PuntoComprasController < ApplicationController
 	end
 
 	def agregarpuntos
-		dinero =params[:Cantidad]
-		puntos =params[:InputPuntos]
-		res = (dinero/12) + puntos
-		current_usuario.puntos += res
+		puntos = 0
+		dinero = 0
+		if (params[:cantidad] != nil)
+			dinero +=params[:cantidad].to_i
+		end
+		if (params[:InputPuntos] != nil)
+			puntos +=params[:InputPuntos].to_i
+		end
+		res = (dinero / 12) + puntos
+		current_usuario.puntos += res.to_i
 		current_usuario.save
+		redirect_to(new_punto_compra_path)
 	end
 
 end
