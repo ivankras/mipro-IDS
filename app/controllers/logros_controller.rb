@@ -1,5 +1,7 @@
 class LogrosController < ApplicationController
 
+	helper_method :enLogro?
+
 	def index
 		if isAdmin?
 			@logros = Logro.all
@@ -62,5 +64,21 @@ class LogrosController < ApplicationController
 		flash[:success] = "El logro ha sido borrado"
 		redirect_to(logros_path)
 		# Falta enviar mensaje de confirmación
+	end
+
+	def enLogro(puntaje)
+		id = -1
+		Logro.where(activo: true).each do |logro|
+	        #pert = (id != logro.id) && (puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
+	      	#pert = ((puntaje_max>=logro.puntaje_min && puntaje_max<=logro.puntaje_max)||(puntaje_min>=logro.puntaje_min && puntaje_min<=logro.puntaje_max))
+	        lmin = logro.puntaje_min
+	        lmax = logro.puntaje_max
+	        pert = (puntaje >= lmin) && (puntaje <= lmax)
+	        if pert
+	        	id = logro.id
+	        	break
+	        end   
+	    end
+	    return id 
 	end
 end
