@@ -2,6 +2,8 @@
 
 		<% if isLogged? %>
 			<form class="horizontal" action="agregarpuntos" method="post">
+			<h3 class="text-center">Comprar Puntos</h3>
+			<h5 class="text-center">Usted dispone de <%= howManyPoints?() %> puntos</h2>
 				<p class="text-left"><small>Puede optar por ingresar la cantidad de dinero a invertir, la cantidad de puntos que desea comprar o bien combinar las opciones. El precio de cada punto es de $12.</small></p>
 				<div class="form-group text-left">
 					<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
@@ -27,7 +29,7 @@
 				    <label>Nombre*</label>
 				    <input type="text" maxlength="25" class="form-control" id="nombre" placeholder="Ingrese el nombre como figura en su tarjeta." required>
 				</div>
-				<div class="form-group text-left">
+				<div class="form-group text-left" id="Fechas">
 					<label>Fecha de Expiración*</label>
 					<br>
 					<select name="Mes">
@@ -55,7 +57,7 @@
 						
 					</select>
 				</div>
-				<div class="text-rigth">
+				<div class="text-rigth" id="Ver Compra con javascript">
 					<p>
 						<button onclick="myFunction();" type="button" id="detallesc" class="btn btn-default">Ver Compra</button>
 						<br>
@@ -94,6 +96,14 @@
 									document.getElementById("t3x").innerHTML = "";
 									if (y!=0){
 										document.getElementById("puntot").innerHTML = y;
+										document.getElementById("precio").innerHTML = (y*12);
+									}
+									else{
+										document.getElementById("t2").innerHTML = "";
+										document.getElementById("precio").innerHTML = "";
+										document.getElementById("t4").innerHTML = "";
+										document.getElementById("puntot").innerHTML = "";
+										document.getElementById(".").innerHTML = "";
 									}
 							}
 							if (x==0){
@@ -109,9 +119,25 @@
 						}
 					</script>
 					</div>
-				<div class="text-rigth"> 
-					<input type="submit" value="Comprar" class="btn btn-success confirmation-btn" />
-					<%= link_to "Cancelar", favors_path, class: "btn btn-danger btn-md confirmation-btn" %></p>
+				<div class="text-rigth" id="comprar o cancelar"> 
+					<div>
+					<button type="button" class="btn btn-success confirmation-btn" data-toggle="modal" data-target="#myModal3">Comprar</button>
+					<%= link_to "Cancelar", favors_path, class: "btn btn-danger btn-md confirmation-btn" %>
+					</div>
+					<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="comprando_puntos">
+					 <div class="modal-dialog" role="document">
+					    <div class="modal-content msg">
+					      <div class="modal-body">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="cerrando_sesión"><p id="Confirmacioncant"></p>¿Deseas confirmar tu compra?</h4>
+					      </div>
+					      <div class="modal-footer">
+					        <input type="submit" value="Comprar" class="btn btn-success confirmation-btn" />
+					        <button type="button" class="btn confirmation-btn btn-default" data-dismiss="modal">Cancelar</button>
+					      </div>
+					    </div>
+					 </div>
+					</div>
 				</div>
 			</form>
 		<% end %>
