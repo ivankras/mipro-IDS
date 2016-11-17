@@ -1,54 +1,66 @@
 <div class="container-fluid">
-<h2 class="titulo_form_l text-center">Editar <%= resource_name.to_s.humanize %></h2>
+<h2 class="titulo_form_l text-center">Modificar datos</h2>
 </div>
 
 <div class="well container-fluid text-center">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
-
-      <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">    
-      <%= f.label :nombre, class: "form_lbl_nom"  %> </span>
-      <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
-      <%= f.text_field :nombre , class: "submitter" %> </span>
-    <br><br>
-      <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
-      <%= f.label :apellido, class: "form_lbl_ap" %></span>
-      <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
-      <%= f.text_field :apellido, class: "submitter" %></span>
-    <br><br>
-      <%= f.label :sexo , class: "form_lbl_sex"%><br>
-      <%= f.radio_button :sexo, 'masculino' , class: "submitter_3"%><%= f.label :sexo, "Masculino", class: "submitter_4" %><br>
-      <%= f.radio_button :sexo, 'femenino', checked: true , class: "submitter_3" %><%= f.label :sexo, "Femenino", class: "submitter_4"  %><br>
-    <br><br>
-      <%= f.label :fecha_nacimiento, class: "form_lbl_fn" %>
-      <%= f.date_field :fecha_nacimiento, class: "submitter_2"%>
-    <br><br>
-    <span data-toggle="tooltip" data-placement="bottom" title="Código de país, código de área sin 0 y número, en caso de celular, sin 15.
-Sin espacios">
-      <%= f.label :telefono, class: "form_lbl_tel" %></span>
-      <span data-toggle="tooltip" data-placement="bottom" title="Código de país, código de área sin 0 y número, en caso de celular, sin 15.
-Sin espacios">
-      <%= f.telephone_field :telefono , class: "submitter" %></span>
-    <br><br>
-      <%= f.label :email, class: "form_lbl_email_2" %>
-      <%= f.email_field :email, autofocus: true , class: "submitter"%>
-    <br><br>
-      <span data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %><%= @minimum_password_length %> characters mínimo<% end %>">
-      <%= f.label :password, "Contraseña",class: "form_lbl_pssw" %></span> <i>(leave blank if you don't want to change it)</i>
-      <span data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %><%= @minimum_password_length %> characters mínimo<% end %>">
-      <%= f.password_field :password, autocomplete: "off" , class: "submitter"%></span>
-    <br><br>
-      <%= f.label :password_confirmation , "Confirmación contraseña" %>
-      <%= f.password_field :password_confirmation,  autocomplete: "off" , class: "submitter"%>
-    <br><br>
-      <%= f.label :current_password, "Contraseña actual" %> <i>(Necesitamos la contraseña actual para confirmar los cambios)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    <br><br><br>
-      <%= f.submit "Guardar" , class: "btn btn-success actions confirmation-btn"%>
+    <form class="horizontal">
+      <div class="form-group text-left">
+        <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">    
+        <%= f.label :nombre %></span>
+        <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+        <%= f.text_field :nombre , class: "form-control" %> </span>
+      </div>
+      <div class="form-group text-left">
+        <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+        <%= f.label :apellido %></span>
+        <span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+        <%= f.text_field :apellido, class: "form-control" %></span>
+      </div>
+      <div class="form-group text-left">
+        <%= f.label :sexo , class: "form_lbl_sex"%><br>
+        <%= f.radio_button :sexo, 'masculino'%><%= f.label :sexo, " Masculino", class: 'form_lbl_margin-l' %><br>
+        <%= f.radio_button :sexo, 'femenino', checked: true %><%= f.label :sexo, " Femenino", class: 'form_lbl_margin-l' %><br>
+      </div>
+      <div class="form-group text-left">
+        <%= f.label :fecha_nacimiento %>
+        <%= f.date_field :fecha_nacimiento, class: "form-control" %>
+      </div>
+      <div class="form-group text-left">
+        <span data-toggle="tooltip" data-placement="bottom" title="Código de país, código de área sin 0 y número, en caso de celular, sin 15. 
+        Sin espacios">
+        <%= f.label :telefono %></span>
+        <span data-toggle="tooltip" data-placement="bottom" title="Código de país, código de área sin 0 y número, en caso de celular, sin 15. 
+        Sin espacios">
+        <%= f.telephone_field :telefono , class: "form-control" %></span>
+      </div>
+      <div class="form-group text-left">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true , class: "form-control"%>
+      </div>
+      <div class="form-group text-left"> 
+        <span data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %><%= @minimum_password_length %> characters mínimo<% end %>">
+        <%= f.label :password, "Contraseña" %></span> <i>(No completar si no la quieres cambiar)</i>
+        <span data-toggle="tooltip" data-placement="bottom" title="<% if @minimum_password_length %><%= @minimum_password_length %> characters mínimo<% end %>">
+        <%= f.password_field :password, autocomplete: "off" , class: "form-control"%></span>
+      </div>
+      <div class="form-group text-left">
+        <%= f.label :password_confirmation , "Confirmación de contraseña" %>
+        <%= f.password_field :password_confirmation,  autocomplete: "off" , class: "form-control"%>
+      </div>
+      <div class="form-group text-left">
+        <%= f.label :current_password, "Contraseña actual" %> <i>(Necesitamos la contraseña actual para confirmar los cambios)</i>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <br>
+      <%= f.submit "Editar" , class: "btn btn-success actions confirmation-btn"%>
       <%= link_to "Cancelar", root_path, class: "btn btn-danger confirmation-btn" %>
+    </form>
   <% end %>
-    <br><br><br>
-      <h3>Cancel my account</h3>
-      <p>No conforme? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estás seguro?" }, method: :delete %></p>
-
+    <br><br>
+  <div class="form-group text-left">
+  <h3>Cancelar mi cuenta</h3>
+      <p>No conforme? <%= render 'usuarios/registrations/shutdownbutton' %></p>
+  </div>
 </div>
