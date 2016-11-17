@@ -20,11 +20,11 @@
       </div>
       <div class="form-group text-left">
         <%= f.label :sexo , class: "form_lbl_sex"%><br>
-        <%= f.radio_button :sexo, 'masculino'%><%= f.label :sexo, "Masculino" %><br>
-        <%= f.radio_button :sexo, 'femenino', checked: true %><%= f.label :sexo, "Femenino" %><br>
+        <%= f.radio_button :sexo, 'masculino'%><%= f.label :sexo, "Masculino", class: 'form_lbl_margin-l' %><br>
+        <%= f.radio_button :sexo, 'femenino', checked: true %><%= f.label :sexo, "Femenino", class: 'form_lbl_margin-l' %><br>
       </div>
       <div class="form-group text-left">
-        <%= f.label :fecha_nacimiento %>
+        <%= f.label :fecha_nacimiento%>
         <%= f.date_field :fecha_nacimiento, class: "form-control" %>
       </div>
       <div class="form-group text-left">
