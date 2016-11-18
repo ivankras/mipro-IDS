@@ -67,10 +67,9 @@ class LogrosController < ApplicationController
 	end
 
 	def enLogro(puntaje)
-		id = -1
+		id = 8000
+		pert = false
 		Logro.where(activo: true).each do |logro|
-	        #pert = (id != logro.id) && (puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
-	      	#pert = ((puntaje_max>=logro.puntaje_min && puntaje_max<=logro.puntaje_max)||(puntaje_min>=logro.puntaje_min && puntaje_min<=logro.puntaje_max))
 	        lmin = logro.puntaje_min
 	        lmax = logro.puntaje_max
 	        pert = (puntaje >= lmin) && (puntaje <= lmax)
@@ -79,6 +78,12 @@ class LogrosController < ApplicationController
 	        	break
 	        end   
 	    end
-	    return id 
+	    if !pert
+	    	if Logro.find(id) == nil
+	    		Logro.create(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
+	    	end
+	    end
+	    return id
 	end
+	#current_usuario.logro_id =enLogro(current_usuario.puntos)
 end
