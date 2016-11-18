@@ -1,99 +1,144 @@
 <div class="well container-fluid text-center">
-	<% if isLogged? %>
-		<form class="horizontal" action="agregarpuntos" method="post">
-			<div class="form-group text-left">
-				<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
-			<div class="input-group text-left">
-				<div class="input-group-addon">$</div>
-			      <input type="number" min="0" max="1200" step="12" class="form-control" id="Cantidad" placeholder="Cantidad de dinero que desea invertir en Puntos." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-			      <div class="input-group-addon">.00</div>
-			    </div>
-			    	<p class="text-right"><small>El precio de cada Punto es de $12.</small></p>	
-			</div>
-			<div class="form-group text-left">
-			    <label>Cantidad (en Puntos)</label>
-			    <input type="number" min="0" max="300" class="form-control" id="InputPuntos" placeholder="Cantidad de Puntos que desea adquirir." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-			</div>
-			<div class="form-group text-left">
-			    <label>Número de Tarjeta*</label>
-			    <input type="number" maxlength="15" name= "tarjeta" class="form-control" id="InputTarjeta" placeholder="N° de la Tarjeta" required>
-			</div>
-			<div class="form-group text-left">
-			    <label>Código de Seguridad*</label>
-			    <input type="number" maxlength="3" class="form-control" id="InputCod" placeholder="Ingrese el código que se encuentra detrás de su tarjeta." required>
-			</div>
-			<div class="form-group text-left">
-			    <label>Nombre*</label>
-			    <input type="text" maxlength="25" class="form-control" id="nombre" placeholder="Ingrese el nombre como figura en su tarjeta." required>
-			</div>
-			<div class="form-group text-left">
-				<label>Fecha de Expiración*</label>
-				<br>
-				<select name="Mes">
-					<option value="Enero">Enero</option>
-					<option value="Febrero">Febrero</option>
-					<option value="Marzo">Marzo</option>
-					<option value="Abril">Abril</option>
-					<option value="Mayo">Mayo</option>
-					<option value="Junio">Junio</option>
-					<option value="Julio">Julio</option>
-					<option value="Agosto">Agosto</option>
-					<option value="Septiembre">Septiembre</option>
-					<option value="Octubre">Octubre</option>
-					<option value="Noviembre">Noviembre</option>
-					<option value="Diciembre">Diciembre</option>
-				</select>
-				<select name="Año">
-					<option value="2016">2016</option>
-					<option value="2017">2017</option>
-					<option value="2018">2018</option>
-					<option value="2019">2019</option>
-					<option value="2020">2020</option>
-					<option value="2021">2021</option>
-					<option value="2022">2022</option>
-					
-				</select>
-			</div>
-			<div class="text-rigth">
-				<p>
-					<button onclick="myFunction()" class="btn btn-default">Ver Compra</button>
+
+		<% if isLogged? %>
+			<form class="horizontal" action="agregarpuntos" method="post">
+			<h3 class="text-center">Comprar Puntos</h3>
+			<h5 class="text-center">Usted dispone de <%= howManyPoints?() %> puntos</h2>
+				<p class="text-left"><small>Puede optar por ingresar la cantidad de dinero a invertir, la cantidad de puntos que desea comprar o bien combinar las opciones. El precio de cada punto es de $12.</small></p>
+				<div class="form-group text-left">
+					<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
+				<div class="input-group text-left">
+					<div class="input-group-addon">AR$</div>
+				      <input type="number" min="0" max="1200" step="12" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad de dinero que desea invertir en Puntos." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+				      <div class="input-group-addon">.00</div>
+				    </div>
+				</div>
+				<div class="form-group text-left">
+				    <label>Cantidad (en Puntos)</label>
+				    <input type="number" name="InputPuntos" min="0" max="300" class="form-control" id="InputPuntos" placeholder="Cantidad de Puntos que desea adquirir." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+				</div>
+				<div class="form-group text-left">
+				    <label>Número de Tarjeta*</label>
+				    <input type="text" maxlength="15" pattern=".{14,15}" required title="Ingrese un número válido. (14 o 15 dígitos)" name= "tarjeta" class="form-control" id="InputTarjeta" placeholder="N° de la Tarjeta" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
+				</div>
+				<div class="form-group text-left">
+				    <label>Código de Seguridad*</label>
+				    <input type="text" maxlength="3" class="form-control" pattern=".{3}" required title="Ingrese un código válido. (3 dígitos)" id="InputCod" placeholder="Ingrese el código que se encuentra detrás de su tarjeta." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
+				</div>
+				<div class="form-group text-left">
+				    <label>Nombre*</label>
+				    <input type="text" maxlength="25" class="form-control" id="nombre" placeholder="Ingrese el nombre como figura en su tarjeta." required>
+				</div>
+				<div class="form-group text-left" id="Fechas">
+					<label>Fecha de Expiración*</label>
 					<br>
-					<small id ="t1x"></small><small id="precioi"></small><small id="t3x"></small>
-				</p>
-				<p>
-					<small id ="t1y"></small><small id="puntosi"></small><small id="t3y"></small>
-				</p>
-				<p>
-					<small id="t2"></small><small id="precio"></small><small id="t4"></small><small id="puntot"></small><small id="."></small>
-				</p>
-				<script type="text/javascript">
-					function myFunction() {
-			   			var x = document.getElementById("Cantidad").value;
-			   			var y = document.getElementById("InputPuntos").value;
-				   		if ((((x!=0) || (y!=0))) && ((x<1201) || (y<301)) && (x%12==0)) {
-				   			if (x!=0){
-					   			document.getElementById("t1x").innerHTML = "El dinero ingresado corresponde a la compra de ";
-								document.getElementById("precioi").innerHTML = (x/12) - (x%12/12);
-								document.getElementById("t3x").innerHTML = " punto(s)."
+					<select name="Mes">
+						<option value="Enero">Enero</option>
+						<option value="Febrero">Febrero</option>
+						<option value="Marzo">Marzo</option>
+						<option value="Abril">Abril</option>
+						<option value="Mayo">Mayo</option>
+						<option value="Junio">Junio</option>
+						<option value="Julio">Julio</option>
+						<option value="Agosto">Agosto</option>
+						<option value="Septiembre">Septiembre</option>
+						<option value="Octubre">Octubre</option>
+						<option value="Noviembre">Noviembre</option>
+						<option value="Diciembre">Diciembre</option>
+					</select>
+					<select name="Año">
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+						<option value="2021">2021</option>
+						<option value="2022">2022</option>
+						
+					</select>
+				</div>
+				<div class="text-rigth" id="Ver Compra con javascript">
+					<p>
+						<button onclick="myFunction();" type="button" id="detallesc" class="btn btn-default">Ver Compra</button>
+						<br>
+						<small id ="t1x"></small><small id="precioi"></small><small id="t3x"></small>
+					</p>
+					<p>
+						<small id ="t1y"></small><small id="puntosi"></small><small id="t3y"></small>
+					</p>
+					<p>
+						<small id="t2"></small><small id="precio"></small><small id="t4"></small><small id="puntot"></small><small id="."></small>
+					</p>
+					<script type="text/javascript">
+						function myFunction() {
+				   			var x = document.getElementById("cantidad").value;
+				   			var y = document.getElementById("InputPuntos").value;
+					   		if ((((x!=0) || (y!=0))) && ((x<1201) || (y<301)) && (x%12==0)) {
+					   			if (x!=0){
+						   			document.getElementById("t1x").innerHTML = "El dinero ingresado corresponde a la compra de ";
+									document.getElementById("precioi").innerHTML = (x/12) - (x%12/12);
+									document.getElementById("t3x").innerHTML = " punto(s).";
+								}
+								if (y!=0) {
+									document.getElementById("t1y").innerHTML = "La cantidad seleccionada es de ";
+									document.getElementById("puntosi").innerHTML = y;
+									document.getElementById("t3y").innerHTML = " punto(s).";
+								}
+								document.getElementById("t2").innerHTML = "El precio final será de $";
+								document.getElementById("precio").innerHTML = (y*12) + ((x/12) - (x%12/12))*12;
+								document.getElementById("t4").innerHTML = " correspondientes a la cantidad total de ";
+								document.getElementById("puntot").innerHTML = (x/12) - (x%12/12) + (y*1);
+								document.getElementById(".").innerHTML = " punto(s).";
 							}
-							if (y!=0) {
-								document.getElementById("t1y").innerHTML = "La cantidad seleccionada es de ";
-								document.getElementById("puntosi").innerHTML = y;
-								document.getElementById("t3y").innerHTML = " punto(s)."	
+							if ((x%12) != 0){
+									document.getElementById("t1x").innerHTML = "Ingrese un valor correcto para Cantidad (en Pesos Argentinos) o clickee en cualquiera de las flechas del campo para asignar el valor correcto más cercano."
+									document.getElementById("precioi").innerHTML = "";
+									document.getElementById("t3x").innerHTML = "";
+									if (y!=0){
+										document.getElementById("puntot").innerHTML = y;
+										document.getElementById("precio").innerHTML = (y*12);
+									}
+									else{
+										document.getElementById("t2").innerHTML = "";
+										document.getElementById("precio").innerHTML = "";
+										document.getElementById("t4").innerHTML = "";
+										document.getElementById("puntot").innerHTML = "";
+										document.getElementById(".").innerHTML = "";
+									}
 							}
-							document.getElementById("t2").innerHTML = "El precio final será de $";
-							document.getElementById("precio").innerHTML = (y*12) + ((x/12) - (x%12/12))*12;
-							document.getElementById("t4").innerHTML = " correspondientes a la cantidad total de ";
-							document.getElementById("puntot").innerHTML = (x/12) - (x%12/12) + (y*1);
-							document.getElementById(".").innerHTML = " punto(s).";
+							if (x==0){
+								document.getElementById("t1x").innerHTML = "";
+									document.getElementById("precioi").innerHTML = "";
+									document.getElementById("t3x").innerHTML = " ";
+							}
+							if (y==0) {
+									document.getElementById("t1y").innerHTML = "";
+									document.getElementById("puntosi").innerHTML = "";
+									document.getElementById("t3y").innerHTML = "";
+								}
 						}
-					}
-				</script>
-			</div>
-			<div class="text-rigth"> 
-				<input type="submit" value="Comprar" class="btn btn-success confirmation-btn" />
-				<%= link_to "Cancelar", :back, class: "btn btn-danger btn-md confirmation-btn" %></p>
-			</div>
-		</form>
-	<% end %>
+					</script>
+					</div>
+				<div class="text-rigth" id="comprar o cancelar"> 
+					<div>
+					<button type="button" class="btn btn-success confirmation-btn" data-toggle="modal" data-target="#ModalComprar">Comprar</button>
+					<%= link_to "Cancelar", favors_path, class: "btn btn-danger btn-md confirmation-btn" %>
+					</div>
+					<div class="modal fade" id="ModalComprar" tabindex="-1" role="dialog" aria-labelledby="comprando_puntos">
+					 <div class="modal-dialog" role="document">
+					    <div class="modal-content msg">
+					      <div class="modal-body">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="cerrando_sesión"><p id="Confirmacioncant"></p>¿Deseas confirmar tu compra?</h4>
+					      </div>
+					      <div class="modal-footer">
+					        <input type="submit" value="Comprar" class="btn btn-success confirmation-btn" />
+					        <button type="button" class="btn confirmation-btn btn-default" data-dismiss="modal">Cancelar</button>
+					      </div>
+					    </div>
+					 </div>
+					</div>
+				</div>
+			</form>
+		<% end %>
 </div>

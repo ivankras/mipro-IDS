@@ -1,30 +1,30 @@
-<div class="well container-fluid text-center">
+<div class="well container-fluid text-left">
 <%= form_for @favor do |f| %>
 			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 50 caracteres">
 			<%= f.label :titulo, class: "form_lbl_ttl" %></span>
 			<span data-toggle="tooltip" data-placement="bottom" title="Hasta 50 caracteres">
-			<%= f.text_field :titulo, required: true, placeholder: 'Título del favor',class: "field_favor" %></span>
+			<%= f.text_field :titulo, required: true, placeholder: 'Título del favor',class: "field_favor form-control" %></span>
 			
 			<br><br>
 
 			<span data-toggle="tooltip" data-placement="bottom" title="Características del favor. ¡No te limites!">
 			<%= f.label "Descripción", class: "form_lbl_dsc" %></span>
 			<span data-toggle="tooltip" data-placement="bottom" title="La altura del campo se puede modificar desde la esquina inferior derecha">
-			<%= f.text_area :descripcion, required: true, placeholder: 'Descripción del favor', class: "submitter areat field_favor"%></span>
+			<%= f.text_area :descripcion, required: true, placeholder: 'Descripción del favor', class: "areat field_favor form-control"%></span>
 			
 			<br><br>
 			
 			<span data-toggle="tooltip" data-placement="bottom" title="Ciudad origen del favor">
 			<%= f.label :ciudad, class: "form_lbl_ciu" %></span>
 			<span data-toggle="tooltip" data-placement="bottom" title="Ciudad origen del favor">
-			<%= f.text_field :ciudad, required: true, placeholder: 'Ciudad',class: "field_favor"  %></span>
+			<%= f.text_field :ciudad, required: true, placeholder: 'Ciudad',class: "field_favor form-control"  %></span>
 			
 			<br><br>
 
 			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
 			<%= f.label "Foto", class: "form_lbl_fot" %></span>
 			<span data-toggle="tooltip" data-placement="bottom" title="URL de la foto del favor">
-			<%= f.text_field :foto_url, placeholder: 'URL de la foto del favor',class: "field_favor"  %></span>
+			<%= f.text_field :foto_url, placeholder: 'URL de la foto del favor',class: "field_favor form-control"  %></span>
 			
 			<br><br>
 

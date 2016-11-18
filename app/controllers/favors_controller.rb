@@ -26,6 +26,8 @@ class FavorsController < ApplicationController
 		    if @favor.save
 		    	current_usuario.puntos -= 1
 		    	current_usuario.save
+		    	current_usuario.logro_id = enLogro(current_usuario.puntos)
+				current_usuario.save
 		    	flash[:success] = "Tu favor ha sido publicado"
 		      	redirect_to(favors_path)
 		    else

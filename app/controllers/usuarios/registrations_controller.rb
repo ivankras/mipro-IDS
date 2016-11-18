@@ -7,10 +7,13 @@ class Usuarios::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+   #POST /resource
+   def create
+     super
+     @usuario = Usuario.find(params[:id])
+     @usuario.logro_id = enLogro(@usuario.puntos)
+     @usuario.save
+   end
 
   # GET /resource/edit
   # def edit

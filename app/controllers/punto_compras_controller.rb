@@ -27,11 +27,31 @@ class PuntoComprasController < ApplicationController
 	end
 
 	def agregarpuntos
-		dinero =params[:Cantidad]
-		puntos =params[:InputPuntos]
-		res = (dinero/12) + puntos
-		current_usuario.puntos += res
-		current_usuario.save
+		puntos = 0
+		dinero = 0
+		if ((params[:Año] == "2016") && (params[:Mes] != "Diciembre"))
+			flash[:danger] = "La tarjeta ingresada se encuentra vencida."
+			redirect_to(new_punto_compra_path) and return
+		end
+		if (params[:tarjeta]!="00000000000000") && (params[:tarjeta]!="11111111111111")
+			if (params[:cantidad] != nil)
+				dinero +=params[:cantidad].to_i
+			end
+			if (params[:InputPuntos] != nil)
+				puntos +=params[:InputPuntos].to_i
+			end
+			res = (dinero / 12) + puntos
+			current_usuario.puntos += res.to_i
+			current_usuario.save
+			current_usuario.logro_id = enLogro(current_usuario.puntos)
+			current_usuario.save
+			flash[:success] = "La compra ha sido efectuada."
+		elsif (params[:tarjeta]=="00000000000001")
+			flash[:danger] = "La tarjeta ingresada es inválida."
+		else
+			flash[:danger] = "La tarjeta no dispone de fondos suficientes."
+		end
+		redirect_to(new_punto_compra_path)
 	end
 
 end

@@ -63,4 +63,5 @@ class LogrosController < ApplicationController
 		redirect_to(logros_path)
 		# Falta enviar mensaje de confirmación
 	end
+
 end

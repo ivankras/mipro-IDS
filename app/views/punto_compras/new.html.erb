@@ -1,7 +1,8 @@
 <div class="container-fluid">
-	<h3 class="titulo_form_l text-center">Comprar Puntos</h3>
+	
 	<% if isLogged? %>
-	<h5 class="titulo_form_l text-center">Usted dispone de <%= howManyPoints?() %> puntos.</h2>
 		<%= render 'form' %>
+	<% else %>
+		<h1> Debe iniciar una sesión para adquirir puntos. </h1>
 	<% end %>
 </div>
