@@ -6,4 +6,5 @@ class Favor < ActiveRecord::Base
 	validates :titulo, uniqueness: true
 	default_scope -> { order ("created_at desc")} 
 	scope :recientes,-> { order ("created_at desc").limit(5) }
+	scope :propios,-> { where ("id = #{current_usuario.id}") }
 end
