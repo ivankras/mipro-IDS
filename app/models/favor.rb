@@ -4,7 +4,6 @@ class Favor < ActiveRecord::Base
 	has_many :comentario
 	validates :titulo, length: {minimum: 1, maximum: 50}
 	validates :titulo, uniqueness: true
-	default_scope -> { order ("created_at desc")} 
+	default_scope -> { order ("updated_at desc")} 
 	scope :recientes,-> { order ("created_at desc").limit(5) }
-	scope :propios,-> { where ("id = #{current_usuario.id}") }
 end

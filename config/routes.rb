@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   
   devise_for :usuarios
   resources :logros
-  resources :favors
+  resources :favors do
+    get "mis_favores", on: :collection
+  end
   resources :punto_compras 
   post 'punto_compras/agregarpuntos' => 'punto_compras#agregarpuntos'
-  get 'favors/mis_favores' => 'favors#mis_favores'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

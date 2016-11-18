@@ -14,8 +14,28 @@
 				<% end %>
 				<br><br><br>
 				<div class="text-left">
-					<%= link_to "Ofrecerme", favors_path, class: "btn btn-warning" %>
-					<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
+					<% if current_usuario != nil && current_usuario.id == @favor.usuario_id%>
+		        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= @favor.id %>">Eliminar</button>
+		        		<%= link_to "Editar", edit_favor_path(@favor.id), class: "btn btn-primary favor_btn" %>
+		        		<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
+						<div class="modal fade" id="modalFavor_<%= @favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content msg">
+							      <div class="modal-body">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el favor?</h4>
+							      </div>
+							      <div class="modal-footer">
+							        <%= link_to "Eliminar", @favor, method: :delete, class: "btn btn-danger" %>
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					<% else %>
+						<%= link_to "Ofrecerme", favor_path(@favor.id), class: "btn btn-warning" %>
+						<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %> 
+		        	<% end %>					
 				</div>
 			</div>
 			<div class="col-md-6 favor_desc">

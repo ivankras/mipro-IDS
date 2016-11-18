@@ -1,7 +1,7 @@
 <div>
 	<div class="container">
 		<table class="table table-condensed">
-
+			<h2 class="titulo_form_l text-center"><b>Mis favores</b></h2>
 			<% @favors.each do |favor| %>
 				<tr>
 					<td>
@@ -21,7 +21,23 @@
 							      		<% s[141..143] = "..." %>
 							      	<% end %>
 							      	<p><%= s %></p>
-							        <p><%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %> <%= link_to "Eliminar", favor_path(favor.id), method: :delete, class: "btn btn-danger" %></p>
+							        <p><%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %> 
+							        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
+										<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+											  <div class="modal-dialog" role="document">
+											    <div class="modal-content msg">
+											      <div class="modal-body">
+											        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el favor?</h4>
+											      </div>
+											      <div class="modal-footer">
+											        <%= link_to "Eliminar", favor, method: :delete, class: "btn btn-danger" %>
+											        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+											      </div>
+											    </div>
+											  </div>
+											</div>
+							        <%# link_to "Eliminar", favor, method: :delete, class: "btn btn-danger" %></p>
 							        <p class="text-right"><small><%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 							      </div>
 							    </div>
