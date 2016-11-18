@@ -43,6 +43,8 @@ class PuntoComprasController < ApplicationController
 			res = (dinero / 12) + puntos
 			current_usuario.puntos += res.to_i
 			current_usuario.save
+			current_usuario.logro_id = enLogro(current_usuario.puntos)
+			current_usuario.save
 			flash[:success] = "La compra ha sido efectuada."
 		elsif (params[:tarjeta]=="00000000000001")
 			flash[:danger] = "La tarjeta ingresada es inválida."

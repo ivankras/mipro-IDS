@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default sidebar" role="navigation">
+<nav class="navbar navbar-default sidebar pull-right" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
@@ -19,11 +19,11 @@
               <li class="divider"></li>
               <li><a href="#">Modificar</a></li>
               <li class="divider"></li>
-              <li><a href="#">Logro al que pertenece</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Cantidad de puntos de logro</a></li>
-              <li class="divider"></li>
               <li><%= link_to "Comprar puntos", new_punto_compra_path%></li>
+              <li class="divider"></li>
+              <li><i>Logro: <%=current_usuario.logro.nombre%></i></li>
+              <!--<li class="divider"></li>
+              <li><i>Cantidad de puntos: <%= howManyPoints?() %></i></li>-->
             </ul>
           </li>
         <li class="dropdown">

@@ -1,7 +1,5 @@
 class LogrosController < ApplicationController
 
-	helper_method :enLogro?
-
 	def index
 		if isAdmin?
 			@logros = Logro.all
@@ -66,24 +64,4 @@ class LogrosController < ApplicationController
 		# Falta enviar mensaje de confirmación
 	end
 
-	def enLogro(puntaje)
-		id = 8000
-		pert = false
-		Logro.where(activo: true).each do |logro|
-	        lmin = logro.puntaje_min
-	        lmax = logro.puntaje_max
-	        pert = (puntaje >= lmin) && (puntaje <= lmax)
-	        if pert
-	        	id = logro.id
-	        	break
-	        end   
-	    end
-	    if !pert
-	    	if Logro.find(id) == nil
-	    		Logro.create(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
-	    	end
-	    end
-	    return id
-	end
-	#current_usuario.logro_id =enLogro(current_usuario.puntos)
 end

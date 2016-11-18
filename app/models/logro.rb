@@ -8,7 +8,7 @@ class Logro < ActiveRecord::Base
 	def rango
       minAbs = Logro.where(activo: true).first.puntaje_min
       maxAbs = Logro.where(activo: true).first.puntaje_max
-      val = min>minAbs || max<maxAbs
+      val = puntaje_min>minAbs || puntaje_max<maxAbs
     	Logro.where(activo: true).each do |logro|
           #pert = (id != logro.id) && (puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
       		#pert = ((puntaje_max>=logro.puntaje_min && puntaje_max<=logro.puntaje_max)||(puntaje_min>=logro.puntaje_min && puntaje_min<=logro.puntaje_max))
