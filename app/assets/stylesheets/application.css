@@ -26,6 +26,7 @@ header .navbar-inverse{
 }
 */
 
+
 header .navbar-inverse .navbar-brand {
     color: white;
     font-size: 2em;
@@ -42,9 +43,10 @@ header .navbar-header>img {
 .session-sign{
   color: black;
   width: 130px;
+  position: relative;
   text-align: center;
   margin-top: 127px;
-  margin-right: 40px;
+  margin-right: 20px;
   background-color: #FF8119;
   border-color: black;
 }
@@ -65,6 +67,7 @@ header .navbar-header>img {
 
 .identification{
   color: #FF8119;
+  position: relative;
   margin-top: 135px;
   margin-right: 10px;
   font-size: 24px;

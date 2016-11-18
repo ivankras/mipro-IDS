@@ -67,5 +67,8 @@
     devise_parameter_sanitizer.permit(:sign_up)do |usuario_params|
     	usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password)
   	end
+    devise_parameter_sanitizer.permit(:account_update)do |usuario_params|
+      usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :current_password)
+    end
   end
 end
