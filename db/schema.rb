@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116211852) do
+ActiveRecord::Schema.define(version: 20161118133932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,21 +73,21 @@ ActiveRecord::Schema.define(version: 20161116211852) do
     t.date     "fecha_nacimiento"
     t.integer  "telefono",               limit: 8
     t.integer  "puntos",                           default: 1
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
-    t.string   "encrypted_password",               default: "",         null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "encrypted_password",               default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                    default: 0,          null: false
+    t.integer  "sign_in_count",                    default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "logro_id"
     t.boolean  "admin",                            default: false
-    t.string   "sexo",                             default: "femenino"
     t.integer  "favor_id"
+    t.string   "sexo"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
