@@ -8,7 +8,7 @@
 				<div class="form-group text-left">
 					<label for="exampleInputAmount">Cantidad (en Pesos Argentinos)</label>
 				<div class="input-group text-left">
-					<div class="input-group-addon">$</div>
+					<div class="input-group-addon">AR$</div>
 				      <input type="number" min="0" max="1200" step="12" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad de dinero que desea invertir en Puntos." onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
 				      <div class="input-group-addon">.00</div>
 				    </div>
@@ -121,10 +121,10 @@
 					</div>
 				<div class="text-rigth" id="comprar o cancelar"> 
 					<div>
-					<button type="button" class="btn btn-success confirmation-btn" data-toggle="modal" data-target="#myModal3">Comprar</button>
+					<button type="button" class="btn btn-success confirmation-btn" data-toggle="modal" data-target="#ModalComprar">Comprar</button>
 					<%= link_to "Cancelar", favors_path, class: "btn btn-danger btn-md confirmation-btn" %>
 					</div>
-					<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="comprando_puntos">
+					<div class="modal fade" id="ModalComprar" tabindex="-1" role="dialog" aria-labelledby="comprando_puntos">
 					 <div class="modal-dialog" role="document">
 					    <div class="modal-content msg">
 					      <div class="modal-body">
