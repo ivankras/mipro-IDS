@@ -11,11 +11,11 @@
 </div>
 <div>
 	<div class="container">
-		<table class="table table-condensed">
+		<table class="table table-condensed" border="0">
 
-			<% @favors.each do |favor| %>
+			<% @favors.all.each do |favor| %>
 				<tr>
-					<td>
+					<td style='border-top:none'>
 						<div class="container well">
 							<div class="row">
 							  <div class="col-md-8 col-md-offset-2">
@@ -36,7 +36,7 @@
 							        	<% if current_usuario != nil && current_usuario.id == favor.usuario_id %>
 							        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
 							        		<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %>
-											<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+							        		<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
 												  <div class="modal-dialog" role="document">
 												    <div class="modal-content msg">
 												      <div class="modal-body">
@@ -55,7 +55,7 @@
 											<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 							        	<% end %>							        	
 							        </p>
-							        <p class="text-right"><small><%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
+							        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 							      </div>
 							    </div>
 							  </div>

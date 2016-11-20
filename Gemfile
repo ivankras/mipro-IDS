@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+#Dice ser una gema para contar las visitas, who knowssssss
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 
