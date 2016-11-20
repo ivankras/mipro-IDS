@@ -22,7 +22,7 @@
 							  <div class="col-md-8 col-md-offset-2">
 							    <div class="thumbnail">
 							    <h3 class="text-center"> <%= favor.titulo %> </h3>
-							      	<% if favor.foto_url == "" %>
+							      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
 										<%= image_tag "logo.png"%>
 									<% else %>
 										<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
