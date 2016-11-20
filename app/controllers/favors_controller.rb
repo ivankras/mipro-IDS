@@ -2,6 +2,12 @@ class FavorsController < ApplicationController
 
 	def index
 		@favors = Favor.all
+		if params[:search]
+		   @favors = Favor.search(params[:search], params[:searchc]).order("created_at DESC")
+		else
+			@favors = Favor.all.order("created_at DESC")
+		end
+	
 	end
 
 	def show

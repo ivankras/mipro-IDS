@@ -1,4 +1,15 @@
 <div>
+	<%= form_tag(favors_path, :method => "get", id: "search-form") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
+		||
+		<%= text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
+		||
+		<%= submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
+		||
+		<%= link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
+	<% end %>
+</div>
+<div>
 	<div class="container">
 		<table class="table table-condensed">
 
@@ -10,7 +21,7 @@
 							  <div class="col-md-8 col-md-offset-2">
 							    <div class="thumbnail">
 							    <h3 class="text-center"> <%= favor.titulo %> </h3>
-							      	<% if favor.foto_url == nil %>
+							      	<% if favor.foto_url == "" %>
 										<%= image_tag "logo.png"%>
 									<% else %>
 										<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>

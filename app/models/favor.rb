@@ -6,4 +6,7 @@ class Favor < ActiveRecord::Base
 	validates :titulo, uniqueness: true
 	default_scope -> { order ("updated_at desc")} 
 	scope :recientes,-> { order ("created_at desc").limit(5) }
+	def self.search(search, searchc)
+  		where("titulo ILIKE ? AND ciudad ILIKE ?", "%#{search}%", "%#{searchc}%") 
+	end
 end
