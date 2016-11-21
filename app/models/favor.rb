@@ -7,6 +7,6 @@ class Favor < ActiveRecord::Base
 	default_scope -> { order ("created_at desc")} 
 	#scope :recientes,-> { order ("created_at desc").limit(5) }
 	def self.search(search, searchc)
-  		where("titulo ILIKE ? AND ciudad ILIKE ?", "%#{search}%", "%#{searchc}%") 
+  		where("titulo ILIKE ? AND ciudad ILIKE ?", "%#{search}%", "%#{searchc}%")
 	end
 end
