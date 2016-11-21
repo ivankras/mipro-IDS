@@ -56,7 +56,7 @@
 												    <div class="modal-content msg">
 												      <div class="modal-body">
 												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el favor?</h4>
+												        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés eliminar el favor?</h4>
 												      </div>
 												      <div class="modal-footer">
 												        <%= link_to "Eliminar", favor, method: :delete, class: "btn btn-danger" %>
@@ -70,7 +70,7 @@
 											<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 							        	<% end %>							        	
 							        </p>
-							        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
+							        <p class="text-right"><small><%= favor.visitas %> visitas | <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 							      </div>
 							    </div>
 							  </div>
