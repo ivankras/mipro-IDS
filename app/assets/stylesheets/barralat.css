@@ -124,3 +124,11 @@ body,html{
     text-align: center !important;
     background-color: rgba(179,90,0, 0.2) !important;
   }
+
+  .busqueda{
+    margin-top: 3px;
+  }
+
+  .busqueda_error{
+    max-width: 650px;
+  }

@@ -1,83 +1,90 @@
-<div>
-	<%= form_tag(favors_path, :method => "get", id: "search-form") do %>
-		<%= text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
+<!--div>
+	<%# form_tag(favors_path, :method => "get", id: "search-form") do %>
+		<%# text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
 		||
-		<%= text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
+		<%# text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
 		||
-		<%= submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
+		<%# submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
 		||
-		<%= link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
-	<% end %>
+		<%# link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
+	<%# end %>
 	<br>
-</div>
+</div-->
 <div>
-	<div class="container">
-		<table class="table table-condensed" border="0">
-			<% if (@favors.count == 0) %>
-				<% if ((params[:searchc] != "") && (params[:search] != "")) %>
-					<div class="alert alert-warning fade-in war-bar col-md-8">
-						<strong>No existen favores que se correspondan con los parámetros ingresados.</strong> Puedes reiniciar la búsqueda o modificar los parámetros.
-					</div>
-				<% elsif (params[:searchc]) != "" %>
-					<div class="alert alert-warning fade in war-bar">
-						<strong>No existen favores que se correspondan con la ciudad ingresada (<%= params[:searchc] %>).</strong> Puedes reiniciar la búsqueda o modificar el parámetro.
-					</div>
-				<% else %>
-					<div class="alert alert-warning fade in war-bar">
-						<strong>No existen favores que se correspondan con el título ingresado.</strong> Puedes reiniciar la búsqueda o modificar el parámetro.
-					</div>
-				<% end %>
-			<% end %>
-			<% @favors.where(activo: true).each do |favor| %>
-				<tr>
-					<td style='border-top:none'>
-						<div class="container well">
-							<div class="row">
-							  <div class="col-md-8 col-md-offset-2">
-							    <div class="thumbnail">
-							    <h3 class="text-center"> <%= favor.titulo %> </h3>
-							      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
-										<%= image_tag "logo.png"%>
-									<% else %>
-										<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
-									<% end %>
-							      <div class="caption">
-							      	<% s = favor.descripcion[0..140] %>
-							      	<% if s.length == 141 %>
-							      		<% s[141..143] = "..." %>
-							      	<% end %>
-							      	<p><%= s %></p>
-							        <p>
-							        	<% if current_usuario != nil && current_usuario.id == favor.usuario_id %>
-							        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
-							        		<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %>
-							        		<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
-												  <div class="modal-dialog" role="document">
-												    <div class="modal-content msg">
-												      <div class="modal-body">
-												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el favor?</h4>
-												      </div>
-												      <div class="modal-footer">
-												        <%= link_to "Eliminar", favor, method: :delete, class: "btn btn-danger" %>
-												        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-												      </div>
-												    </div>
-												  </div>
-												</div>
-										<% else %>
-											<%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %>
-											<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
-							        	<% end %>							        	
-							        </p>
-							        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
-							      </div>
-							    </div>
-							  </div>
-						</div>
-					</td>
-				</tr>	
-			<% end %>
-		</table>
+	<div class="container-fluid">
+		<div class= "row">
+			<div class= "col-md-3">
+				<%= render 'barra_busq' %>
+			</div>
+			<div class= "col-md-9">
+				<table class="table table-condensed" border="0">
+					<% if (@favors.count == 0) %>
+						<% if ((params[:searchc] != "") && (params[:search] != "")) %>
+							<div class="alert alert-warning fade-in war-bar busqueda busqueda_error">
+								<strong>No existen favores que se correspondan con los parámetros ingresados.</strong> <br>Puedes reiniciar la búsqueda o modificar los parámetros.
+							</div>
+						<% elsif (params[:searchc]) != "" %>
+							<div class="alert alert-warning fade in war-bar busqueda busqueda_error">
+								<strong>No existen favores que se correspondan con la ciudad ingresada (<%= params[:searchc] %>).</strong> <br>Puedes reiniciar la búsqueda o modificar el parámetro.
+							</div>
+						<% else %>
+							<div class="alert alert-warning fade in war-bar busqueda busqueda_error">
+								<strong>No existen favores que se correspondan con el título ingresado.</strong> <br>Puedes reiniciar la búsqueda o modificar el parámetro.
+							</div>
+						<% end %>
+					<% end %>
+					<% @favors.where(activo: true).each do |favor| %>
+						<tr>
+							<td style='border-top:none'>
+								<div class="container well">
+									<div class="row">
+									  <div class="col-md-8 col-md-offset-2">
+									    <div class="thumbnail">
+									    <h3 class="text-center"> <%= favor.titulo %> </h3>
+									      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
+												<%= image_tag "logo.png"%>
+											<% else %>
+												<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
+											<% end %>
+									      <div class="caption">
+									      	<% s = favor.descripcion[0..140] %>
+									      	<% if s.length == 141 %>
+									      		<% s[141..143] = "..." %>
+									      	<% end %>
+									      	<p><%= s %></p>
+									        <p>
+									        	<% if current_usuario != nil && current_usuario.id == favor.usuario_id %>
+									        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
+									        		<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %>
+									        		<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+														  <div class="modal-dialog" role="document">
+														    <div class="modal-content msg">
+														      <div class="modal-body">
+														        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés borrar el favor?</h4>
+														      </div>
+														      <div class="modal-footer">
+														        <%= link_to "Eliminar", favor, method: :delete, class: "btn btn-danger" %>
+														        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+												<% else %>
+													<%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %>
+													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
+									        	<% end %>							        	
+									        </p>
+									        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
+									      </div>
+									    </div>
+									  </div>
+								</div>
+							</td>
+						</tr>	
+					<% end %>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>

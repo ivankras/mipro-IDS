@@ -17,6 +17,10 @@ if false
 	Logro.create(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
 	Logro.create(id: 8000, nombre: "Sin Logro", puntaje_min: -8000, puntaje_max: 7999, activo: false)
 
+end
+
+if false
+	
 	f = Favor.count
 
 	#Favor.destroy_all
