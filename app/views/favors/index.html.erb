@@ -11,28 +11,6 @@
 	<br>
 </div-->
 <div>
-	<%= form_tag(favors_path, :method => "get", id: "order-form") do %>
-		<div class="form-group text-left" id="Fechas">
-			<select name="orden">
-				<% if (params[:orden] == "Most") %>
-					<option value="Fecha">Fecha</option>
-					<option value="Most" selected>Más visitas</option>
-					<option value="Less">Menos visitas</option>
-				<% end %>
-				<% if params[:orden] == "Less" %>
-					<option value="Fecha">Fecha</option>
-					<option value="Most">Más visitas</option>
-					<option value="Less" selected>Menos visitas</option>
-				<% end %>
-				<% if params[:orden] == "Fecha" || (params[:orden] == nil) %>
-					<option value="Fecha" selected>Fecha</option>
-					<option value="Most">Más visitas</option>
-					<option value="Less">Menos visitas</option>
-				<% end %>
-			</select>
-			<%= submit_tag "Ordenar", :name => nil, class: "confirmationb-btn btn btn-warning favor_btn" %>
-		</div>
-	<% end %>
 	<div class="container-fluid">
 		<div class= "row">
 			<div class= "col-md-3">
@@ -55,7 +33,16 @@
 							</div>
 						<% end %>
 					<% end %>
-					<% @favors.where(activo: true).each do |favor| %>
+					<% if (params[:orden] == "Most") %>
+						<% favors = @favors.where(activo: true).mostv %>
+					<% end %>
+					<% if (params[:orden] == "Less") %>
+						<% favors = @favors.where(activo: true).lessv %>
+					<% end %>
+					<% if ((params[:orden] == "Fecha") || (params[:orden] == nil)) %>
+						<% favors = @favors.where(activo: true) %>
+					<% end %>
+					<% favors.each do |favor| %>
 						<tr>
 							<td style='border-top:none'>
 								<div class="container well">
@@ -97,7 +84,7 @@
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	
 									        </p>
-									        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
+									        <p class="text-right"><small><%= favor.visitas %> visitas | <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 									      </div>
 									    </div>
 									  </div>
