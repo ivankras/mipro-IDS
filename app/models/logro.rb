@@ -6,9 +6,13 @@ class Logro < ActiveRecord::Base
 	validate :rango, :minimoMenorQueMaximo
 
 	def rango
-      minAbs = Logro.where(activo: true).first.puntaje_min
-      maxAbs = Logro.where(activo: true).first.puntaje_max
-      val = puntaje_min>minAbs || puntaje_max<maxAbs
+      if Logro.all.count>0
+        minAbs = Logro.where(activo: true).first.puntaje_min
+        maxAbs = Logro.where(activo: true).first.puntaje_max
+        val = puntaje_min>minAbs || puntaje_max<maxAbs
+      else
+        val = true
+      end
     	Logro.where(activo: true).each do |logro|
           #pert = (id != logro.id) && (puntaje_max.between?(logro.puntaje_min,logro.puntaje_max)||puntaje_min.between?(logro.puntaje_min,logro.puntaje_max))
       		#pert = ((puntaje_max>=logro.puntaje_min && puntaje_max<=logro.puntaje_max)||(puntaje_min>=logro.puntaje_min && puntaje_min<=logro.puntaje_max))

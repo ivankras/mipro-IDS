@@ -10,6 +10,7 @@
   helper_method :isLogged?
   helper_method :howManyPoints?
   helper_method :enLogro
+  #helper_method :all
 
   # Determina si el usuario actual es administrador del sitio.
   def isAdmin?
@@ -41,23 +42,29 @@
   end
 
   def enLogro(puntaje)
+    if current_usuario != nil
+      idAnt = current_usuario.logro_id
+    end
     id = 8000
     pert = false
     Logro.where(activo: true).each do |logro|
-          lmin = logro.puntaje_min
-          lmax = logro.puntaje_max
-          pert = (puntaje >= lmin) && (puntaje <= lmax)
-          if pert
-            id = logro.id
-            break
-          end   
+        lmin = logro.puntaje_min
+        lmax = logro.puntaje_max
+        pert = (puntaje >= lmin) && (puntaje <= lmax)
+        if pert
+          id = logro.id
+          break
+        end   
+    end
+    if !pert
+      if defined? Logro.find(id)
+        Logro.find_or_create_by(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
       end
-      if !pert
-        if defined? Logro.find(id)
-          Logro.find_or_create_by(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
-        end
-      end
-      return id
+    end
+    if idAnt != nil && (Logro.find(idAnt).usuarios.count == 0)
+      Logro.find(idAnt).destroy
+    end
+    return id
   end
   #current_usuario.logro_id =enLogro(current_usuario.puntos)
 

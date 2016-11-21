@@ -1,10 +1,22 @@
 <div>
+	<%= form_tag(favors_path, :method => "get", id: "search-form") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
+		||
+		<%= text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
+		||
+		<%= submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
+		||
+		<%= link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
+	<% end %>
+	<br>
+</div>
+<div>
 	<div class="container">
 		<table class="table table-condensed">
 			<h2 class="titulo_form_l text-center"><b>Mis favores</b></h2>
 			<% @favors.each do |favor| %>
 				<tr>
-					<td>
+					<td style='border-top:none'>
 						<div class="container well">
 							<div class="row">
 							  <div class="col-md-8 col-md-offset-2">

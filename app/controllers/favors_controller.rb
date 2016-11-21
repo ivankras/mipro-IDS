@@ -1,8 +1,10 @@
 class FavorsController < ApplicationController
 
 	def index
-		current_usuario.logro_id = enLogro(current_usuario.puntos)
-		current_usuario.save
+		if current_usuario != nil && !isAdmin?
+			current_usuario.logro_id = enLogro(current_usuario.puntos)
+			current_usuario.save
+		end
 		@favors = Favor.all
 		if params[:search]
 		   @favors = Favor.search(params[:search], params[:searchc]).order("created_at DESC")
@@ -70,6 +72,10 @@ class FavorsController < ApplicationController
 		#favor.save
 		#Acá se borra físicamente el favor
 		Favor.destroy(params[:id])
+		current_usuario.puntos += 1
+    	current_usuario.save
+    	current_usuario.logro_id = enLogro(current_usuario.puntos)
+		current_usuario.save
 		flash[:success] = "El favor ha sido borrado"
 		redirect_to(favors_path)
 	end

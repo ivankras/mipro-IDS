@@ -1,0 +1,33 @@
+<div class="container-fluid">
+	<div class="row perfil_up">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="text-left"> <%= @usuario.nombre %> <%= @usuario.apellido %> - Perfil </h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 perfil_foto">
+				<%# if ((@usuario.foto_url == "") || (@usuario.foto_url == nil)) %>
+					<%= image_tag "logo.png", title: "Logo", size: "150x150" %>
+				<%# else %>
+					<%# image_tag @usuario.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
+				<%# end %>
+				<% if isAdmin? %>
+					<p class= "perfil_adm"><strong>Administrador</strong></p>
+				<%end%>
+			</div>
+			<div class="col-md-6 perfil_desc">
+				<ul class= "text-justify">
+					<li>Sexo: <%= @usuario.sexo %></li><br>
+					<li>Fecha de nacimiento: <%= @usuario.fecha_nacimiento %></li><br>
+					<li>Teléfono: +<%= @usuario.telefono %></li><br>
+					<li>Email: <%= @usuario.email %></li><br>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div>
+		<h3>Cancelar mi cuenta</h3>
+      	<p>¿No conforme? <%= render 'usuarios/registrations/shutdownbutton' %></p>
+    </div>
+</div>
