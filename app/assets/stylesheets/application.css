@@ -81,6 +81,14 @@ header .navbar-header>img {
     margin-right: 15px; 
 }
 
+.confirmationb-btn{
+    width: 140px;
+    height: 32px;
+    margin-left: 0px; 
+    margin-right: 0px; 
+}
+
+
 header .navbar-brand .format-gauchada{
   margin-top: 70px;
   font-size: 40px;

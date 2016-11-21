@@ -4,6 +4,9 @@ class Favor < ActiveRecord::Base
 	has_many :comentario
 	validates :titulo, length: {minimum: 1, maximum: 50}
 	validates :titulo, uniqueness: true
-	default_scope -> { order ("updated_at desc")} 
-	scope :recientes,-> { order ("created_at desc").limit(5) }
+	default_scope -> { order ("created_at desc")} 
+	#scope :recientes,-> { order ("created_at desc").limit(5) }
+	def self.search(search, searchc)
+  		where("titulo ILIKE ? AND ciudad ILIKE ?", "%#{search}%", "%#{searchc}%") 
+	end
 end

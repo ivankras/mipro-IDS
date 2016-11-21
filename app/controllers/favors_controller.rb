@@ -4,6 +4,12 @@ class FavorsController < ApplicationController
 		current_usuario.logro_id = enLogro(current_usuario.puntos)
 		current_usuario.save
 		@favors = Favor.all
+		if params[:search]
+		   @favors = Favor.search(params[:search], params[:searchc]).order("created_at DESC")
+		else
+			@favors = Favor.all.order("created_at DESC")
+		end
+	
 	end
 
 	def show
