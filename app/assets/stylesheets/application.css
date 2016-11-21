@@ -82,12 +82,15 @@ header .navbar-header>img {
 }
 
 .confirmationb-btn{
-    width: 140px;
+    width: 200px;
     height: 32px;
     margin-left: 0px; 
     margin-right: 0px; 
 }
 
+.sel{
+  width: 200px;
+}
 
 header .navbar-brand .format-gauchada{
   margin-top: 70px;

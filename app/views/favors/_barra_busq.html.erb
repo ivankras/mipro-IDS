@@ -6,15 +6,12 @@
         <%= text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
         <br><br>
         <%= submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
-        <br><br>
-        <%= link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
       <!--<% end %>-->
-      <br>
-      <br>
+      <br><br>
     <!--</div>-->
     <!--<%= form_tag(favors_path, :method => "get", id: "order-form") do %>-->
     <!--<div class="form-group text-left" id="Ordenes">-->
-      <select name="orden">
+      <select name="orden" width="200" style="width: 200px">
         <% if (params[:orden] == "Most") %>
           <option value="Fecha">Fecha</option>
           <option value="Most" selected>Más visitas</option>
@@ -31,7 +28,11 @@
           <option value="Less">Menos visitas</option>
         <% end %>
       </select>
+      <br>
+      <br>
       <%= submit_tag "Ordenar", :name => nil, class: "confirmationb-btn btn btn-warning " %>
+      <br><br>
+      <%= link_to "Reiniciar", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
       <% end %>
     </div>
   
