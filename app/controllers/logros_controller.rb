@@ -61,7 +61,6 @@ class LogrosController < ApplicationController
 		#Logro.destroy(params[:id])
 		flash[:success] = "El logro ha sido borrado"
 		redirect_to(logros_path)
-		# Falta enviar mensaje de confirmación
 	end
 
 end

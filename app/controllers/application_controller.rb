@@ -54,7 +54,7 @@
       end
       if !pert
         if defined? Logro.find(id)
-          Logro.create(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
+          Logro.find_or_create_by(id: id, nombre: "Usuarios sin logro", puntaje_min: -8000, puntaje_max: -7999, activo: false)
         end
       end
       return id
@@ -65,7 +65,7 @@
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up)do |usuario_params|
-    	usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password)
+    	usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :logro_id)
   	end
     devise_parameter_sanitizer.permit(:account_update)do |usuario_params|
       usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :current_password)

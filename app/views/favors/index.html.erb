@@ -2,7 +2,7 @@
 	<div class="container">
 		<table class="table table-condensed">
 
-			<% @favors.each do |favor| %>
+			<% @favors.where(activo: true).each do |favor| %>
 				<tr>
 					<td>
 						<div class="container well">

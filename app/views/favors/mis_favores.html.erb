@@ -9,7 +9,7 @@
 							<div class="row">
 							  <div class="col-md-8 col-md-offset-2">
 							    <div class="thumbnail">
-							    <h3 class="text-center"> <%= favor.titulo %> </h3>
+							    <h3 class="text-center"> <%= favor.titulo %> <%if !favor.activo %>(finalizado)<%end%></h3>
 							      	<% if favor.foto_url == nil %>
 										<%= image_tag "logo.png"%>
 									<% else %>

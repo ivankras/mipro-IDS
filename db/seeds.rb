@@ -8,11 +8,12 @@
 
 
 #puts "Creo algunos logros"
-#Logro.find_or_create_by(nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
-#Logro.find_or_create_by(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
-#Logro.find_or_create_by(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 30)
-#Logro.find_or_create_by(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
-#Logro.find_or_create_by(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
+#Logro.create(id: 1, nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
+#Logro.create(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
+#Logro.create(nombre: "Buena Persona", puntaje_min: 21, puntaje_max: 30)
+#Logro.create(nombre: "Capo", puntaje_min: 31, puntaje_max: 100)
+#Logro.create(nombre: "Juan Pablo II", puntaje_min: 101, puntaje_max: 2000)
+#Logro.create(id: 8000, nombre: "Sin Logro", puntaje_min: -8000, puntaje_max: 7999, activo: false)
 
 #f = Favor.count
 
@@ -26,6 +27,19 @@
 #	The triumph for Mr. Trump, 70, a real estate developer-turned-reality television star with no government experience, was a powerful rejection of the establishment forces that had assembled against him, from the world of business to government, and the consensus they had forged on everything from trade to immigration.",
 #	ciudad: "New York",
 #	},
+#   {
+#   titulo: "Ecuación sencilla",
+#   foto_url: "http://static.vix.com/es/sites/default/files/styles/large/public/btg/curiosidades.batanga.com/files/7-hermosas-ecuaciones-matematicas-que-tienes-que-conocer-6.jpg?itok=JsP0xHhe.jpg",
+#   descripcion: "Por favor, necesito algún matemático que pueda resolverme esta duda. Estoy hace unos días tratando de resolver esta sencilla ecuación, que está resultando no ser tan sencilla para mí. Gracias por su colaboración",
+#   ciudad: "Londres, Catamarca",
+#   },
+#   {
+#   titulo: "¡Encontrar al payaso!",
+#   foto_url: "http://i2.esmas.com/2016/04/26/858946/eso-el-payaso-624x351.jpg",
+#   descripcion: "Este payaso se escapó el día viernes último de la facultad de Informática. Dicen que anda paseando en el Ecobus. Necesito que lo encuentren y lo reporten a la oficina de alumnos. ¿Voluntarios?",
+#   ciudad: "La Plata",
+#   usuario_id: 8000,
+#   },
 #	{
 #	titulo: "Favor Sin Foto",
 #	descripcion: "Dale a tu cuerpo alegria macarena que tu cuerpo es pa darle alegria y cosa buena",
@@ -65,5 +79,5 @@ puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentar
 #Usuario.create(nombre: "Rocío", apellido: "Madou", sexo: "femenino", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, email: "rocio.madou@hotmail.com", password: "Abracadabra", admin: true); 
 #Usuario.create(nombre: "Iván", apellido: "Krasowski Bissio", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, email: "ivankras@hotmail.com", password: "Abracadabra", admin: true); 
 #Usuario.create(nombre: "Gonzalo Julián", apellido: "Poch", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, email: "gonzalopoch@hotmail.com", password: "Abracadabra", admin: true); 
-#Usuario.create(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "aa@hotmail.com", password: "Abracadabra");
-#Usuario.create(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "bb@hotmail.com", password: "Abracadabra");
+#Usuario.create(nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "aa@hotmail.com", password: "Abracadabra", logro_id: 1);
+#Usuario.create(nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "bb@hotmail.com", password: "Abracadabra", logro_id: 1);

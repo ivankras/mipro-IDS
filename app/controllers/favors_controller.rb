@@ -1,6 +1,8 @@
 class FavorsController < ApplicationController
 
 	def index
+		current_usuario.logro_id = enLogro(current_usuario.puntos)
+		current_usuario.save
 		@favors = Favor.all
 	end
 
@@ -60,14 +62,15 @@ class FavorsController < ApplicationController
 		#Acá se borra lógicamente el favor
 		#favor.activo = false
 		#favor.save
-		#Acá se borra físicamente el logro
-		#Favor.destroy(params[:id])
+		#Acá se borra físicamente el favor
+		Favor.destroy(params[:id])
 		flash[:success] = "El favor ha sido borrado"
 		redirect_to(favors_path)
-		# Falta enviar mensaje de confirmación
 	end
 
 	def mis_favores
 		@favors = current_usuario.favors
 	end
+
+	
 end
