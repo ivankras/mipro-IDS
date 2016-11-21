@@ -16,6 +16,12 @@ class FavorsController < ApplicationController
 
 	def show
 		@favor = Favor.find(params[:id])
+		if ((current_usuario != nil) && (@favor.usuario_id == current_usuario.id))
+			return
+		else
+			@favor.visitas += 1
+			@favor.save
+		end
 	end
 
 	def new
@@ -45,7 +51,7 @@ class FavorsController < ApplicationController
 		      	redirect_to(new_favor_path, alert: "Error en el título (existente o muy largo)")
 		    end
 		else
-			redirect_to(root_path, alert: "No tienes los suficientes puntos de logro para pedir un favor")
+			redirect_to(root_path, alert: "No tienes los suficientes puntos de logro para pedir un favor.")
 		end
 	end
 
@@ -57,11 +63,11 @@ class FavorsController < ApplicationController
 		foto = params[:favor][:foto_url]
 	    @favor = Favor.find(id)
 	    if @favor.update(titulo: ttl, descripcion: desc, ciudad: ciu, foto_url: foto)
-	    	flash[:success] = "El favor #{ttl} ha sido editado correctamente"
+	    	flash[:success] = "El favor '#{ttl}' ha sido editado correctamente."
 	      	#redirect_to(mis_favores_favors_path)
 	    	redirect_to(favors_path)
 	    else
-	     	redirect_to(edit_favor_path(@favor), alert: "Error en el título (existente o muy largo)")
+	     	redirect_to(edit_favor_path(@favor), alert: "Error en el título (existente o muy largo).")
 	    end
 	end
 
@@ -76,7 +82,7 @@ class FavorsController < ApplicationController
     	current_usuario.save
     	current_usuario.logro_id = enLogro(current_usuario.puntos)
 		current_usuario.save
-		flash[:success] = "El favor ha sido borrado"
+		flash[:success] = "El favor ha sido eliminado."
 		redirect_to(favors_path)
 	end
 
