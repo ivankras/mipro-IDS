@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118142720) do
+ActiveRecord::Schema.define(version: 20161121175340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161118142720) do
     t.integer  "comentario_id"
     t.integer  "usuario_id",             default: -1
     t.boolean  "activo",                 default: true
+    t.integer  "visitas",                default: 0
   end
 
   create_table "logros", force: :cascade do |t|

@@ -1,14 +1,32 @@
 <div>
 	<%= form_tag(favors_path, :method => "get", id: "search-form") do %>
 		<%= text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
-		||
 		<%= text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
-		||
 		<%= submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
-		||
 		<%= link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
 	<% end %>
-	<br>
+	<%= form_tag(favors_path, :method => "get", id: "order-form") do %>
+		<div class="form-group text-left" id="Fechas">
+			<select name="orden">
+				<% if (params[:orden] == "Most") %>
+					<option value="Fecha">Fecha</option>
+					<option value="Most" selected>Más visitas</option>
+					<option value="Less">Menos visitas</option>
+				<% end %>
+				<% if params[:orden] == "Less" %>
+					<option value="Fecha">Fecha</option>
+					<option value="Most">Más visitas</option>
+					<option value="Less" selected>Menos visitas</option>
+				<% end %>
+				<% if params[:orden] == "Fecha" || (params[:orden] == nil) %>
+					<option value="Fecha" selected>Fecha</option>
+					<option value="Most">Más visitas</option>
+					<option value="Less">Menos visitas</option>
+				<% end %>
+			</select>
+			<%= submit_tag "Ordenar", :name => nil, class: "confirmationb-btn btn btn-warning favor_btn" %>
+		</div>
+	<% end %>
 </div>
 <div>
 	<div class="container">
@@ -28,7 +46,17 @@
 					</div>
 				<% end %>
 			<% end %>
-			<% @favors.where(activo: true).each do |favor| %>
+			<% if params[:orden] == "Most" %>
+				<% favors = @favors.where(activo: true).mostv %>
+			<% end %>
+			<% if params[:orden] == "Less" %>
+				<% favors = @favors.where(activo: true).lessv %>
+			<% end %>
+			<% if ((params[:orden] == "Fecha") || (params[:orden] == nil)) %>
+				<% favors = @favors.where(activo: true) %>
+			<% end %>
+
+			<% favors.each do |favor| %>
 				<tr>
 					<td style='border-top:none'>
 						<div class="container well">
