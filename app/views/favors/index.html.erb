@@ -13,7 +13,21 @@
 <div>
 	<div class="container">
 		<table class="table table-condensed" border="0">
-
+			<% if (@favors.count == 0) %>
+				<% if ((params[:searchc] != "") && (params[:search] != "")) %>
+					<div class="alert alert-warning fade-in war-bar col-md-8">
+						<strong>No existen favores que se correspondan con los parámetros ingresados.</strong> Puedes reiniciar la búsqueda o modificar los parámetros.
+					</div>
+				<% elsif (params[:searchc]) != "" %>
+					<div class="alert alert-warning fade in war-bar">
+						<strong>No existen favores que se correspondan con la ciudad ingresada (<%= params[:searchc] %>).</strong> Puedes reiniciar la búsqueda o modificar el parámetro.
+					</div>
+				<% else %>
+					<div class="alert alert-warning fade in war-bar">
+						<strong>No existen favores que se correspondan con el título ingresado.</strong> Puedes reiniciar la búsqueda o modificar el parámetro.
+					</div>
+				<% end %>
+			<% end %>
 			<% @favors.all.each do |favor| %>
 				<tr>
 					<td style='border-top:none'>
