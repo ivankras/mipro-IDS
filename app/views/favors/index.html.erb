@@ -29,11 +29,20 @@
 							</div>
 						<% else %>
 							<div class="alert alert-warning fade in war-bar busqueda busqueda_error">
-								<strong>No existen favores que se correspondan con el título ingresado.</strong> <br>Puedes reiniciar la búsqueda o modificar el parámetro.
+								<strong>No existen favores que se correspondan con el título ingresado (<%= params[:search] %>).</strong> <br>Puedes reiniciar la búsqueda o modificar el parámetro.
 							</div>
 						<% end %>
 					<% end %>
-					<% @favors.where(activo: true).each do |favor| %>
+					<% if (params[:orden] == "Most") %>
+						<% favors = @favors.where(activo: true).mostv %>
+					<% end %>
+					<% if (params[:orden] == "Less") %>
+						<% favors = @favors.where(activo: true).lessv %>
+					<% end %>
+					<% if ((params[:orden] == "Fecha") || (params[:orden] == nil)) %>
+						<% favors = @favors.where(activo: true) %>
+					<% end %>
+					<% favors.each do |favor| %>
 						<tr>
 							<td style='border-top:none'>
 								<div class="container well">
@@ -75,7 +84,7 @@
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	
 									        </p>
-									        <p class="text-right"><small>| <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
+									        <p class="text-right"><small><%= favor.visitas %> visitas | <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 									      </div>
 									    </div>
 									  </div>
