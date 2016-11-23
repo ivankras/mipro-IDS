@@ -81,7 +81,7 @@
 														</div>
 												<% else %>
 													<% if current_usuario != nil && !isAdmin? %>
-														<%= link_to "Ofrecerme", favor_path(favor.id), class: "btn btn-warning" %>
+														<%= link_to "Ofrecerme", new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
 													<% end %>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	

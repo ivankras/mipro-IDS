@@ -107,7 +107,7 @@ body,html{
   }
 
   nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #CCC;
+    color: black;
     background-color: transparent;
   }
 
@@ -120,9 +120,10 @@ body,html{
   #bs-sidebar-navbar-collapse-1{
     text-align: center !important;
   }
+  
   .dropdown-menu{
     text-align: center !important;
-    background-color: rgba(179,90,0, 0.2) !important;
+    background-color: rgba(179,90,0, 0.1) !important;
   }
 
   .busqueda{
@@ -132,3 +133,14 @@ body,html{
   .busqueda_error{
     max-width: 650px;
   }
+
+  .navbar-default{
+    background-color: white !important;
+    border-color: white !important;
+  }
+
+  .open .dropdown-toggle{
+    background-color: rgba(179,90,0, 0.2) !important; 
+  }
+
+}
