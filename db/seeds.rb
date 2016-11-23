@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if false
+if true
 	
-	#Logro.destroy_all
+	Logro.destroy_all
 	puts "Creo algunos logros"
 	Logro.create(id: 1, nombre: "Promedio", puntaje_min: 0, puntaje_max: 10)
 	Logro.create(nombre: "Piola", puntaje_min: 11, puntaje_max: 20)
@@ -19,11 +19,11 @@ if false
 
 end
 
-if false
+if true
 	
 	f = Favor.count
 
-	#Favor.destroy_all
+	Favor.destroy_all
 	Favor.create!([{
 		titulo: "Donald Trump",
 		foto_url: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
@@ -66,7 +66,7 @@ if false
 	puts "Creo #{Favor.count - f} favores. Hay #{Favor.count} favores en total."
 
 
-	#Comentario.destroy_all
+	Comentario.destroy_all
 	c = Comentario.count
 	Comentario.create!([{
 		descripcion: "Qué tal?",
@@ -86,9 +86,9 @@ if false
 
 end
 
-if false
+if true
 
-	#Usuario.destroy_all
+	Usuario.destroy_all
 	puts "Creación de usuarios"
 	Usuario.create(id: 1, nombre: "Nancy", apellido: "Netramonti", sexo: "femenino", fecha_nacimiento: Date.new(1967,6,16), telefono: 542262106509, email: "nancy@gauchada.com", password: "abracadabra", admin: true); 
 	Usuario.create(id: 2, nombre: "Ulises", apellido: "Sunetri", sexo: "masculino", fecha_nacimiento: Date.new(1963,3,15), telefono: 542211097607, email: "ulises@gauchada.com", password: "abracadabra", admin: true); 
