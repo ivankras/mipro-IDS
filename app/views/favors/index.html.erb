@@ -49,19 +49,20 @@
 									<!--<div class="row">-->
 									  <div class="container well col-md-8 col-md-offset-0 thumbnail" style='background-color:white; border-color:black'>
 									    <!--<div class="thumbnail">-->
-									    <h3 class="text-center"> <%= favor.titulo %> </h3>
+									    <h3 class="text-center"> <%= favor.titulo %> </h3><br>
 									      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
 												<%= image_tag "logo.png"%>
 											<% else %>
 												<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
 											<% end %>
 									      <div class="caption">
+									      	<br>
 									      	<% s = favor.descripcion[0..140] %>
 									      	<% if s.length == 141 %>
 									      		<% s[141..143] = "..." %>
 									      	<% end %>
 									      	<p><%= s %></p>
-									        <p>
+									        <p><br>
 									        	<% if current_usuario != nil && current_usuario.id == favor.usuario_id %>
 									        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
 									        		<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %>
