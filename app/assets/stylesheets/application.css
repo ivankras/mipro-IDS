@@ -29,17 +29,17 @@ header .navbar-inverse{
 
 
 header .navbar-inverse .navbar-brand {
-    color: white;
-    font-size: 2em;
-    font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
-    font-weight: bold;
-    font-variant: normal;
-    height: 150px;
-  }
+  color: white;
+  font-size: 2em;
+  font-family: Helvetica, 'Gibson', sans-serif, Arial, sans-serif;
+  font-weight: bold;
+  font-variant: normal;
+  height: 150px;
+}
 header .navbar-header>img {
-    display: inline-block;
-    margin-top: 10px;
-  }
+  display: inline-block;
+  margin-top: 10px;
+}
 
 .session-sign{
   color: black;
@@ -76,24 +76,24 @@ header .navbar-header>img {
 }
 
 .confirmation-btn{
-    width: 120px;
-    height: 30px;
-    margin-left: 15px; 
-    margin-right: 15px; 
+  width: 120px;
+  height: 30px;
+  margin-left: 15px; 
+  margin-right: 15px; 
 }
 
 .confirmation-btn2{
-    width: 180px;
-    height: 30px;
-    margin-left: 15px; 
-    margin-right: 15px; 
+  width: 180px;
+  height: 30px;
+  margin-left: 15px; 
+  margin-right: 15px; 
 }
 
 .confirmationb-btn{
-    width: 200px;
-    height: 32px;
-    margin-left: 0px; 
-    margin-right: 0px; 
+  width: 200px;
+  height: 32px;
+  margin-left: 0px; 
+  margin-right: 0px; 
 }
 
 .sel{
