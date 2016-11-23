@@ -1,4 +1,8 @@
 class Usuario < ActiveRecord::Base
+  
+  belongs_to :logro
+  has_many :favors, dependent: :destroy
+  has_many :ofrecimiento, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,7 +10,6 @@ class Usuario < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validate :valid_date, :is_eighteen
-  validates :nombre, :apellido, :telefono,:fecha_nacimiento, presence: true 
   
   def is_eighteen
    if fecha_nacimiento
@@ -20,7 +23,7 @@ class Usuario < ActiveRecord::Base
     end
   end
 
-  has_many :favors, dependent: :destroy
-  belongs_to :logro
+  
+  
 
 end

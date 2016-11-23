@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resources :usuarios, :only => [:show]
   resources :logros
+  resources :ofrecimientos
   resources :favors do
     get "mis_favores", on: :collection
   end

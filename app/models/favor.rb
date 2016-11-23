@@ -1,6 +1,7 @@
 class Favor < ActiveRecord::Base
 	belongs_to :usuario
 	has_one :resena
+	has_many :ofrecimiento, dependent: :destroy
 	has_many :comentario, dependent: :destroy
 	validates :titulo, length: {minimum: 1, maximum: 50}
 	validates :titulo, uniqueness: true

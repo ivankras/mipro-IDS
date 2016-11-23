@@ -1,0 +1,22 @@
+<div class="well container-fluid text-center">
+	<%= form_for @ofrecimiento do |o| %>
+		<form class="horizontal">
+			<div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Características del cumplimiento del favor. ¡No te limites!">
+				<%= o.label "Descripción", class: "form_lbl_dsc" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="La altura del campo se puede modificar desde la esquina inferior derecha">
+				<%= o.text_area :descripcion, required: true, placeholder: 'Descripción del cumplimiento del favor', class: "areat form-control"%></span>
+			</div>
+			<%= o.hidden_field :favor_id, value: @favor_id %>
+			<div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Fecha límite de finalización del cumplimiento del favor">
+				<%= o.label :fecha_limite, class: "" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="Fecha límite de finalización del cumplimiento del favor">
+				<%= o.date_field :fecha_limite, required: true, class: "form-control"  %></span>
+			</div>	
+			<br>
+			<%= o.submit 'Guardar', class: "btn btn-success actions confirmation-btn"%>
+			<%= link_to "Cancelar", favors_path, class: "btn btn-danger confirmation-btn" %>
+		</form>
+	<% end %>	
+</div>
