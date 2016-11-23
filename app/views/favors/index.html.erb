@@ -45,10 +45,10 @@
 					<% favors.each do |favor| %>
 						<tr>
 							<td style='border-top:none'>
-								<div class="container well">
-									<div class="row">
-									  <div class="col-md-8 col-md-offset-2">
-									    <div class="thumbnail">
+								<!--<div class="container well">-->
+									<!--<div class="row">-->
+									  <div class="container well col-md-8 col-md-offset-0 thumbnail" style='background-color:white; border-color:black'>
+									    <!--<div class="thumbnail">-->
 									    <h3 class="text-center"> <%= favor.titulo %> </h3>
 									      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
 												<%= image_tag "logo.png"%>
@@ -86,9 +86,9 @@
 									        </p>
 									        <p class="text-right"><small><%= favor.visitas %> visitas | <%= favor.ciudad %> | <%= localize(favor.created_at, :format => :long) %></small></p>
 									      </div>
-									    </div>
-									  </div>
-								</div>
+									    <!--</div>-->
+									  <!--</div>-->
+								<!--</div>-->
 							</td>
 						</tr>	
 					<% end %>
