@@ -10,6 +10,8 @@
   helper_method :isLogged?
   helper_method :howManyPoints?
   helper_method :enLogro
+  helper_method :ofreci
+  helper_method :elegido
   #helper_method :all
 
   # Determina si el usuario actual es administrador del sitio.
@@ -67,6 +69,19 @@
     return id
   end
   #current_usuario.logro_id =enLogro(current_usuario.puntos)
+
+  def ofreci (idf, idu)
+    a=false
+    Favor.find(idf).ofrecimientos.each do |o|
+      break if a
+      a = (idu == o.usuario_id)
+    end
+    return a
+  end
+
+  def elegido (idf)
+    return Favor.find(idf).id_ofrecimiento_electo != nil
+  end
 
   protected
 

@@ -33,9 +33,11 @@
 							  </div>
 							</div>
 					<% else %>
-						<% if current_usuario != nil && !isAdmin? %>
+
+						<% if current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
 							<%= link_to "Ofrecerme", new_ofrecimiento_path(favor_id:@favor.id), class: "btn btn-warning" %>
 						<%end%>
+
 						<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %> 
 		        	<% end %>					
 				</div>
@@ -57,7 +59,7 @@
 				<h3> Comentarios </h3>
 				<table class="table table-condensed " >
 					<% i = 1 %>
-					<% @favor.comentario.each do |c| %>
+					<% @favor.comentarios.each do |c| %>
 						<tr>
 							<td>
 								<%= i %>
