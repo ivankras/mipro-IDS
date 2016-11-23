@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="row favor_up">
+	<div class="row favor_up panel panel-default">
 		<div class="row">
 			<div class="col-md-6">
 				<h1 class="text-left"> <%= @favor.titulo %> </h1>
@@ -33,7 +33,9 @@
 							  </div>
 							</div>
 					<% else %>
-						<%= link_to "Ofrecerme", favor_path(@favor.id), class: "btn btn-warning" %>
+						<% if current_usuario != nil && !isAdmin? %>
+							<%= link_to "Ofrecerme", favor_path(@favor.id), class: "btn btn-warning" %>
+						<%end%>
 						<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %> 
 		        	<% end %>					
 				</div>

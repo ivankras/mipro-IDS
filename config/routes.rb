@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'bienvenida/index'
 
   devise_for :usuarios
   resources :usuarios, :only => [:show]

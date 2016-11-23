@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid panel panel-default">
 	<div class="row perfil_up">
 		<div class="row">
 			<div class="col-md-6">
@@ -7,23 +7,42 @@
 		</div>
 		<div class="row">
 			<div class="col-md-5 perfil_foto">
-				<%# if ((@usuario.foto_url == "") || (@usuario.foto_url == nil)) %>
-					<%= image_tag "logo.png", title: "Logo", size: "150x150" %>
-				<%# else %>
-					<%# image_tag @usuario.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
-				<%# end %>
 				<% if isAdmin? %>
-					<p class= "perfil_adm"><strong>Administrador</strong></p>
+					<%# if ((@usuario.foto_url == "") || (@usuario.foto_url == nil)) %>
+						<%= image_tag "logo.png", title: "Logo", size: "150x150" %>
+					<%# else %>
+						<%# image_tag @usuario.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
+					<%# end %>
+					<p class= "perfil_adm"><strong><em>Administrador</em></strong></p>
+				<%else%>
+					<%# if ((@usuario.foto_url == "") || (@usuario.foto_url == nil)) %>
+						<%= image_tag "logo.png", title: "Logo", size: "150x150" %>
+					<%# else %>
+						<%# image_tag @usuario.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
+					<%# end %>
+					<p class= "perfil_adm"><strong><em></em></strong></p>
 				<%end%>
 			</div>
-			<div class="col-md-6 perfil_desc">
-				<p><span class="perfil_txt">Sexo: </span><em><%= @usuario.sexo %></em></p><br>
-				<p><span class="perfil_txt">Fecha de nacimiento: </span><em><%= @usuario.fecha_nacimiento %></em></p><br>
-				<p><span class="perfil_txt">Teléfono: </span><em>+<%= @usuario.telefono %></em></p><br>
-				<p><span class="perfil_txt">Email: </span><em><%= @usuario.email %></em></p><br>
-				<% if !isAdmin? %>
-					<p><span class="perfil_txt">Tenés</span> <%= @usuario.puntos %> <span class="perfil_txt">puntos y pertenecés al logro</span> <em>"<%= @usuario.logro.nombre %>"</em></li><br>
-				<% end %>
+			<div class="col-md-6">
+				<table class="table perfil_desc">
+					<tr>
+						<td><span class="perfil_txt">Sexo: </span></td><td><em><%= @usuario.sexo %></em></td>
+					</tr>
+					<tr>
+						<td><span class="perfil_txt">Fecha de nacimiento: </span></td><td><em><%= @usuario.fecha_nacimiento %></em></td>
+					</tr>
+					<tr>
+						<td><span class="perfil_txt">Teléfono: </span></td><td><em>+<%= @usuario.telefono %></em></td>
+					</tr>
+					<tr>
+						<td><span class="perfil_txt">Email: </span></td><td><em><%= @usuario.email %></em></td>
+					</tr>
+						<% if !isAdmin? %>
+							<tr>
+								<td colspan="2"><span class="perfil_txt">Tenés</span> <%= @usuario.puntos %> <span class="perfil_txt">puntos y pertenecés al logro </span> <em>"<%= @usuario.logro.nombre %>"</em></td>
+							</tr>
+						<% end %>
+				</table>
 			</div>
 		</div>
 	</div>
