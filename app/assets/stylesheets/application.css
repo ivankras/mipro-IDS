@@ -127,9 +127,10 @@ header .navbar-brand .format-gauchada{
   background-color: #ff8d2f;
   border-color: #e57416;
 }
- .form-control{
+
+.form-control{
   background-color:white !important;
- }
+}
 
 .well{
   background-color: #fbf8f4 !important;
