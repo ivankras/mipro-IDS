@@ -17,15 +17,13 @@
 				<%end%>
 			</div>
 			<div class="col-md-6 perfil_desc">
-				<ul class= "text-justify">
-					<li>Sexo: <em><%= @usuario.sexo %></em></li><br>
-					<li>Fecha de nacimiento: <em><%= @usuario.fecha_nacimiento %></em></li><br>
-					<li>Teléfono: <em>+<%= @usuario.telefono %></em></li><br>
-					<li>Email: <em><%= @usuario.email %></em></li><br>
-					<% if !isAdmin? %>
-						<li>Tenés <%= @usuario.puntos %> puntos y pertenecés al logro <em>"<%= @usuario.logro.nombre %>"</em></li><br>
-					<% end %>
-				</ul>
+				<p><span class="perfil_txt">Sexo: </span><em><%= @usuario.sexo %></em></p><br>
+				<p><span class="perfil_txt">Fecha de nacimiento: </span><em><%= @usuario.fecha_nacimiento %></em></p><br>
+				<p><span class="perfil_txt">Teléfono: </span><em>+<%= @usuario.telefono %></em></p><br>
+				<p><span class="perfil_txt">Email: </span><em><%= @usuario.email %></em></p><br>
+				<% if !isAdmin? %>
+					<p><span class="perfil_txt">Tenés</span> <%= @usuario.puntos %> <span class="perfil_txt">puntos y pertenecés al logro</span> <em>"<%= @usuario.logro.nombre %>"</em></li><br>
+				<% end %>
 			</div>
 		</div>
 	</div>
