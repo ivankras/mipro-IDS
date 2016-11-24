@@ -16,7 +16,7 @@
 			<div class= "col-md-3">
 				<%= render 'barra_busq' %>
 			</div>
-			<div class= "col-md-9">
+			<div class= "col-md-9 centrar">
 				<table class="table table-condensed" border="0">
 					<% if (@favors.count == 0) %>
 						<% if ((params[:searchc] != "") && (params[:search] != "")) %>
@@ -83,6 +83,8 @@
 												<% else %>
 													<% if current_usuario != nil && !isAdmin? && !ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
 														<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
+													<% elsif ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
+														<%= link_to "Eliminar ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id)) , method: :delete, class: "btn btn-danger" %>
 													<%end%>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	

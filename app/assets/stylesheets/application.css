@@ -137,4 +137,6 @@ header .navbar-brand .format-gauchada{
   //border-color: white !important;
  }
  
-
+.centrar{
+  margin: 0 auto !important;
+}

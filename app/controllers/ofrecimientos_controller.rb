@@ -22,7 +22,11 @@ class OfrecimientosController < ApplicationController
 	end
 
 	def destroy
-
+		ofrecimiento=Ofrecimiento.find(params[:id])
+		#Acá se borra físicamente el ofrecimiento
+		ofrecimiento.destroy
+		flash[:success] = "El ofrecimiento ha sido eliminado."
+		redirect_to(favors_path)
 	end
 
 end
