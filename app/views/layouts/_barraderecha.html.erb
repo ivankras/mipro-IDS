@@ -18,7 +18,8 @@
               <li><%= link_to "Ver", usuario_path%></li>
               <li class="divider"></li>
               <li><%= link_to "Modificar", edit_usuario_registration_path%></li>
-              <li><%= link_to "Eliminar cuenta", delete_usuario_path%></li>
+              <li class="divider"></li>
+              <li><%= link_to "Eliminar cuenta", delete_usuario_path, class: "deleting" %></li>
               <%if !isAdmin?%>  
                 <li class="divider"></li>
                 <li><%= link_to "Comprar puntos", new_punto_compra_path%></li>
