@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :usuarios
-  resources :usuarios, :only => [:show]
+  resource :usuario, :only => [:show] do
+    get "delete", on: :member
+  end
   resources :logros
   resources :ofrecimientos
   resources :favors do
