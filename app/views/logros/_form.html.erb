@@ -1,22 +1,28 @@
 <div class="well container-fluid text-center">
-<%= form_for @logro do |l| %>
-			<span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
-			<%= l.label :nombre, class: "form_lbl_n" %></span>
-			<span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
-			<%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro',class: "submitter" %></span>
-			<br><br>
-			<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
-			<%= l.label "Puntaje mínimo", class: "form_lbl_min" %></span>
-			<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
-			<%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo', class: "submitter"  %></span>
-			<br><br>
-			<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
-			<%= l.label "Puntaje máximo", class: "form_lbl_max" %></span>
-			<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
-			<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo',class: "submitter"  %></span>
-			<br><br>
+	<%= form_for @logro do |l| %>
+		<form class="horizontal">
+		    <div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+				<%= l.label :nombre, class: "form_lbl_n" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="Sólo letras y espacios">
+				<%= l.text_field :nombre, required: true, placeholder: 'Nombre del logro',class: "submitter" %></span>
+			</div>
+			<div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
+				<%= l.label "Puntaje mínimo", class: "form_lbl_min" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
+				<%= l.number_field :puntaje_min, required: true, placeholder: 'Puntaje mínimo', class: "submitter"  %></span>
+			</div>
+			<div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
+				<%= l.label "Puntaje máximo", class: "form_lbl_max" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="Mínimo mayor que máximo. No se admiten valores contemplados en otros logros">
+				<%= l.number_field :puntaje_max, required: true, placeholder: 'Puntaje máximo',class: "submitter"  %></span>
+			</div>
+			<br>
 			<%= l.submit 'Guardar', class: "btn btn-success actions confirmation-btn"%>
 			<%= link_to "Cancelar", logros_path, class: "btn btn-danger confirmation-btn" %>
-<% end %>
+		</form>
+	<% end %>
 		
 </div>
