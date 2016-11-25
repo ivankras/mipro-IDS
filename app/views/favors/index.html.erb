@@ -84,7 +84,7 @@
 													<% if current_usuario != nil && !isAdmin? && !ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
 														<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
 													<% elsif current_usuario != nil && ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
-														<%= link_to "Eliminar ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id)) , method: :delete, class: "btn btn-danger" %>
+														<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id), favor_id:favor.id) , class: "btn btn-default", style: "color: #FF8119" %>
 													<%end%>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	

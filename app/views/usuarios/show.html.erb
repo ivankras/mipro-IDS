@@ -29,7 +29,7 @@
 						<td><span class="perfil_txt">Sexo: </span></td><td><em><%= @usuario.sexo %></em></td>
 					</tr>
 					<tr>
-						<td><span class="perfil_txt">Fecha de nacimiento: </span></td><td><em><%= @usuario.fecha_nacimiento %></em></td>
+						<td><span class="perfil_txt">Fecha de nacimiento: </span></td><td><em><%= localize(@usuario.fecha_nacimiento, :format => :long)%></em></td>
 					</tr>
 					<tr>
 						<td><span class="perfil_txt">Teléfono: </span></td><td><em>+<%= @usuario.telefono %></em></td>

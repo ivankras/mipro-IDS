@@ -1,0 +1,15 @@
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalOf_<%= @ofrecimiento.id %>">Eliminar</button>
+	<div class="modal fade" id="modalOf_<%= @ofrecimiento.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-ofrecimiento">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content msg">
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="borrando-ofrecimiento">¿Estás seguro/a de que querés eliminar el ofrecimiento?</h4>
+	      </div>
+	      <div class="modal-footer">
+	        	<%= link_to "Eliminar ",  ofrecimiento_path(@ofrecimiento.id) , method: :delete, class: "btn btn-danger" %>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>

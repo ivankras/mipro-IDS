@@ -1,5 +1,14 @@
 class OfrecimientosController < ApplicationController
 	
+	def show
+		if current_usuario != nil
+			@ofrecimiento=Ofrecimiento.find(params[:id])
+			@favor=Favor.find(params[:favor_id])
+		else
+			redirect_to(favors_path, alert: "Sección inaccesible")
+		end
+	end
+
 	def new
 		if current_usuario != nil
 			@ofrecimiento = Ofrecimiento.new()
