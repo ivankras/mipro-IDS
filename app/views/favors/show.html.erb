@@ -14,9 +14,11 @@
 				<% end %>
 				<br><br><br>
 				<div class="text-left">
-					<% if current_usuario != nil && current_usuario.id == @favor.usuario_id%>
+					<% if current_usuario != nil && (current_usuario.id == @favor.usuario_id || isAdmin?)%>
 		        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= @favor.id %>">Eliminar</button>
-		        		<%= link_to "Editar", edit_favor_path(@favor.id), class: "btn btn-primary favor_btn" %>
+		        		<%if !isAdmin?%>
+		        			<%= link_to "Editar", edit_favor_path(@favor.id), class: "btn btn-primary favor_btn" %>
+		        		<%end%>
 		        		<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
 						<div class="modal fade" id="modalFavor_<%= @favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
 							  <div class="modal-dialog" role="document">

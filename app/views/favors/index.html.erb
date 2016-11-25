@@ -63,7 +63,7 @@
 									      	<% end %>
 									      	<p><%= s %></p>
 									        <p><br>
-									        	<% if current_usuario != nil && current_usuario.id == favor.usuario_id %>
+									        	<% if current_usuario != nil && (current_usuario.id == favor.usuario_id || isAdmin?) %>
 									        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalFavor_<%= favor.id %>">Eliminar</button>
 									        		<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %>
 									        		<div class="modal fade" id="modalFavor_<%= favor.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
