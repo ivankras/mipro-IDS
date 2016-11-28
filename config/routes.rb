@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get "delete", on: :member
   end
   resources :logros
+  resources :comentarios
   resources :ofrecimientos
   resources :favors do
     get "mis_favores", on: :collection

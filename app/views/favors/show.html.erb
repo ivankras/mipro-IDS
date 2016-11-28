@@ -59,8 +59,8 @@
 		</div>
 	</div>
 			<div class="col-md-12 container favor_com">
-				<h3> Comentarios </h3>
-				<table class="table table-condensed " >
+				<h3> Comentarios <%if current_usuario != nil && @favor.usuario_id != current_usuario.id%><%= link_to "Preguntar",  new_comentario_path(favor_id: @favor.id) , class: "btn btn-warning pull-right" %><%end%></h3> 
+				<table class="table table-condensed" style="margin-top: 2em" >
 					<% i = 1 %>
 					<% @favor.comentarios.each do |c| %>
 						<tr>
@@ -69,10 +69,28 @@
 							</td>
 							<td>
 									<% if c.descripcion != nil %>
-										<p><b>Pregunta:</b> <%= c.descripcion %></p>
+										<p><b>Pregunta:</b> <%= c.descripcion %> <%if current_usuario != nil && @favor.usuario_id == current_usuario.id%><em class="pull-right"><%=c.usuario.nombre%> <%=c.usuario.apellido%></em><%elsif current_usuario != nil && c.usuario_id == current_usuario.id%><em class="pull-right">Mi pregunta</em><%end%></p>
 										<% if c.respuesta != nil %>
 											<p><b>Respuesta:</b> <i><%= c.respuesta %></i></p>
-										<% end %>
+										<% elsif current_usuario != nil && @favor.usuario_id == current_usuario.id %>
+											<%= link_to "Responder",  edit_comentario_path(c.id, favor_id: @favor.id) , class: "btn btn-warning btn-xs pull-right" %>
+										<%elsif current_usuario != nil && c.usuario_id == current_usuario.id && c.respuesta == nil%>
+											<button type="button" class="btn btn-danger btn-xs pull-right" data-toggle="modal" data-target="#modalFavor_<%= c.id %>">Eliminar</button>
+							        		<div class="modal fade" id="modalFavor_<%= c.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+												  <div class="modal-dialog" role="document">
+												    <div class="modal-content msg">
+												      <div class="modal-body">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="borrando-logro">¿Estás seguro/a de que querés eliminar el comentario?</h4>
+												      </div>
+												      <div class="modal-footer">
+												        <%= link_to "Eliminar", c, method: :delete, class: "btn btn-danger" %>
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+												      </div>
+												    </div>
+												  </div>
+												</div>
+										<%end%>
 									<% end %>
 							</td>
 						</tr>

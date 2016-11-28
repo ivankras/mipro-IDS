@@ -33,7 +33,7 @@ class LogrosController < ApplicationController
 	    	flash[:success] = "Un nuevo logro ha sido insertado"
 	      	redirect_to(logros_path)
 	    else
-	      	redirect_to(new_logro_path, alert: "Error en el nombre o en el rango elegido.")
+	      	redirect_to(new_logro_path, alert: "Error en el nombre o en el rango elegido")
 	    end
 
 	end
@@ -48,19 +48,22 @@ class LogrosController < ApplicationController
 	    	flash[:success] = "El logro #{nom} ha sido editado correctamente"
 	      	redirect_to(logros_path)
 	    else
-	     	redirect_to(edit_logro_path(@logro), alert: "Error en el nombre (sólo letras) o en el rango elegido.")
+	     	redirect_to(edit_logro_path(@logro), alert: "Error en el nombre (sólo letras) o en el rango elegido")
 	    end
 	end
 
 	def destroy
-		logro = Logro.find(params[:id])
+		@logro = Logro.find(params[:id])
 		#Acá se borra lógicamente el logro
-		logro.activo = false
-		logro.save
+		@logro.activo = false
+		if @logro.save
 		#Acá se borra físicamente el logro
 		#Logro.destroy(params[:id])
-		flash[:success] = "El logro ha sido borrado"
-		redirect_to(logros_path)
+			flash[:success] = "El logro ha sido borrado"
+			redirect_to(logros_path)
+		else
+			redirect_to(logros_path, alert: "El logro no ha podido ser borrado")
+		end
 	end
 
 end
