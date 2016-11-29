@@ -98,10 +98,10 @@
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up)do |usuario_params|
-    	usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :logro_id)
+    	usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :password_confirmation, :logro_id)
   	end
     devise_parameter_sanitizer.permit(:account_update)do |usuario_params|
-      usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :current_password)
+      usuario_params.permit(:nombre, :apellido, :fecha_nacimiento, :telefono, :sexo, :email, :password, :password_confirmation, :current_password)
     end
   end
 end
