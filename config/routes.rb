@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resource :usuario, :only => [:show] do
     get "delete", on: :member
+    get "ranking", on: :collection
   end
   resources :logros
   resources :ofrecimientos

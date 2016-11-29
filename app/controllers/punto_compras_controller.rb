@@ -29,20 +29,22 @@ class PuntoComprasController < ApplicationController
 
 	def reporte
 		@puntocompras = PuntoCompra.all
-		@puntocompras = PuntoCompra.filter(params[:dsd], params[:hst])
 		if (params[:hst] && params[:dsd]) 
 			if (params[:hst] < params[:dsd])
+				@puntocompras = nil
 				flash.now[:warning] = "El rango seleccionado es incorrecto."
 				return
 			end
 		end 
 		if (params[:dsd] || params[:hst])
-		   if ((params[:dsd] && params[:hst]) && (params[:dsd] == params[:hst]))
-		   	flash.now[:success] = "Se muestran las compras efectuadas el día " + localize(params[:dsd].to_date, :format => :long) + "."
-		   else
-		   	flash.now[:success] = "Se muestran las compras efectuadas desde el " + localize(params[:dsd].to_date, :format => :long) + " hasta el " + localize(params[:hst].to_date, :format => :long) + "."
-		   end	
+			@puntocompras = PuntoCompra.filter(params[:dsd], params[:hst])
+			if ((params[:dsd] && params[:hst]) && (params[:dsd] == params[:hst]))
+		   		flash.now[:success] = "Se muestran las compras efectuadas el día " + localize(params[:dsd].to_date, :format => :long) + "."
+			else
+				flash.now[:success] = "Se muestran las compras efectuadas desde el " + localize(params[:dsd].to_date, :format => :long) + " hasta el " + localize(params[:hst].to_date, :format => :long) + "."
+			end	
 		end
+		
 	end
 
 	def agregarpuntos
