@@ -18,30 +18,32 @@
 			</thead>
 			<% cant_total = 0 %>
 			<% monto_total = 0 %>
-			<% @puntocompras.each do |pc| %>
-				<tr>
-					<td style="border-top-color: white"> 
-						<% if pc.usuario(pc.usuario_id) != nil %>
-							<%= pc.usuario.apellido %>, <%= pc.usuario.nombre %> 
-						<% else %>
-							<i style="color:gray">Usuario inexistente</i>
-						<% end %>
+			<% if @puntocompras != nil %>
+				<% @puntocompras.each do |pc| %>
+					<tr>
+						<td style="border-top-color: white"> 
+							<% if pc.usuario(pc.usuario_id) != nil %>
+								<%= pc.usuario.apellido %>, <%= pc.usuario.nombre %> 
+							<% else %>
+								<i style="color:gray">Usuario inexistente</i>
+							<% end %>
 
-					</td>
-					<td class="text-center" style="border-top-color: white"> <%= pc.cantidad %> <% cant_total = cant_total + pc.cantidad %> </td>
+						</td>
+						<td class="text-center" style="border-top-color: white"> <%= pc.cantidad %> <% cant_total = cant_total + pc.cantidad %> </td>
 
-					<td class="text-center" style="border-top-color: white"> <%= pc.precio_total.to_i %>  <% monto_total = monto_total + pc.precio_total.to_i %></td>
+						<td class="text-center" style="border-top-color: white"> <%= pc.precio_total.to_i %>  <% monto_total = monto_total + pc.precio_total.to_i %></td>
 
-					<td class="text-center" style="border-top-color: white"> 
-						<%=  localize(pc.created_at.to_date, :format => :long) %> 
-					</td> 
+						<td class="text-center" style="border-top-color: white"> 
+							<%=  localize(pc.created_at.to_date, :format => :long) %> 
+						</td> 
 
-				</tr>
+					</tr>
+				<% end %>
 			<% end %>
 				<tr>
 					<td style="border-width: 5px; border-top-color: black;"><b>TOTAL</b></td>
-					<td class="text-center" style="border-width: 5px; border-top-color: black;"><b><%= cant_total %></b></td>
-					<td class="text-center" style="border-width: 5px; border-top-color: black;"><b><%= monto_total %></b></td>
+					<td class="text-center" style="border-width: 5px; border-top-color: black;"><b><%= cant_total %> punto(s)</b></td>
+					<td class="text-center" style="border-width: 5px; border-top-color: black;"><b>$<%= monto_total %>.00</b></td>
 					<td style="border-width: 5px; border-top-color: black;"></td>
 		</table>
 	</div>
