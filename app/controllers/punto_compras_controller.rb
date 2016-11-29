@@ -67,7 +67,7 @@ class PuntoComprasController < ApplicationController
 			current_usuario.save
 			current_usuario.logro_id = enLogro(current_usuario.puntos)
 			current_usuario.save
-			@puntocompra = PuntoCompra.new(cantidad: res, precio_total: dinero)
+			@puntocompra = PuntoCompra.new(cantidad: res, precio_total: precio_total)
 			@puntocompra.usuario_id = current_usuario.id
 			@puntocompra.save
 			flash[:success] = "La compra ha sido efectuada."
