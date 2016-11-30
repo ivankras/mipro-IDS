@@ -11,6 +11,7 @@ class Usuario < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validate :valid_date, :is_eighteen
+  #validates_confirmation_of :password
   
   def is_eighteen
    if fecha_nacimiento
