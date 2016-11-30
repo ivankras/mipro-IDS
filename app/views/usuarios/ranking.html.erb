@@ -1,0 +1,59 @@
+<% if isAdmin? %>
+	<div class="container col-md-12 col-md-offset-0">
+		<table class="table table-hover">
+
+			<br>
+			<thead>
+				<tr>
+
+					<th style="border-bottom-color: black"> Usuario </th>
+
+					<th class="text-center" style="border-bottom-color: black"> Fecha de Nacimiento </th>
+
+					<th class="text-center" style="border-bottom-color: black"> Sexo </th>
+
+					<th class="text-center" style="border-bottom-color: black"> Teléfono </th>
+
+					<th class="text-center" style="border-bottom-color: black"> E-mail </th>
+
+					<th class="text-center" style="border-bottom-color: black"> Último Ingreso</th>
+
+					<th class="text-center" style="border-bottom-color: black"> Puntos </th>
+
+				</tr>
+			</thead>
+			<% if @usuarios != nil %>
+				<% @usuarios.each do |u| %>
+					<tr>
+						<td style="border-top-color: white"> 
+							<%= u.apellido %>, <%= u.nombre %></td>
+						<td class="text-center" style="border-top-color: white"> <%= u.fecha_nacimiento.to_s %> </td>
+						<td class="text-center" style="border-top-color: white"> 
+							<% if (u.sexo == "femenino") %>
+								F
+							<% else %>
+								M
+							<% end %>
+						</td> 
+						<td class="text-center" style="border-top-color: white"> <%= u.telefono %> </td>
+						<td class="text-center" style="border-top-color: white"> <%= u.email %> </td>
+						<td class="text-center" style="border-top-color: white"> 
+							<% if u.last_sign_in_at != nil %>
+								<%= u.last_sign_in_at.strftime('%d %b %Y %H:%M:%S').to_s %>
+							<% else %>
+								<i>Nunca</i>
+							<% end %>			
+						</td>
+						<td class="text-center" style="border-top-color: white"> <%= u.puntos %> </td>
+
+					</tr>
+				<% end %>
+			<% end %>
+				<tr style="border-width: 5px; border-top-color: black;">
+				</tr>					
+		</table>
+	</div>
+<% else %>
+	<h1 class="text-center" style="font-size: 300px"> 403 </h1>
+	<h1 class="text-center" style="font-size: 50px"> ACCESS DENIED </h1>
+<% end %>

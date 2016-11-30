@@ -8,4 +8,7 @@ class UsuariosController < ApplicationController
 		@usuario = current_usuario
 	end
 
+	def ranking
+		@usuarios = Usuario.all
+	end
 end

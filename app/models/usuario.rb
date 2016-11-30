@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
   
+  default_scope -> {order ("puntos desc")}
   belongs_to :logro
   has_many :favors, dependent: :destroy
   has_many :ofrecimiento, dependent: :destroy

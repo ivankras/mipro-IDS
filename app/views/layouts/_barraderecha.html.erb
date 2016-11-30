@@ -34,7 +34,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Favores<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
               <ul class="dropdown-menu forAnimate" role="menu">
-                  <li><%# link_to "Ver mis pedidos", mis_favores_favors_path%><%= link_to "Ver mis pedidos", root_path%></li>
+                  <li><%= link_to "Ver mis pedidos", mis_favores_favors_path%></li>
                   <li class="divider"></li>  
                   <li><a href="#">Ver mis postulaciones</a></li>
                   <li class="divider"></li>
@@ -45,6 +45,14 @@
         <%end%>
         <%if isAdmin?%>          
           <li ><%= link_to "Logros", logros_path%></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+            <ul class="dropdown-menu forAnimate" role="menu">
+              <li><%= link_to "Reporte de Ganancias", reporte_punto_compras_path%></li>
+              <li class="divider"></li>  
+              <li><%= link_to "Ranking de Usuarios", ranking_usuario_path %></li>
+            </ul>
+          </li>
         <%end%>
 <!--        <li class="dropdown">-->
           <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">¿Filtros, órdenes?<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>-->

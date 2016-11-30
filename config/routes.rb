@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resource :usuario, :only => [:show] do
     get "delete", on: :member
+    get "ranking", on: :collection
   end
   resources :logros
+  resources :comentarios
   resources :ofrecimientos
   resources :favors do
     get "mis_favores", on: :collection
   end
-  resources :punto_compras 
+  resources :punto_compras do
+    get "reporte", on: :collection
+  end
   post 'punto_compras/agregarpuntos' => 'punto_compras#agregarpuntos'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
