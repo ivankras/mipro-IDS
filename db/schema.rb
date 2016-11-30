@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20161129120312) do
 
   # These are extensions that must be enabled in order to support this database
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 20161129120312) do
     t.integer  "ofrecimiento_electo_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.integer  "comentario_id"
     t.integer  "usuario_id",             default: -1
     t.boolean  "activo",                 default: true
     t.integer  "visitas",                default: 0
