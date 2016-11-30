@@ -5,11 +5,14 @@ Rails.application.routes.draw do
     get "delete", on: :member
     get "ranking", on: :collection
   end
+  resources :resenas
   resources :logros
   resources :comentarios
   resources :ofrecimientos
   resources :favors do
     get "mis_favores", on: :collection
+    get 'aceptar', on: :member
+    get 'confirmar', on: :member
   end
   resources :punto_compras do
     get "reporte", on: :collection
