@@ -80,7 +80,7 @@
   end
 
   def elegido (idf)
-    return Favor.find(idf).id_ofrecimiento_electo != nil
+    return Favor.find(idf).ofrecimiento_electo_id != nil
   end
 
   def find_ofrecimiento(idf, idu)
