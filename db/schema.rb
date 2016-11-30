@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20161128002908) do
     t.integer  "id_ofrecimiento_electo"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.integer  "comentario_id"
     t.integer  "usuario_id",             default: -1
     t.boolean  "activo",                 default: true
     t.integer  "visitas",                default: 0

@@ -7,7 +7,7 @@ class Logro < ActiveRecord::Base
 
 	def rango
       if Logro.all.count>0
-        minAbs = Logro.where(activo: true).first.puntaje_min
+        minAbs = Logro.where(activo: true).last.puntaje_min
         maxAbs = Logro.where(activo: true).first.puntaje_max
         val = puntaje_min>minAbs || puntaje_max<maxAbs
       else

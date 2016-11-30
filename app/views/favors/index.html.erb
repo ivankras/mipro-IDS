@@ -85,6 +85,8 @@
 														<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
 													<% elsif current_usuario != nil && ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
 														<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id), favor_id:favor.id) , class: "btn btn-default", style: "color: #FF8119" %>
+													<%elsif current_usuario != nil && elegido(favor.id) && current_usuario.id == @favor.usuario_id %>
+														<%= link_to "Terminar",  root_path, class: "btn btn-warning" %>
 													<%end%>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	
