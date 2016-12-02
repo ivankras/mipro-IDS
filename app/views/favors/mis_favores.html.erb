@@ -22,13 +22,13 @@
 						<% end %>
 					<% end %>
 					<% if (params[:orden] == "Most") %>
-						<% favors = @favors.where(activo: true).mostv %>
+						<% favors = @favors.mostv %>
 					<% end %>
 					<% if (params[:orden] == "Less") %>
-						<% favors = @favors.where(activo: true).lessv %>
+						<% favors = @favors.lessv %>
 					<% end %>
 					<% if ((params[:orden] == "Fecha") || (params[:orden] == nil)) %>
-						<% favors = @favors.where(activo: true) %>
+						<% favors = @favors %>
 					<% end %>
 					<% favors.each do |favor| %>
 						<tr>

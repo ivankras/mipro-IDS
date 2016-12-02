@@ -14,17 +14,19 @@
 				<% end %>
 				<br><br><br>
 				<div class="text-left">
-					<% if current_usuario != nil && (current_usuario.id == @favor.usuario_id || isAdmin?)%>
-		        		<%= render 'botones_owner_show_favor', favor: @favor %>
-					<% else %>
-
-						<% if current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
+					<%if @favor.activo %>
+						<% if current_usuario != nil && (current_usuario.id == @favor.usuario_id || isAdmin?)%>
+			        		<%= render 'botones_owner_show_favor', favor: @favor %>
+						<% elsif current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
 							<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:@favor.id), class: "btn btn-warning favor_btn" %>
+							<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
 						<% elsif current_usuario != nil && ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
 							<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(@favor.id, current_usuario.id), favor_id:@favor.id), class: "btn btn-default favor_btn", style: "color: #FF8119"  %>
-						<%end%>
-						<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %> 
-		        	<% end %>					
+							<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
+			        	<% end %>
+			        <% else %>
+			        	<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>	
+					<%end%>
 				</div>
 			</div>
 			<div class="col-md-6 favor_desc">
@@ -38,6 +40,17 @@
 					<p class="text-right"><small><%= @favor.visitas %> visitas | <%= @favor.ciudad %> | <%= localize(@favor.created_at, :format => :long) %></small></p>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<% if @favor.resena_id != nil %>
+				<br>
+				<div class= "col-md-6">
+					<h4 class="text-right" style="color: #FF8119">Favor terminado</h4>
+				</div>
+				<div class= "col-md-6">
+					<p><%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%></p>
+				</div>
+			<% end %>
 		</div>
 	</div>
 			<%= render 'comentarios_Macu' %>

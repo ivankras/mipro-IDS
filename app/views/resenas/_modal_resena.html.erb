@@ -1,0 +1,19 @@
+<button type="button" class="btn btn-warning favor_btn" data-toggle="modal" data-target="#modalResena_<%=resena.id %>">Ver reseña</button>
+
+<div class="modal fade" id="modalResena_<%= resena.id %>" tabindex="-1" role="dialog" aria-labelledby="borrando-logro">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content msg">
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 id="borrando-logro">Reseña de la resolución del favor <em>"<%=resena.favor.titulo%>"</em></h4>
+	      	<hr>
+	      	<% gaucho = Ofrecimiento.find(resena.favor.ofrecimiento_electo_id).usuario %>
+	      	<p class="nom_link">Sobre <em><%= link_to gaucho.nombre+" "+gaucho.apellido+":", gaucho, class: "nom_link"%></em></p>
+	      	<p style="margin-left: 5px"><%=resena.descripcion%></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
