@@ -1,0 +1,6 @@
+<div class="container-fluid">
+	<h2 class="titulo_form_l text-center"><strong>Favor <%=@favor.titulo%></strong></h2>
+	<h4>¿Cumplió <%=@ofrecido.nombre%> <%=@ofrecido.apellido%> en tiempo y forma?</h4>
+</div>
+<%= link_to "Sí", confirmar_favor_path(cumplio: true, usuario: @ofrecido) class: "btn btn-success confirmation-btn" %>
+<%= link_to "No", confirmar_favor_path(cumplio: false, usuario: @ofrecido), class: "btn btn-danger confirmation-btn" %>

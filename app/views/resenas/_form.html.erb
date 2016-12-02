@@ -1,0 +1,17 @@
+<div class="well container-fluid text-center">
+	<%= form_for @resena do |r| %>
+		<form class="horizontal">
+			<div class="form-group text-left">
+				<span data-toggle="tooltip" data-placement="bottom" title="Máximo 200 caracteres">
+				<%= r.label "Reseña", class: "form_lbl_dsc" %></span>
+				<span data-toggle="tooltip" data-placement="bottom" title="La altura del campo se puede modificar desde la esquina inferior derecha">
+				<%= r.text_area :descripcion, required: true, placeholder: 'Ingresar hasta 200 caracteres', class: "areat form-control"%></span>
+			</div>
+			<%= r.hidden_field :cumplido, value: @cumplido, required: true %>
+			<%= r.hidden_field :favor_id, value: @favor.id, required: true %>
+			<br>
+			<%= r.submit 'Guardar', class: "btn btn-success actions confirmation-btn"%>
+			<%= link_to "Cancelar", :back, class: "btn btn-danger confirmation-btn" %>
+		</form>
+	<% end %>	
+</div>

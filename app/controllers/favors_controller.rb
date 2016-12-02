@@ -87,5 +87,44 @@ class FavorsController < ApplicationController
 		@favors = current_usuario.favors
 	end
 
+	def aceptar
+		@favor = Favor.find(params[:id])
+		@ofrecido = Ofrecimiento.find(@favor.ofrecimiento_electo_id).usuario
+	end
+
+	def confirmar
+		@usuario = params[:usuario]
+		@cumplio = params[:cumplio]
+		@favor = params[:favor]
+		if @cumplio
+			@usuario.puntos += 1
+			if @usuario.save
+				@usuario.logro_id = enLogro(@usuario.puntos)
+				if @usuario.save
+					flash[:success] = "¡¡El usuario #{@usuario.nombre} ha cumplido su favor!!"
+					redirect_to(new_resena_path(usuario: @usuario, cumplio: @cumplio, favor: @favor))
+				else
+					redirect_to(:back, alert: "No pudiendo guardar el usuario")
+				end
+			else
+				redirect_to(:back, alert: "No pudiendo guardar el usuario")
+			end
+		else
+			@usuario.puntos -= 2
+			current_usuario += 1
+			if @usuario.save && current_usuario.save
+				@usuario.logro_id = enLogro(@usuario.puntos)
+				current_usuario.logro_id = enLogro(current_usuario.puntos)
+				if @usuario.save && current_usuario.save
+					flash[:warning] = "¡¡El usuario #{@usuario.nombre} #{@usuario.apellido} ha cumplido su favor!!"
+					redirect_to(new_resena_path(usuario: @usuario, cumplio: @cumplio, favor: @favor))
+				else
+					redirect_to(:back, alert: "No pudiendo guardar algún usuario")
+				end
+			else
+				redirect_to(:back, alert: "No pudiendo guardar algún usuario")
+			end
+		end
+	end
 	
 end
