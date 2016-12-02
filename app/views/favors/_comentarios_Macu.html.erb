@@ -1,0 +1,48 @@
+<% ape = Usuario.find(@favor.usuario_id).apellido.capitalize %> 
+<% nom = Usuario.find(@favor.usuario_id).nombre.capitalize %> 
+<% fech = @favor.created_at.strftime("%d/%m/%Y %H:%M") %>
+<% ubic = @favor.ciudad %>
+
+	<div class="row" >
+		<div class="col-md-12">
+			<div class="border-element-sm-div" style="overflow: hidden">
+				<h3 style="width: 500px">Comentarios</h3>
+				<% if @favor.comentarios.count > 0 %>
+				<% coments = @favor.comentarios %>
+				<% coments.each do |c| %>
+				<div class="border-gau-sm" style="overflow: auto">
+					<table >
+						<tr>
+							<td>				
+								<div style="margin-left: 5px">
+									<p style="font-size: 16px"><b><%= link_to Usuario.find(c.usuario_id).nombre+" "+Usuario.find(c.usuario_id).apellido, usuario_path(:id => c.usuario_id), class: "nom_link"%></b></p>
+									<p style="font-size: 11px; margin-top: -15px; font-style: italic; color: grey"> <%= c.created_at.strftime("%d/%m/%Y %H:%M") %> </p></br>
+									<p style="margin-top: -10px"><%= c.descripcion%></p>
+									<% if c.respuesta != nil %>
+										<br>
+										<div class="well" style="margin-left: 5px"><p><b>Respuesta:</b> <i><%= c.respuesta %></i></p></div>
+									<% elsif current_usuario != nil && @favor.usuario_id == current_usuario.id %>
+										<%= link_to "Responder",  edit_comentario_path(c.id, favor_id: @favor.id) , class: "btn btn-warning btn-xs pull-right" %>
+									<%elsif current_usuario != nil && c.usuario_id == current_usuario.id && c.respuesta == nil%>
+										<%= render 'boton_eliminar_show_com', c: c %>
+									<%end%>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<% end %>
+				<% else %>
+				<p style="font-style: italic; color: grey; margin-left: 10px"> Aún no hay comentarios. Haz uno!</p>
+				<% end %>
+				<% if isLogged? %>
+					<div style="overflow: auto">
+						<%# render :partial => 'comentarios/form' %>
+						<%if current_usuario != nil && @favor.usuario_id != current_usuario.id%><%= link_to "Preguntar",  new_comentario_path(favor_id: @favor.id) , class: "btn btn-warning pull-right favor_btn" %><%end%>
+						
+
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
