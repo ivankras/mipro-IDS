@@ -1,21 +1,9 @@
-<!--div>
-	<%# form_tag(favors_path, :method => "get", id: "search-form") do %>
-		<%# text_field_tag :search, params[:search], placeholder: "Ingrese una palabra clave", class: "form-control field_search" %>
-		||
-		<%# text_field_tag :searchc, params[:searchc], placeholder: "Ingrese una ciudad", class: "form-control field_search" %>
-		||
-		<%# submit_tag "Buscar", :name => nil, class: "confirmationb-btn btn btn-warning" %>
-		||
-		<%# link_to "Reiniciar búsqueda", favors_path, class: "confirmationb-btn btn btn-warning favor_btn" %>
-	<%# end %>
-	<br>
-</div-->
 <div>
 	<div class="container">
 		<div class= "row">
 			<div class= "col-md-3">
-				<%= render 'barra_busq' %>
-			</div>
+				<%=  render 'barra_busq_index' %>
+			</div> 
 			<div class= "col-md-9 centrar">
 				<table class="table table-condensed" border="0">
 					<% if (@favors.count == 0) %>
@@ -31,7 +19,7 @@
 							<div class="alert alert-warning fade-in war-bar busqueda busqueda_error">
 								<strong>No existen favores que se correspondan con el título ingresado (<%= params[:search] %>).</strong> <br>Puedes reiniciar la búsqueda o modificar el parámetro.
 							</div>
-						<%  end %>
+						<% end %>
 					<% end %>
 					<% if (params[:orden] == "Most") %>
 						<% favors = @favors.where(activo: true).mostv %>
@@ -41,7 +29,7 @@
 					<% end %>
 					<% if ((params[:orden] == "Fecha") || (params[:orden] == nil)) %>
 						<% favors = @favors.where(activo: true) %>
-					<% end %> 
+					<% end %>
 					<% favors.each do |favor| %>
 						<tr>
 							<td style='border-top:none'>
@@ -85,8 +73,6 @@
 														<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
 													<% elsif current_usuario != nil && ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
 														<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id), favor_id:favor.id) , class: "btn btn-default", style: "color: #FF8119" %>
-													<%elsif current_usuario != nil && elegido(favor.id) && current_usuario.id == @favor.usuario_id %>
-														<%= link_to "Terminar",  root_path, class: "btn btn-warning" %>
 													<%end%>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 
 									        	<% end %>							        	

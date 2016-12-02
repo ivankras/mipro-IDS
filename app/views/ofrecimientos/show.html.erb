@@ -28,9 +28,11 @@
 			</div>
 		</div>
 		<% if current_usuario != nil && !elegido(@favor.id) %>
-			<p class="text-right pull-botom"><small><b>Su ofrecimiento sigue pendiente </b></small></p>
-		<% else %>
-			<p class="text-right pull-botom"><small><b>Su ofrecimiento ha sido rechazado</b></small></p>
+			<p class="text-right pull-botom style-orange"><small><b>Su ofrecimiento sigue pendiente </b></small></p>
+		<% elsif  current_usuario != nil && Ofrecimiento.find(@favor.ofrecimiento_electo_id).usuario_id == current_usuario.id %>
+			<p class="text-right pull-botom style-orange"><small><b>Su ofrecimiento ha sido elegido</b></small></p>
+		<% elsif  current_usuario != nil %>
+			<p class="text-right pull-botom style-orange"><small><b>Su ofrecimiento ha sido rechazado</b></small></p>
 		<% end %>
 	</div>
 </div>

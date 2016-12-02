@@ -1,5 +1,9 @@
 class OfrecimientosController < ApplicationController
 	
+	def index
+		@favors = current_usuario.ofrecimientos_favors.where(activo: true)
+	end
+
 	def show
 		if current_usuario != nil
 			@ofrecimiento=Ofrecimiento.find(params[:id])
@@ -36,6 +40,10 @@ class OfrecimientosController < ApplicationController
 		ofrecimiento.destroy
 		flash[:success] = "El ofrecimiento ha sido eliminado."
 		redirect_to(favors_path)
+	end
+
+	def view_fin
+		@favors = current_usuario.ofrecimientos_favors.where(activo: false, ofrecimiento_electo_id: current_usuario.id)
 	end
 
 end

@@ -83,6 +83,14 @@
     return Favor.find(idf).ofrecimiento_electo_id != nil
   end
 
+  def soy_elegido(ido)
+    if Ofrecimiento.find(ido).usuario_id == current_usuario.id
+      return true
+    else
+      return false  
+    end
+  end 
+
   def find_ofrecimiento(idf, idu)
     id=0
     Favor.find(idf).ofrecimientos.each do |o|

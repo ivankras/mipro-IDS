@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
   resources :logros
   resources :comentarios
-  resources :ofrecimientos
+  resources :ofrecimientos do
+    get "view_fin", on: :collection
+  end
   resources :favors do
     get "mis_favores", on: :collection
   end

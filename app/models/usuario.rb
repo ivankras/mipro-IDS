@@ -3,7 +3,8 @@ class Usuario < ActiveRecord::Base
   default_scope -> {order ("puntos desc")}
   belongs_to :logro
   has_many :favors, dependent: :destroy
-  has_many :ofrecimiento, dependent: :destroy
+  has_many :ofrecimientos, dependent: :destroy
+  has_many :ofrecimientos_favors, through: :ofrecimientos, source: :favor
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
