@@ -18,7 +18,7 @@
 		        		<button type="button" class="btn btn-danger favor_btn" data-toggle="modal" data-target="#modalFavor_<%= @favor.id %>">Eliminar</button>
 		        		<%if !isAdmin?%>
 		        			<%= link_to "Editar", edit_favor_path(@favor.id), class: "btn btn-primary favor_btn" %>
-		        			<%if elegido(favor.id)%>
+		        			<%if elegido(@favor.id)%>
 		        				<%= link_to "Terminar", aceptar_favor_path, class: "btn btn-warning favor_btn" %>
 		        			<%end%>
 		        		<%end%>
