@@ -1,0 +1,79 @@
+.border-element-div {
+  max-width: auto;
+  padding: 5px 50px 29px;
+  margin: 0 auto 20px;
+  background-color: #e5e5e5;
+  border: 1px solid #c6c6c6;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.border-element-sm-div {
+  max-width: auto;
+  padding: 0px 20px 10px;
+  margin: 0 auto 20px;
+  background-color: #fbf8f4;
+  border: 1px solid #c6c6c6;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-list-div {
+  max-width: auto;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.image-container-nav {
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  border: 3px solid #e5e5e5;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.image-container-gau {
+  overflow: hidden;
+  height: auto;
+  background-color: white;
+  width: 400px;
+  border: 5px solid #f1f1f1;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.border-gau-sm {
+  max-width: auto;
+  padding: 13px 15px 10px;
+  margin: 10px 5px 10px;
+  background-color: white;
+  border: 2px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.nom_link{
+  color:#FF8119;
+}
+.nom_link:hover{
+  color:#ff8d2f;
+}
