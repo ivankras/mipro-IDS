@@ -126,5 +126,19 @@ class FavorsController < ApplicationController
 			end
 		end
 	end
+
+	def eleccion
+		@ofrecimientos = Favor.find(params[:favor_id]).ofrecimientos
+	end
+
+	def seleccion
+		@favor=Find.(params[:favor_id])
+		@favor.ofrecimiento_electo_id = params[:ofrecimiento_id]
+		if @favor.save 
+			redirect_to(favors_path, alert: "Has elegido un candidato correctamente")
+		else
+			redirect_to(favors_path, alert: "No se ha podido seleccionar el candidato")
+		end
+	end
 	
 end

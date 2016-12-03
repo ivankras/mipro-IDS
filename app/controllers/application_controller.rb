@@ -12,6 +12,7 @@
   helper_method :enLogro
   helper_method :ofreci
   helper_method :elegido
+  helper_method :soy_elegido
   helper_method :find_ofrecimiento
   #helper_method :all
 

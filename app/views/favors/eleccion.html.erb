@@ -1,0 +1,54 @@
+<div>
+	<div class="container">
+		<div class= "row">
+			<div class= "col-md-9 centrar">
+				<table class="table table-condensed" border="0">
+					<% if (@ofrecimientos.count == 0) %>
+						<div class="alert alert-warning fade-in war-bar busqueda busqueda_error">
+							<strong>No exiten ofrecimientos aún.</strong> <br>Puedes esperar que se ofrezca algún voluntario o eliminar el favor.
+						</div>
+					<% end %>
+					<% @ofrecimientos.each do |ofrecimiento| %>
+						<tr>
+							<td style='border-top:none'>
+								<!--<div class="container well">-->
+									<!--<div class="row">-->
+									  <div class="container well col-md-8 col-md-offset-0 thumbnail" style='background-color:white; border-color:black'>
+									    <!--<div class="thumbnail">-->
+									    <h4 class="text-center"><%= ofrecimiento.usuario.nombre %> <%= ofrecimiento.usuario.apellido %></h4><br>
+									      <div class="caption">
+									      	<p class="text-center"><small>Puntos logro </small>|<strong><%= ofrecimiento.usuario.puntaje %></strong></p>
+									      	<br>
+									      	<p><%= ofrecimiento.descripcion %></p>
+									      	<p class="text-right"><%= localize(ofrecimiento.fecha_limite, :format => :long) %></p>
+									        <p><br>
+									        	<% if current_usuario != nil && current_usuario.id == ofrecimiento.favor.usuario_id %>
+									        		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#select %>">Elegir</button>
+									        		<div class="modal fade" id="select<%= ofrecimiento.id %>" tabindex="-1" role="dialog" aria-labelledby="select">
+														  <div class="modal-dialog" role="document">
+														    <div class="modal-content msg">
+														      <div class="modal-body">
+														        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														        <h4 class="modal-title" id="select<%= ofrecimiento.id %>">¿Estás seguro/a de que querés elegir este ofrecimiento para cumplir con tu favor?</h4>
+														      </div>
+														      <div class="modal-footer">
+														        <%= link_to "Elegir", selection_path(favor_id: ofrecimiento.favor_id, ofrecimiento_id: ofrecimiento.id), class: "btn btn-warning" %>
+														        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+									        	<% end %>							        	
+									        </p>
+									      </div>
+									    <!--</div>-->
+									  <!--</div>-->
+								<!--</div>-->
+							</td>
+						</tr>	
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -3,6 +3,7 @@ class Favor < ActiveRecord::Base
 	has_one :resena
 	has_many :ofrecimientos, dependent: :destroy
 	has_many :comentarios, dependent: :destroy
+
 	validates :titulo, length: {minimum: 1, maximum: 50}
 	validates :titulo, uniqueness: true
 	default_scope -> {order ("created_at desc")} 
