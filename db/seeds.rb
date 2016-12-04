@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if false
+if true
 	
 	Logro.destroy_all
 	puts "Creo algunos logros"
@@ -19,9 +19,9 @@ if false
 
 end
 
-if false
+if true
 	
-	f = Favor.count
+	#f = Favor.count
 
 	Favor.destroy_all
 	Favor.create!([{
@@ -66,10 +66,18 @@ if false
 		descripcion: "Esto es una prueba.",
 		ciudad: "Tokio",
 		usuario_id: 7,
-
-	}])
+		},
+		{
+		id:6,
+		titulo: "Cartón Perdido",
+		descripcion: "Perdí ESTE cartón saliendo de casa. Necesito que sea ese, sí o sí. Estoy devastado. ¡Ayuda! Velocidad y eficiencia, ese cartón lo es todo.",
+		ciudad: "Gral. Madariaga",
+		usuario_id: 8,
+		}
+	])
 	
-	puts "Creo #{Favor.count - f} favores. Hay #{Favor.count} favores en total."
+	#puts "Creo #{Favor.count - f} favores. Hay #{Favor.count} favores en total."
+	puts "Hay #{Favor.count} favores en total."
 
 
 	Comentario.destroy_all
@@ -95,7 +103,7 @@ if false
 
 end
 
-if false
+if true
 
 	Usuario.destroy_all
 	puts "Creación de usuarios"
