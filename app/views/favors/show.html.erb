@@ -32,7 +32,7 @@
 		        		<%= render 'botones_owner_show_favor', favor: @favor %>	
 				<%end%>
 			</div>
-			<div class="col-md-3 text-right">
+			<div class="col-md-2 text-right">
 				<% if current_usuario != nil && current_usuario.id == @favor.usuario_id && !elegido(@favor.id) %>
 					<%= link_to "Elegir candidato", eleccion_favor_path, class: "btn btn-warning favor_btn" %>
 				<% elsif current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
@@ -45,7 +45,7 @@
 					<%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%>
 				<% end %>
 			</div>
-			<div class= "col-md-4 style-orange">
+			<div class= "col-md-5 style-orange">
 				<% if @favor.resena_id != nil %>
 					<p ><small>Favor terminado</small></p>
 				<% elsif elegido(@favor.id)%>

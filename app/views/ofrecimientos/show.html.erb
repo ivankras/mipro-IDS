@@ -27,10 +27,10 @@
 					<%= render 'delete_btn' %>
 				<%end%> 					
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-2">
 			<!-- BOTON ESPECÍFICO NECESARIO-->
 			</div>
-			<div class="col-md-4 style-orange">	
+			<div class="col-md-5 style-orange">	
 				<% if current_usuario != nil && !elegido(@favor.id) %>
 					<p><small>Su ofrecimiento sigue pendiente </small></p>
 				<% elsif  current_usuario != nil && soy_elegido(@favor.ofrecimiento_electo_id) %>
