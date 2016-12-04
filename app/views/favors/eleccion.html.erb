@@ -7,7 +7,7 @@
 				<table class="table table-condensed" border="0">
 					<% if (@ofrecimientos.count == 0) %>
 						<div class="alert alert-warning fade-in war-bar busqueda busqueda_error">
-							<strong>No exiten ofrecimientos aún.</strong> <br>Puedes esperar que se ofrezca algún voluntario o eliminar el favor.
+							<strong>No existen ofrecimientos aún.</strong> <br>Puedes esperar que se ofrezca algún voluntario o eliminar el favor.
 						</div>
 					<% end %>
 					<% @ofrecimientos.each do |ofrecimiento| %>
@@ -25,7 +25,7 @@
 									      	<p class="text-right"><small>Fecha límite</small><br><%= localize(ofrecimiento.fecha_limite, :format => :long) %></p>
 									        <p><br>
 									       		<% if current_usuario != nil && current_usuario.id == ofrecimiento.favor.usuario_id %>
-													<!--<button type="button" class="btn btn-warning" data-toggle="modal" data-target="select<%= ofrecimiento.id %>">Elegir</button>
+													<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#select<%= ofrecimiento.id %>">Elegir</button>
 													<div class="modal fade" id="select<%= ofrecimiento.id %>" tabindex="-1" role="dialog" aria-labelledby="select">
 														<div class="modal-dialog" role="document">
 														    <div class="modal-content msg">
@@ -33,16 +33,16 @@
 														        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 														        	<h4 class="modal-title" id="select">¿Estás seguro/a de que querés elegir este ofrecimiento para cumplir con tu favor?</h4>
 														      	</div>
-														    	<div class="modal-footer">-->
+														    	<div class="modal-footer">
 														        	<%= link_to "Elegir", seleccion_favor_path(ofrecimiento_id: ofrecimiento.id), class: "btn btn-warning" %>
-														        	<!--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+														        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 														      	</div>
 														    </div>
 														 </div>
-													</div>-->
+													</div>
 									        	<% end %>							        	
 									        </p>
-									      </div>
+									     </div>
 									    <!--</div>-->
 									  <!--</div>-->
 								<!--</div>-->
