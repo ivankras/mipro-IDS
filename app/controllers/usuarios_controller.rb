@@ -1,7 +1,7 @@
 class UsuariosController < ApplicationController
 	def show
-		#@usuario = Usuario.find(current_usuario.id)
-		@usuario = current_usuario
+		@usuario = Usuario.find(params[:id])
+		#@usuario = current_usuario
 	end
 
 	def delete
