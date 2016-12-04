@@ -17,25 +17,28 @@
 			<div class="col-md-6 favor_desc">
 				<p class= "text-justify"><%=@ofrecimiento.descripcion%></p>
 				<div class="caption">
-					<p class="text-right"><small>Fecha limite</small><br><%= localize(@ofrecimiento.fecha_limite, :format => :long) %></p>
+					<p class="text-right"><small>Fecha limite | <b><%= localize(@ofrecimiento.fecha_limite, :format => :long) %></b></small></p><br>
+					<% if current_usuario != nil && elegido(@favor.id) && current_usuario.id==@favor.usuario_id %>
+						<p class="text-right"><small>Ofrecido por <b><%=link_to @ofrecimiento.usuario.nombre+" "+@ofrecimiento.usuario.apellido, usuario_path(id: @ofrecimiento.usuario_id), class: "nom_link"%></b></small></p>
+					<% end %>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 text-left">
+			<div class="col-md-3 text-left">
 				<% if current_usuario != nil && !elegido(@favor.id) %>
 					<%= render 'delete_btn' %>
 				<%end%> 					
 			</div>
-			<div class="col-md-2">
-			<!-- BOTON ESPECÍFICO NECESARIO-->
+			<div class="col-md-3 text-right">
+				<%= link_to "Ver favor",  favor_path(@favor.id), class: "btn btn-default favor_btn", style: "color: #FF8119"  %>
 			</div>
 			<div class="col-md-5 style-orange">	
-				<% if current_usuario != nil && !elegido(@favor.id) %>
+				<% if current_usuario != nil &&current_usuario.id==@ofrecimiento.usuario_id && !elegido(@favor.id) %>
 					<p><small>Su ofrecimiento sigue pendiente </small></p>
-				<% elsif  current_usuario != nil && soy_elegido(@favor.ofrecimiento_electo_id) %>
+				<% elsif  current_usuario != nil && current_usuario.id==@ofrecimiento.usuario_id && soy_elegido(@favor.ofrecimiento_electo_id) %>
 					<p><small>Su ofrecimiento ha sido elegido</small></p>
-				<% elsif  current_usuario != nil %>
+				<% elsif  current_usuario != nil && current_usuario.id==@ofrecimiento.usuario_id %>
 					<p><small>Su ofrecimiento ha sido rechazado</small></p>
 				<% end %>
 			</div>
