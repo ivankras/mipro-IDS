@@ -39,7 +39,7 @@
 					<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:@favor.id), class: "btn btn-warning favor_btn" %>
 				<% elsif current_usuario != nil && ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
 					<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(@favor.id, current_usuario.id), favor_id:@favor.id), class: "btn btn-default favor_btn", style: "color: #FF8119"  %>
-				<% elsif current_usuario.id != nil && current_usuario.id == @favor.usuario_id && elegido(@favor.id) %>
+				<% elsif current_usuario.id != nil && current_usuario.id == @favor.usuario_id && @favor.activo && elegido(@favor.id) %>
 					<%= link_to "Terminar", aceptar_favor_path, class: "btn btn-warning favor_btn" %>
 				<% elsif @favor.resena_id != nil %>
 					<%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%>

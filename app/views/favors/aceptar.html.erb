@@ -1,6 +1,11 @@
-<div class="container-fluid">
-	<h2 class="titulo_form_l text-center"><strong>Favor <%=@favor.titulo%></strong></h2>
-	<h4>¿Cumplió <%=@ofrecido.nombre%> <%=@ofrecido.apellido%> en tiempo y forma?</h4>
+<div class="well container-fluid text-center">
+	<div class="row"> 
+		<h2 class="titulo_form_l text-center"><strong>Favor "<%=@favor.titulo%>"</strong></h2><br>
+		<h5 class="text-center">¿Cumplió <%=@ofrecido.nombre%> <%=@ofrecido.apellido%> en tiempo y forma?</h5>
+	</div>
+	<br><br>
+	<div class="row text-center">
+		<%= link_to "Sí", confirmar_favor_path(cumplio: true, usuario_id: @ofrecido.id, favor_id: @favor.id), class: "btn btn-success confirmation-btn" %>
+		<%= link_to "No", confirmar_favor_path(cumplio: false, usuario_id: @ofrecido.id, favor_id: @favor.id), class: "btn btn-danger confirmation-btn" %>
+	</div>
 </div>
-<%= link_to "Sí", confirmar_favor_path(cumplio: true, usuario: @ofrecido) class: "btn btn-success confirmation-btn" %>
-<%= link_to "No", confirmar_favor_path(cumplio: false, usuario: @ofrecido), class: "btn btn-danger confirmation-btn" %>

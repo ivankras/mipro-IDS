@@ -93,16 +93,16 @@ class FavorsController < ApplicationController
 	end
 
 	def confirmar
-		@usuario = params[:usuario]
+		@usuario = Usuario.find(params[:usuario_id])
 		@cumplio = params[:cumplio]
-		@favor = params[:favor]
+		@favor = params[:favor_id]
 		if @cumplio
 			@usuario.puntos += 1
 			if @usuario.save
 				@usuario.logro_id = enLogro(@usuario.puntos)
 				if @usuario.save
 					flash[:success] = "¡¡El usuario #{@usuario.nombre} ha cumplido su favor!!"
-					redirect_to(new_resena_path(usuario: @usuario, cumplio: @cumplio, favor: @favor))
+					redirect_to(new_resena_path(usuario_id: @usuario, cumplio: @cumplio, favor_id: @favor))
 				else
 					redirect_to(:back, alert: "No pudiendo guardar el usuario")
 				end
@@ -117,7 +117,7 @@ class FavorsController < ApplicationController
 				current_usuario.logro_id = enLogro(current_usuario.puntos)
 				if @usuario.save && current_usuario.save
 					flash[:warning] = "¡¡El usuario #{@usuario.nombre} #{@usuario.apellido} ha cumplido su favor!!"
-					redirect_to(new_resena_path(usuario: @usuario, cumplio: @cumplio, favor: @favor))
+					redirect_to(new_resena_path(usuario_id: @usuario, cumplio: @cumplio, favor_id: @favor))
 				else
 					redirect_to(:back, alert: "No pudiendo guardar algún usuario")
 				end

@@ -1,9 +1,9 @@
 class ResenasController < ApplicationController
   def new
     if current_usuario != nil
-    	@usuario = params[:usuario]
+    	@usuario = Usuario.find(params[:usuario_id])
       @cumplido = params[:cumplio]
-      @favor = params[:favor]
+      @favor = Favor.find(params[:favor_id])
     	@resena = Resena.new()
     else
       redirect_to(new_usuario_session_path, alert: "Sección inaccesible")
@@ -12,7 +12,10 @@ class ResenasController < ApplicationController
 
   def create
   	@resena = Resena.new(params.require(:resena).permit(:descripcion, :cumplido, :favor_id))
-    if @resena.save
+    @favor = Favor.find(params[:resena][:favor_id])
+    @favor.activo = false
+    @favor.resena_id = @resena.id
+    if @resena.save && @favor.save
       flash[:success] = "Reseña exitosa"
       redirect_to(favor_path(params[:resena][:favor_id]))
     else
