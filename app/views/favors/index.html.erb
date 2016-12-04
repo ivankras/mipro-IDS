@@ -13,10 +13,10 @@
 <div>
 	<div class="container">
 		<div class= "row">
-			<div class= "col-md-3">
+			<div class= "col-md-4">
 				<%= render 'barra_busq' %>
 			</div>
-			<div class= "col-md-9 centrar">
+			<div class= "col-md-8 centrar">
 				<table class="table table-condensed" border="0">
 					<% if (@favors.count == 0) %>
 						<% if ((params[:searchc] != "") && (params[:search] != "")) %>
@@ -47,7 +47,7 @@
 							<td style='border-top:none'>
 								<!--<div class="container well">-->
 									<!--<div class="row">-->
-									  <div class="container well col-md-8 col-md-offset-0 thumbnail" style='background-color:white; border-color:black'>
+									  <div class="container well col-md-8 col-md-offset-0 thumbnail" style='background-color:white; border-color:white'>
 									    <!--<div class="thumbnail">-->
 									    <h3 class="text-center"> <%= favor.titulo %> </h3><br>
 									      	<% if ((favor.foto_url == "") || (favor.foto_url == nil)) %>
@@ -70,7 +70,7 @@
 														<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:favor.id), class: "btn btn-warning" %>
 													<% elsif current_usuario != nil && ofreci(favor.id, current_usuario.id) && !elegido(favor.id) %>
 														<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(favor.id, current_usuario.id), favor_id:favor.id) , class: "btn btn-default", style: "color: #FF8119" %>
-													<%elsif current_usuario != nil && elegido(favor.id) && current_usuario.id == @favor.usuario_id %>
+													<% elsif current_usuario != nil && elegido(favor.id) && current_usuario.id == favor.usuario_id %>
 														<%= link_to "Terminar", aceptar_favor_path, class: "btn btn-warning" %>
 													<%end%>
 													<%= link_to "Detalles", favor_path(favor.id), class: "btn btn-default" %> 

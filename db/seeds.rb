@@ -25,6 +25,7 @@ if false
 
 	Favor.destroy_all
 	Favor.create!([{
+		id:1,
 		titulo: "Donald Trump",
 		foto_url: "https://cdn.theatlantic.com/assets/media/img/2016/05/select_32/hero_wide_640.jpg?1463509000",
 		descripcion: "Donald John Trump was elected the 45th president of the United States on Tuesday in a stunning culmination of an explosive, populist and polarizing campaign that took relentless aim at the institutions and long-held ideals of American democracy.
@@ -33,34 +34,39 @@ if false
 	
 		The triumph for Mr. Trump, 70, a real estate developer-turned-reality television star with no government experience, was a powerful rejection of the establishment forces that had assembled against him, from the world of business to government, and the consensus they had forged on everything from trade to immigration.",
 		ciudad: "New York",
-		usuario_id: 7998,
+		usuario_id: 6,
 		},
-	   {
-	   titulo: "Ecuación sencilla",
-	   foto_url: "http://static.vix.com/es/sites/default/files/styles/large/public/btg/curiosidades.batanga.com/files/7-hermosas-ecuaciones-matematicas-que-tienes-que-conocer-6.jpg?itok=JsP0xHhe.jpg",
-	   descripcion: "Por favor, necesito algún matemático que pueda resolverme esta duda. Estoy hace unos días tratando de resolver esta sencilla ecuación, que está resultando no ser tan sencilla para mí. Gracias por su colaboración",
-	   ciudad: "Londres, Catamarca",
-	   usuario_id: 7999,
-	   },
-	   {
-	   titulo: "¡Encontrar al payaso!",
-	   foto_url: "http://i2.esmas.com/2016/04/26/858946/eso-el-payaso-624x351.jpg",
-	   descripcion: "Este payaso se escapó el día viernes último de la facultad de Informática. Dicen que anda paseando en el Ecobus. Necesito que lo encuentren y lo reporten a la oficina de alumnos. ¿Voluntarios?",
-	   ciudad: "La Plata",
-	   usuario_id: 7999,
-	   },
 		{
+		id:2,
+		titulo: "Ecuación sencilla",
+		foto_url: "http://static.vix.com/es/sites/default/files/styles/large/public/btg/curiosidades.batanga.com/files/7-hermosas-ecuaciones-matematicas-que-tienes-que-conocer-6.jpg?itok=JsP0xHhe.jpg",
+		descripcion: "Por favor, necesito algún matemático que pueda resolverme esta duda. Estoy hace unos días tratando de resolver esta sencilla ecuación, que está resultando no ser tan sencilla para mí. Gracias por su colaboración",
+		ciudad: "Londres, Catamarca",
+		usuario_id: 8,
+		},
+		{
+		id:3,
+		titulo: "¡Encontrar al payaso!",
+		foto_url: "http://i2.esmas.com/2016/04/26/858946/eso-el-payaso-624x351.jpg",
+		descripcion: "Este payaso se escapó el día viernes último de la facultad de Informática. Dicen que anda paseando en el Ecobus. Necesito que lo encuentren y lo reporten a la oficina de alumnos. ¿Voluntarios?",
+		ciudad: "La Plata",
+		usuario_id: 8,
+		},
+		{
+		id:4,
 		titulo: "Favor Sin Foto",
 		descripcion: "Dale a tu cuerpo alegria macarena que tu cuerpo es pa darle alegria y cosa buena",
 		ciudad: "Yapeyú",
 		usuario_id: 8000,
 		},
 		{
+		id:5,
 		titulo: "Favor Prueba",
 		foto_url: "https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png",
 		descripcion: "Esto es una prueba.",
 		ciudad: "Tokio",
-		usuario_id: 7998,
+		usuario_id: 7,
+
 	}])
 	
 	puts "Creo #{Favor.count - f} favores. Hay #{Favor.count} favores en total."
@@ -72,15 +78,18 @@ if false
 		descripcion: "Qué tal?",
 		respuesta: "Todo bien",
 		favor_id: Favor.first.id,
+		usuario_id: 7,
 		},
 		{
 		descripcion: "Cómo te llamas?",
 		respuesta: "Carlitos",
 		favor_id: Favor.first.id,
+		usuario_id: 9,
 		},
 		{
 		descripcion: "No tengo respuesta.",
 		favor_id: Favor.first.id,
+		usuario_id: 8000,
 	}])
 	puts "Creo #{Comentario.count - c} comentarios. Hay #{Comentario.count} comentarios en total."
 
@@ -95,8 +104,10 @@ if false
 	Usuario.create(id: 3, nombre: "Rocío", apellido: "Madou", sexo: "femenino", fecha_nacimiento: Date.new(1995,9,27), telefono: 542346571510, email: "rocio.madou@hotmail.com", password: "Abracadabra", admin: true); 
 	Usuario.create(id: 4, nombre: "Iván", apellido: "Krasowski Bissio", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,30), telefono: 542314401890, email: "ivankras@hotmail.com", password: "Abracadabra", admin: true); 
 	Usuario.create(id: 5, nombre: "Gonzalo Julián", apellido: "Poch", sexo: "masculino", fecha_nacimiento: Date.new(1996,4,29), telefono: 542215794999, email: "gonzalopoch@hotmail.com", password: "Abracadabra", admin: true); 
-	Usuario.create(id: 7998, nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1957,10,24), telefono: 542345773457, email: "aa@hotmail.com", password: "Abracadabra", logro_id: 1);
-	Usuario.create(id: 7999, nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "bb@hotmail.com", password: "Abracadabra", logro_id: 1);
-	Usuario.create(id: 8000, nombre: "Usuario", apellido: "Prueba", sexo: "masculino", fecha_nacimiento: Date.new(1990,01,12), telefono: 542673457823, email: "prueba@gauchada.com", password: "abracadabra", logro_id: 1);
+	Usuario.create(id: 6, nombre: "Perla", apellido: "Bassi", sexo: "femenino", fecha_nacimiento: Date.new(1993,10,24), telefono: 542345773457, email: "perlabassi@yahoo.com", password: "Abracadabra", logro_id: 1);
+	Usuario.create(id: 7, nombre: "Hector", apellido: "Petrón", sexo: "masculino", fecha_nacimiento: Date.new(1954,01,10), telefono: 542673457823, email: "hectorpetron7@hotmail.com", password: "Abracadabra", logro_id: 1);
+	Usuario.create(id: 8, nombre: "Valentina", apellido: "Alejo", sexo: "femenino", fecha_nacimiento: Date.new(1942,05,20), telefono: 54234542467, email: "alejoyvalentina@live.com", password: "Abracadabra", logro_id: 1);
+	Usuario.create(id: 9, nombre: "Juan Pedro", apellido: "Fasola", sexo: "masculino", fecha_nacimiento: Date.new(1990,06,15), telefono: 5467829976, email: "juanpefaso@gmail.com", password: "Abracadabra", logro_id: 1);
+	Usuario.create(id: 8000, nombre: "Usuario", apellido: "Prueba", sexo: "masculino", fecha_nacimiento: Date.new(1987,01,12), telefono: 542673457823, email: "prueba@gauchada.com", password: "abracadabra", logro_id: 1);
 
 end

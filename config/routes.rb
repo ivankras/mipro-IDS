@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     get "mis_favores", on: :collection
     get 'aceptar', on: :member
     get 'confirmar', on: :member
-    get 'election', on: :member
-    get 'selection', on: :member
+    get 'eleccion', on: :member
+    get 'seleccion', on: :member
   end
   resources :punto_compras do
     get "reporte", on: :collection

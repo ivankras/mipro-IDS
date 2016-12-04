@@ -128,11 +128,11 @@ class FavorsController < ApplicationController
 	end
 
 	def eleccion
-		@ofrecimientos = Favor.find(params[:favor_id]).ofrecimientos
+		@ofrecimientos = Favor.find(params[:id]).ofrecimientos
 	end
 
 	def seleccion
-		@favor=Find.(params[:favor_id])
+		@favor=Favor.find(params[:id])
 		@favor.ofrecimiento_electo_id = params[:ofrecimiento_id]
 		if @favor.save 
 			redirect_to(favors_path, alert: "Has elegido un candidato correctamente")

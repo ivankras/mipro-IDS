@@ -13,21 +13,6 @@
 					<%= image_tag @favor.foto_url, title: "Imagen Favor", :width => 380, :crop => :fit %>
 				<% end %>
 				<br><br><br>
-				<div class="text-left">
-					<%if @favor.activo %>
-						<% if current_usuario != nil && (current_usuario.id == @favor.usuario_id || isAdmin?)%>
-			        		<%= render 'botones_owner_show_favor', favor: @favor %>
-						<% elsif current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
-							<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:@favor.id), class: "btn btn-warning favor_btn" %>
-							<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
-						<% elsif current_usuario != nil && ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
-							<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(@favor.id, current_usuario.id), favor_id:@favor.id), class: "btn btn-default favor_btn", style: "color: #FF8119"  %>
-							<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>
-			        	<% end %>
-			        <% else %>
-			        	<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn" %>	
-					<%end%>
-				</div>
 			</div>
 			<div class="col-md-6 favor_desc">
 				<p class= "text-justify"><%=@favor.descripcion%></p>
@@ -42,15 +27,34 @@
 			</div>
 		</div>
 		<div class="row">
-			<% if @favor.resena_id != nil %>
-				<br>
-				<div class= "col-md-6">
-					<h4 class="text-right" style="color: #FF8119">Favor terminado</h4>
-				</div>
-				<div class= "col-md-6">
-					<p><%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%></p>
-				</div>
-			<% end %>
+			<div class= "col-md-4 text-left">
+				<%if @favor.activo && current_usuario != nil && (current_usuario.id == @favor.usuario_id || isAdmin?)%>
+		        		<%= render 'botones_owner_show_favor', favor: @favor %>	
+				<%end%>
+			</div>
+			<div class="col-md-3 text-right">
+				<% if current_usuario != nil && current_usuario.id == @favor.usuario_id && !elegido(@favor.id) %>
+					<%= link_to "Elegir candidato", eleccion_favor_path, class: "btn btn-warning favor_btn" %>
+				<% elsif current_usuario != nil && !isAdmin? && !ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
+					<%= link_to "Ofrecerme",  new_ofrecimiento_path(favor_id:@favor.id), class: "btn btn-warning favor_btn" %>
+				<% elsif current_usuario != nil && ofreci(@favor.id, current_usuario.id) && !elegido(@favor.id) %>
+					<%= link_to "Ver ofrecimiento",  ofrecimiento_path(find_ofrecimiento(@favor.id, current_usuario.id), favor_id:@favor.id), class: "btn btn-default favor_btn", style: "color: #FF8119"  %>
+				<% elsif current_usuario.id != nil && current_usuario.id == @favor.usuario_id && elegido(@favor.id) %>
+					<%= link_to "Terminar", aceptar_favor_path, class: "btn btn-warning favor_btn" %>
+				<% elsif @favor.resena_id != nil %>
+					<%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%>
+				<% end %>
+			</div>
+			<div class= "col-md-4 style-orange">
+				<% if @favor.resena_id != nil %>
+					<p ><small>Favor terminado</small></p>
+				<% elsif elegido(@favor.id)%>
+					<p ><small>Favor en producción</small></p>
+				<% end %>
+			</div>
+			<div class="col-md-1 pull-bottom">
+				<%= link_to "Volver", favors_path, class: "btn btn-default favor_btn " %>
+			</div>
 		</div>
 	</div>
 			<%= render 'comentarios_Macu' %>
