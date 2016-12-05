@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if true
+if false
 	
 	Logro.destroy_all
 	puts "Creo algunos logros"
@@ -23,7 +23,7 @@ if true
 	
 	#f = Favor.count
 
-	Favor.destroy_all
+	#Favor.destroy_all
 	Favor.create!([{
 		id:1,
 		titulo: "Donald Trump",
@@ -104,7 +104,7 @@ if true
 
 end
 
-if true
+if false
 
 	Usuario.destroy_all
 	puts "Creación de usuarios"
