@@ -70,6 +70,7 @@ if true
 		{
 		id:6,
 		titulo: "Cartón Perdido",
+		foto_url: "http://calaveralma.com.ar/wp-content/uploads/2016/06/PEDAZO-DE-CARTON.jpg",
 		descripcion: "Perdí ESTE cartón saliendo de casa. Necesito que sea ese, sí o sí. Estoy devastado. ¡Ayuda! Velocidad y eficiencia, ese cartón lo es todo.",
 		ciudad: "Gral. Madariaga",
 		usuario_id: 8,
