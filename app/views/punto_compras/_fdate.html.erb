@@ -11,6 +11,10 @@
 	<% end %>
     <label>Desde</label>&nbsp;<input min="2016-11-01" max="<%= Date.today.to_s %>" class="text-center" type="date" name="dsd" id="Desde" value= "<%= d %>" required>
     <label>Hasta</label>&nbsp;<input min="2016-11-01" max="<%= Date.today.to_s %>" class="text-center" type="date" name="hst" id="Hasta" value= "<%= h %>" required>
-    <%= submit_tag "!", :name => nil, class: "confirmation-btnrep btn btn-success" %>
-    <%= link_to "←", reporte_punto_compras_path, class: "confirmation-btnrep2 btn btn-danger" %>
+    <span data-toggle="tooltip" data-placement="bottom" title="Confirmar">
+    	<%= submit_tag "!", :name => nil, class: "confirmation-btnrep btn btn-success" %>
+    </span>
+    <span data-toggle="tooltip" data-placement="bottom" title="Reiniciar reporte">
+    	<%= link_to "←", reporte_punto_compras_path, class: "confirmation-btnrep2 btn btn-danger" %>
+    </span>
 </form>
