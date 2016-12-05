@@ -19,11 +19,11 @@ if false
 
 end
 
-if true
+if false
 	
 	#f = Favor.count
 
-	#Favor.destroy_all
+	Favor.destroy_all
 	Favor.create!([{
 		id:1,
 		titulo: "Donald Trump",
