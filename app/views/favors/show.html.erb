@@ -20,7 +20,7 @@
 					<% if @favor.usuario == nil %>
 						<p class="text-right"><small>Pedido por <b>un fantasma </b></small></p>
 					<% elsif current_usuario != nil && elegido(@favor.id) && soy_elegido(@favor.ofrecimiento_electo_id) %>
-						<p class="text-right"><small>Pedido por <b><%=link_to @favor.usuario.nombre+" "+@favor.usuario.apellido, usuario_path(id: @favor.usuario_id), class: "nom_link"%></b></small></p>
+						<p class="text-right"><small>Pedido por <b><%=link_to @favor.usuario.nombre+" "+@favor.usuario.apellido, @favor.usuario, class: "nom_link"%></b></small></p>
 					<% else %>
 						<p class="text-right"><small>Pedido por <b><%= @favor.usuario.nombre+" "+@favor.usuario.apellido %></b></small></p>
 					<% end %>

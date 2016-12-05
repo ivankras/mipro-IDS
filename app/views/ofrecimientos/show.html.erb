@@ -19,7 +19,7 @@
 				<div class="caption">
 					<p class="text-right"><small>Fecha limite | <b><%= localize(@ofrecimiento.fecha_limite, :format => :long) %></b></small></p><br>
 					<% if current_usuario != nil && elegido(@favor.id) && current_usuario.id==@favor.usuario_id %>
-						<p class="text-right"><small>Ofrecido por <b><%=link_to @ofrecimiento.usuario.nombre+" "+@ofrecimiento.usuario.apellido, usuario_path(id: @ofrecimiento.usuario_id), class: "nom_link"%></b></small></p>
+						<p class="text-right"><small>Ofrecido por <b><%=link_to @ofrecimiento.usuario.nombre+" "+@ofrecimiento.usuario.apellido, @ofrecimiento.usuario, class: "nom_link"%></b></small></p>
 					<% end %>
 				</div>
 			</div>

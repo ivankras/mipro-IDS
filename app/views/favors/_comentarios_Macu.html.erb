@@ -15,7 +15,7 @@
 						<tr>
 							<td>				
 								<div style="margin-left: 5px">
-									<p style="font-size: 16px"><b><%= link_to Usuario.find(c.usuario_id).nombre+" "+Usuario.find(c.usuario_id).apellido, usuario_path(:id => c.usuario_id), class: "nom_link"%></b></p>
+									<p style="font-size: 16px"><b><%= link_to Usuario.find(c.usuario_id).nombre+" "+Usuario.find(c.usuario_id).apellido, c.usuario, class: "nom_link"%></b></p>
 									<p style="font-size: 11px; margin-top: -15px; font-style: italic; color: grey"> <%= c.created_at.strftime("%d/%m/%Y %H:%M") %> </p></br>
 									<p style="margin-top: -10px"><%= c.descripcion%></p>
 									<% if c.respuesta != nil %>
