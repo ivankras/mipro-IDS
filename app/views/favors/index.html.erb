@@ -55,13 +55,13 @@
 											<% else %>
 												<%= image_tag favor.foto_url, :width => 350, :crop => :fit %>
 											<% end %>
-									      <div class="caption">
+									      <div class="caption text-left">
 									      	<br>
 									      	<% s = favor.descripcion[0..140] %>
 									      	<% if s.length == 141 %>
 									      		<% s[141..143] = "..." %>
 									      	<% end %>
-									      	<p><%= s %></p>
+									      	<p class="text-left"><%= s %></p>
 									        <p><br>
 									        	<% if current_usuario != nil && (current_usuario.id == favor.usuario_id || isAdmin?) %>
 									        		<%= render 'boton_eliminar_index_favor', favor: favor %>
