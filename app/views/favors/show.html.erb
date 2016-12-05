@@ -48,14 +48,14 @@
 					<%= render 'resenas/modal_resena', resena: Resena.find(@favor.resena_id)%>
 				<% end %>
 			</div>
-			<div class= "col-md-3 style-orange">
+			<div class= "col-md-4 style-orange">
 				<% if @favor.resena_id != nil %>
 					<p ><small>Favor terminado</small></p>
 				<% elsif elegido(@favor.id)%>
 					<p ><small>Favor en producción</small></p>
 				<% end %>
 			</div>
-			<div class="col-md-2 pull-bottom">
+			<div class="col-md-1 pull-bottom">
 				<%= link_to "Volver", favors_path, class: "btn btn-default" %>
 			</div>
 		</div>
