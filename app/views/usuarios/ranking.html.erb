@@ -23,7 +23,7 @@
 				</tr>
 			</thead>
 			<% if @usuarios != nil %>
-				<% @usuarios.each do |u| %>
+				<% @usuarios.where(admin: false).each do |u| %>
 					<tr>
 						<td style="border-top-color: white"> 
 							<%= u.apellido %>, <%= u.nombre %></td>
